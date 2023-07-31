@@ -1,8 +1,12 @@
 const express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 
-const app = express();
+app.use(cookieParser());
+
 
 const postsRouter = require('./routes/posts');
 
@@ -13,6 +17,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: process.env.SESSION_SECRET, 
+  resave: false,
+  saveUninitialized: false,
+}));
 
 app.use('/', postsRouter);
 
