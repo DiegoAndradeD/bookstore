@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/signupPrototype" method="post">
+        <label for="userName">User Name</label>
+        <input type="text" name="userName" id="userName" required placeholder="User Name" minlength="8" maxlength="20" autocomplete="off" autofocus>
+
+        <label for="fullName">Full Name</label>
+        <input type="text" name="fullName" id="fullName"
+        required placeholder="Full Name" minlength="10" autocomplete="off" autofocus>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required placeholder="Email" minlength="10" autocomplete="off" autofocus>
+
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required minlength="6" placeholder="Password" autocomplete="off" autofocus>
+
+        <input type="submit" value="Signup">
+
+    </form>
+</body>
+</html>
