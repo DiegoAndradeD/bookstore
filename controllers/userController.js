@@ -45,7 +45,7 @@ const login = async (req, res) => {
         return res.status(201).json({ successMessage: 'Login Completed'});
     } catch (error) {
         console.log('error logging', error.message);
-        res.status(error.statusCode || 500).json({message: error.message});
+        return res.status(error.statusCode || 500).json({errorMessage: error.message});
     }
 
 };
