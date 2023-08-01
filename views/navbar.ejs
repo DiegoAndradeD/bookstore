@@ -4,6 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/Navbar.css">
+    <style>
+
+
+.dropdown {
+    position: relative;
+    
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 210px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 999;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.dropdown-menu li {
+    display: block;
+    margin: 0;
+    padding: 3px;
+   
+}
+
+.dropdown-menu li a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    font-weight: 500;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #F2A71B;
+  
+}
+
+
+    </style>
 </head>
 <body>
     <nav>
@@ -16,8 +58,12 @@
         <ul class="nav-list">
         <li><a class="navLinkClass" href="/">Home</a></li>
         <% if (email) { %>
-            <li><a class="navLinkClass" href="#"><%= email %></a></li>
-                <li><a class="navLinkClass" href="/logout">Logout</a></li>
+            <li class="dropdown">
+                <a class="navLinkClass" href="#"><%= email %></a>
+                <ul class="dropdown-menu">
+                    <li><a class="navLinkClass" href="/logout">Logout</a></li>
+                    <li><a class="navLinkClass" href="#">Settings</a></li>
+                </ul>
             <% } else { %>
                 <li><a class="navLinkClass" href="/Signup">Signup</a></li>
                 <li><a class="navLinkClass" href="/Login">Login</a></li>
@@ -25,5 +71,22 @@
             <li><a class="navLinkClass" href="#">Help</a></li>
         </ul>
     </nav>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.dropdown').click(function(event) {
+            event.stopPropagation();
+            $('.dropdown-menu').toggle();
+        });
+
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.dropdown').length) {
+                $('.dropdown-menu').hide();
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
