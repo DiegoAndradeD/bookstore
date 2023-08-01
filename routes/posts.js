@@ -20,12 +20,6 @@ router.get('/Signup', (req, res) => {
 	res.render('Signup');
 });
 
-router.get('/AdminLogin', (req, res) => {
-	const email = req.session.email;
-	res.render('AdminLogin', {email: email});
-});
-
-
 router.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/loginPrototype');
@@ -34,7 +28,5 @@ router.get('/logout', (req, res) => {
 router.post('/Login', userController.login);
 
 router.post('/Signup', userController.signup);
-
-router.post('/AdminLogin', userController.login);
 
 module.exports = router;

@@ -36,18 +36,17 @@ userSchema.statics.verifyCredentials = async function(email, password) {
     try {
         const user = await this.findOne({email});
         if(!user) {
-            const error = new Error('User not found');
             console.log('User not found');
-            throw error;
+            throw new Error('User not found');;
         }
         const isPasswordValid = user.password === password;
         if(!isPasswordValid) {
-            const error = new Error('Password Invalid');
             console.log('Password Invalid')
-            throw error;
+            throw new Error('Password Invalid');;
         }
         return user;
     } catch (error) {
+        console.error('Error verifying credentials: ', error.message);
         throw error;
     }
 };
@@ -58,6 +57,7 @@ userSchema.statics.isUserRegistered = async function(email) {
         const user = await this.findOne({email});
         return user !== null;
     } catch (error) {
+        console.error('Error verifying user registration: ', error.message);
         throw error;
     }
 
