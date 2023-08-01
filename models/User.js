@@ -37,12 +37,12 @@ userSchema.statics.verifyCredentials = async function(email, password) {
         const user = await this.findOne({email});
         if(!user) {
             console.log('User not found');
-            throw new Error('User not found');;
+            throw new Error('User not found');
         }
         const isPasswordValid = user.password === password;
         if(!isPasswordValid) {
             console.log('Password Invalid')
-            throw new Error('Password Invalid');;
+            throw new Error('Password Invalid');
         }
         return user;
     } catch (error) {
@@ -63,8 +63,27 @@ userSchema.statics.isUserRegistered = async function(email) {
 
 };
 
+class UserModel {
+    constructor(userName, fullName, email, password) {
+        this.userName = userName;
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+    }
+
+    static validateUser(userName, fullName, email) {
+        if (userName === "" || userName === null) {
+            throw new Error('Invalid User Name');
+        } else if(fullName === "" || fullName === null) {
+            throw new Error('Invalid Full Name');
+        } else if(email === "" || email === null) {
+            throw new Error('Invalid Email');
+        }
+    }
+
+}
 
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = User;
+module.exports = {User, UserModel};

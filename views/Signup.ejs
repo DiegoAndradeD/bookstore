@@ -27,7 +27,7 @@
             <input type="email" name="email" id="email" required placeholder="Email" minlength="10" autocomplete="off" autofocus class="form__input">
 
             <label for="password" class="form__label">Password</label>
-            <input type="password" name="password" id="password" required minlength="6" placeholder="Password" autocomplete="off" autofocus class="form__input">
+            <input type="password" name="password" id="password" required minlength="6" placeholder="Password" autocomplete="off" autofocus class="form__input" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$">
         
         
             <div class="form__action">

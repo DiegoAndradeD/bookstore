@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
 const {db} = require('../public/javascripts/db');
-const User = require('../models/User');
+const {User, UserModel} = require('../models/User');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -14,7 +14,10 @@ const signup = async (req, res) => {
 
    const {userName, fullName, email, password} = req.body;
 
-   try {
+   try {   
+
+    UserModel.validateUser(userName, fullName, email);
+
     const isUserRegistered = await User.isUserRegistered(email);
     if(isUserRegistered) {
         return res.status(400).json({errorMessage: 'User is already Registered'});
@@ -27,8 +30,8 @@ const signup = async (req, res) => {
     res.status(201).json({successMessage: 'User registered Successfully'});
     console.log('User registered Successfully');
    } catch (error) {
-    res.status(500).json({errorMessage: 'Error Registering user'});
-    console.log('Error Registering user');
+    res.status(error.statusCode || 500).json({errorMessage: error.message});
+    console.log(error.message);
    }
 
 }
