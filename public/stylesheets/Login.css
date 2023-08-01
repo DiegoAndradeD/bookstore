@@ -6,8 +6,21 @@
 
 }
 
+header{
+    border-color: aqua;
+    padding: 20px 0;
+}
+
+
+
+
+
+
+
 
 body{
+    
+    
     font-family: 'Unica One', cursive;
     margin: 0;
     display: flex;
