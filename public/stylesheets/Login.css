@@ -4,17 +4,14 @@
 :root{
     --login-primary-coloe : #d3d6df;
 
-
-
+}
 
 
 
 body{
-    
-    
-    font-family: 'Unica One', cursive;
+    font-family: 'Oswald', sans-serif;
     margin: 0;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -23,9 +20,17 @@ body{
 
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+
+}
+
 
 .form{
-
+    padding: 0px 10px 20px 20px;
     width: 80%;
     max-width: 32rem;
    /* background-color: white;
@@ -55,7 +60,7 @@ padding-top: 2rem;
 
 
 .form__label{
-
+    font-family: 'Unica One', cursive;
     font-size: .8rem;
     text-transform: uppercase;
     font-weight: 300;
@@ -63,7 +68,7 @@ padding-top: 2rem;
 }
 
 .form__input {
-
+    font-family: 'Oswald', sans-serif;
 padding: .5em 0; 
 font-size: 1.2rem;
 border: none;
@@ -122,4 +127,10 @@ padding-left: .3rem;
     color: orange;
 
 }
+
+
+a {
+    text-decoration: none;
+}
+
 
