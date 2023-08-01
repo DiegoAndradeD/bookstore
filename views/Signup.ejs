@@ -12,19 +12,22 @@
 
 
 <body>
-    <form action=" #" method="post" autocomplete="off" class="form">  
+    <form action="/Signup" method="post" autocomplete="off" class="form">  
         <fieldset class="form__fieldset">
             <legend class="form__title"> Signup</legend>
             
-            <label for="user"class="form__label">Email</label>
-            <input type="text" id=" user" name= "user" required class="form__input">
-        
-            <label for="Email"class="form__label">Email</label>
-            <input type="Email" id=" password" name= "password" required class="form__input">
-        
-            
-            <label for="password"class="form__label">senha</label>
-            <input type="password" id=" password" name= "password" required class="form__input">
+            <label for="userName" class="form__label">User Name</label>
+            <input type="text" name="userName" id="userName" required placeholder="User Name" minlength="8" maxlength="20" autocomplete="off" autofocus class="form__input">
+
+            <label for="fullName" class="form__label">Full Name</label>
+            <input type="text" name="fullName" id="fullName"
+            required placeholder="Full Name" minlength="10" autocomplete="off" autofocus class="form__input">
+
+            <label for="email" class="form__label">Email</label>
+            <input type="email" name="email" id="email" required placeholder="Email" minlength="10" autocomplete="off" autofocus class="form__input">
+
+            <label for="password" class="form__label">Password</label>
+            <input type="password" name="password" id="password" required minlength="6" placeholder="Password" autocomplete="off" autofocus class="form__input">
         
         
             <div class="form__action">
@@ -32,7 +35,7 @@
                 <input type="submit" value=" Signup " class="btn btn-primory" >
                 
                 <p class="form__action__aside">
-                    Already have registration? <a href="/Login">amake your Login</a>
+                    Already have registration? <a href="/Login">make your Login</a>
                  </p>
                 
                 
@@ -44,7 +47,42 @@
 
     </form>
 
+    <div id="errorMessage"></div>
+    <div id="successMessage"></div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('form').addEventListener('submit', function() {
+            event.preventDefault();
+
+        var formData = new FormData(this);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/Signup', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+            var response = JSON.parse(xhr.responseText);
+            if (xhr.status === 500 || xhr.status === 400) {
+                document.getElementById('errorMessage').innerHTML = response.errorMessage;
+                document.getElementById('successMessage').classList.add('d-none'); 
+                document.getElementById('errorMessage').classList.remove('d-none');
+                document.getElementById('errorMessage').classList.add('d-block');         
+            } else if (xhr.status === 201) {
+                document.getElementById('successMessage').innerHTML = response.successMessage;
+                document.getElementById('errorMessage').classList.add('d-none');  
+                document.getElementById('successMessage').classList.remove('d-none');
+                document.getElementById('successMessage').classList.add('d-block');  
+                setTimeout(function() {
+                location.reload();
+            }, 1000); 
+            }
+            }
+        };
+        xhr.send(new URLSearchParams(formData).toString());
+        });
+    });
+    </script>
 
 </body>
 

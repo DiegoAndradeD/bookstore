@@ -10,10 +10,6 @@ router.get('/', (req, res) => {
 	res.render('index', {email: email});
   });
 
-router.get('/signupPrototype', (req, res) => {
-	const email = req.session.email;
-	res.render('signupPrototype' , {email: email});
-});
 
 router.get('/Login', (req, res) => {
 	const email = req.session.email;
@@ -24,7 +20,6 @@ router.get('/Signup', (req, res) => {
 	res.render('Signup');
 });
 
-router.get('/loginPrototype', (req, res) => {
 router.get('/AdminLogin', (req, res) => {
 	const email = req.session.email;
 	res.render('AdminLogin', {email: email});
@@ -36,9 +31,9 @@ router.get('/logout', (req, res) => {
     res.redirect('/loginPrototype');
 });
 
-router.post('/signupPrototype', userController.signup);
-
 router.post('/Login', userController.login);
+
+router.post('/Signup', userController.signup);
 
 router.post('/AdminLogin', userController.login);
 
