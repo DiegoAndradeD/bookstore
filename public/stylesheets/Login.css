@@ -26,7 +26,9 @@ body{
 
     width: 80%;
     max-width: 32rem;
-    background-color: white;
+   /* background-color: white;
+    border-left: 10px solid rgba(0,0,0, .5);*/
+    background-image: linear-gradient(to right, rgba(0,0,0, .5) .5rem, white  .3rem);
 }
 
 .form__fieldset{
@@ -102,3 +104,20 @@ padding-left: .3rem;
 
 
 }
+
+.form__action{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap ;
+
+}
+
+.form__action__aside{
+    font-size: .85rem;
+    flex-grow: 1;
+    text-align: right;
+    text-decoration: none;
+    color: orange;
+
+}
+

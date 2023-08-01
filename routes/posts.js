@@ -19,6 +19,10 @@ router.get('/Login', (req, res) => {
 	res.render('Login');
 });
 
+router.get('/Signup', (req, res) => {
+	res.render('Signup');
+});
+
 router.get('/loginPrototype', (req, res) => {
 	const email = req.session.email;
 	res.render('loginPrototype', {email: email});

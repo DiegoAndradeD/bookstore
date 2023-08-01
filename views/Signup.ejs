@@ -14,19 +14,28 @@
 <body>
     <form action=" #" method="post" autocomplete="off" class="form">  
         <fieldset class="form__fieldset">
-            <legend class="form__title"> Login</legend>
+            <legend class="form__title"> Signup</legend>
             
             <label for="user"class="form__label">Email</label>
             <input type="text" id=" user" name= "user" required class="form__input">
         
+            <label for="Email"class="form__label">Email</label>
+            <input type="Email" id=" password" name= "password" required class="form__input">
+        
+            
             <label for="password"class="form__label">senha</label>
             <input type="password" id=" password" name= "password" required class="form__input">
         
         
             <div class="form__action">
-                <input type="submit" value=" Login " class="btn btn-primory" >
-                <a href="/Signup" class="btn btn-secondery">cadastre-se</a>
-                <a href="#" class="form__action__aside">  Esqueci minha senha </a>
+                
+                <input type="submit" value=" Signup " class="btn btn-primory" >
+                
+                <p class="form__action__aside">
+                    Already have registration? <a href="/Login">amake your Login</a>
+                 </p>
+                
+                
 
             </div>
                 
