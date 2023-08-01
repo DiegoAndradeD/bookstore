@@ -2,11 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Unica+One&display=swap');
 
 :root{
-    --login-primary-coloe : #d3d6df;
+    --login-primary-color : #d3d6df;
 
 }
-
-
 
 body{
     font-family: 'Oswald', sans-serif;
@@ -15,9 +13,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: var(--login-primary-coloe)
-    ;
-
+    background-color: var(--login-primary-color);
 }
 
 .container {
@@ -27,7 +23,6 @@ body{
     height: 80vh;
 
 }
-
 
 .form{
     padding: 0px 10px 20px 20px;
@@ -48,14 +43,10 @@ body{
 }
 
 .form__title {
-
-
-
-font-weight: 300;
-font-size: 2rem;
-color: rgb(77, 77, 233);
-padding-top: 2rem;
-
+    font-weight: 300;
+    font-size: 2rem;
+    color: rgb(77, 77, 233);
+    padding-top: 2rem;
 }
 
 
@@ -64,30 +55,26 @@ padding-top: 2rem;
     font-size: .8rem;
     text-transform: uppercase;
     font-weight: 300;
-
 }
 
 .form__input {
     font-family: 'Oswald', sans-serif;
-padding: .5em 0; 
-font-size: 1.2rem;
-border: none;
-border-radius: 0;
-border-bottom: 1px solid rgb(77, 77, 233);
-margin-bottom: .8rem;
-outline: none;
-transition: padding-left .08s;
-
+    padding: .5em 0; 
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgb(77, 77, 233);
+    margin-bottom: .8rem;
+    outline: none;
+    transition: padding-left .08s;
 }
 
 .form__input:focus{
- outline: 2px solid rgb(77, 77, 233); 
-padding-left: .3rem;
-
+    outline: 2px solid rgb(77, 77, 233); 
+    padding-left: .3rem;
 }
 
 .btn{
-
     text-transform: uppercase;
     font-size: 1rem;
     
@@ -127,7 +114,6 @@ padding-left: .3rem;
     color: orange;
 
 }
-
 
 a {
     text-decoration: none;

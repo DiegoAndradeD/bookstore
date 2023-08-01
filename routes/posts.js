@@ -17,12 +17,13 @@ router.get('/Login', (req, res) => {
 });
 
 router.get('/Signup', (req, res) => {
-	res.render('Signup', {navbar: 'navbar'});
+	const email = req.session.email;
+	res.render('Signup', {email: email, navbar: 'navbar'});
 });
 
 router.get('/logout', (req, res) => {
     req.session.destroy();
-    res.redirect('/loginPrototype');
+    res.redirect('/Login');
 });
 
 router.post('/Login', userController.login);

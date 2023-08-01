@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/Navbar.css">
-    
 </head>
 <body>
     <nav>
@@ -15,10 +14,15 @@
         <div class="line3"></div>
         </div>
         <ul class="nav-list">
-        <li><a class="navLink" href="/">Home</a></li>
-        <li><a class="navLink" href="/Signup">Signup</a></li>
-        <li><a class="navLink" href="/Login">Login</a></li>
-        <li><a class="navLink" href="#">Help</a></li>
+        <li><a class="navLinkClass" href="/">Home</a></li>
+        <% if (email) { %>
+            <li><a class="navLinkClass" href="#"><%= email %></a></li>
+                <li><a class="navLinkClass" href="/logout">Logout</a></li>
+            <% } else { %>
+                <li><a class="navLinkClass" href="/Signup">Signup</a></li>
+                <li><a class="navLinkClass" href="/Login">Login</a></li>
+            <% } %>
+            <li><a class="navLinkClass" href="#">Help</a></li>
         </ul>
     </nav>
 </body>
