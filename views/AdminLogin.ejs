@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>AdminLogin</title>
     <link rel="stylesheet" href="/stylesheets/Login.css">
 
 </head>
 
 
 <body>
-    <form action=" /Login" method="post" autocomplete="off" class="form">  
+    <form action=" /AdminLogin" method="post" autocomplete="off" class="form">  
         <fieldset class="form__fieldset">
             <legend class="form__title"> Login</legend>
 
@@ -23,8 +23,6 @@
         
             <div class="form__action">
                 <input type="submit" value=" Login " class="btn btn-primory" >
-                <a href="/Signup" class="btn btn-secondery">cadastre-se</a>
-                <a href="#" class="form__action__aside">  Esqueci minha senha </a>
                 <a href="#" class="btn btn-secondery">Signup</a>
                 <a href="#" class="form__action__aside">  Forgot Password? </a>
 
@@ -45,12 +43,12 @@
         var formData = new FormData(this);
 
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', '/Login', true);
+        xhr.open('POST', '/AdminLogin', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4) {
             var response = JSON.parse(xhr.responseText);
-            if (xhr.status === 500 || xhr.status === 400) {
+            if (xhr.status === 500) {
                 document.getElementById('errorMessage').innerHTML = response.errorMessage;
                 document.getElementById('successMessage').classList.add('d-none'); 
                 document.getElementById('errorMessage').classList.remove('d-none');
