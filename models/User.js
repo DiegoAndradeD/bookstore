@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema ({
         type: String,
         required: true,
     },
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    }
 
 });
 
@@ -46,7 +50,20 @@ userSchema.statics.verifyCredentials = async function(email, password) {
     } catch (error) {
         throw error;
     }
-}
+};
+
+userSchema.statics.isUserRegistered = async function(email) {
+
+    try {
+        const user = await this.findOne({email});
+        return user !== null;
+    } catch (error) {
+        throw error;
+    }
+
+};
+
+
 
 const User = mongoose.model('User', userSchema);
 
