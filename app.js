@@ -7,7 +7,6 @@ const path = require('path');
 
 app.use(cookieParser());
 
-
 const postsRouter = require('./routes/posts');
 
 app.set('views', path.join(__dirname, 'views'));
