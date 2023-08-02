@@ -20,7 +20,8 @@ const addBook = async (req, res) => {
 const getBooks = async (req, res) => {
   try {
     const books = await Book.find();
-    res.render('testAddBook', { books});
+    const { email, isAdmin } = req.session;
+    res.render('testAddBook', { books, email, isAdmin, navbar: 'navbar' });
   } catch (error) {
     res.status(error.statusCode || 500).json({errorMessage: error.message});
   }
