@@ -48,6 +48,7 @@ const login = async (req, res) => {
         const user = await User.verifyCredentials(email, password);
         req.session.userId = user._id;
         req.session.email = user.email;
+        req.session.isAdmin = user.isAdmin;
 
         if(!UserModel.validatePassword(password)) {
             return res.status(400).json({ errorMessage: 'Invalid Password!' });

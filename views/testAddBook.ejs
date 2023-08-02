@@ -1,14 +1,14 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>E-commerce de Livros</title>
 </head>
 <body>
-  <h1>E-commerce de Livros</h1>
+  <header>
+    <%- include(navbar) %>
+  </header>
 
-  <form action="/add-book" method="post" enctype="multipart/form-data">
+  <form action="/addBook" method="post" enctype="multipart/form-data">
     <label for="title">Tittle:</label>
     <input type="text" id="title" name="title" required><br>
 
@@ -45,7 +45,7 @@
     <button type="submit">Add book to sell</button>
   </form>
 
-  <h2>Livros Disponíveis:</h2>
+  <h2>Books Added:</h2>
   <% if (books && books.length > 0) { %>
     <% books.forEach(book => { %>
       <div>
@@ -55,7 +55,7 @@
       </div>
     <% }); %>
   <% } else { %>
-    <p>Nenhum livro disponível.</p>
+    <p>No books</p>
   <% } %>
 </body>
 </html>
