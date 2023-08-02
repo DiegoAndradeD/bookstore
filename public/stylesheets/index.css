@@ -1,26 +1,7 @@
-body {
-
-}
-
-main {
-    
-}
-
-.firstContainer, .secondContainer {
-   display: inline-block;
-   width: 99vw;
-   margin-bottom: 30px;
-}
 
 
-.highlightsContainer {
-    background-color: lightblue;
-    width: 99vw;
-    height: 100px;
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-}
+
+
 
 .banner{
     width: 30px;
