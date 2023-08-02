@@ -1,10 +1,9 @@
 const {User} = require('../models/User');
 const Book = require('../models/Book');
 
+
 const addBook = async (req, res) => {
   try {
-
-    isAdminMiddleware();
 
     const { title, author, pages_number, price, isInStock, category, idiom, publisher, quantity} = req.body;
     const cover = req.file.filename;
