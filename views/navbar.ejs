@@ -63,6 +63,9 @@
                 <ul class="dropdown-menu">
                     <li><a class="navLinkClass" href="/logout">Logout</a></li>
                     <li><a class="navLinkClass" href="#">Settings</a></li>
+                    <% if (isAdmin) { %> 
+                        <li><a class="navLinkClass" href="addBook">Add Book</a></li>
+                    <% } %>
                 </ul>
             <% } else { %>
                 <li><a class="navLinkClass" href="/Signup">Signup</a></li>

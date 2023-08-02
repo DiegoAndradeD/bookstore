@@ -63,6 +63,26 @@ userSchema.statics.isUserRegistered = async function(email) {
 
 };
 
+
+const isAdminMiddleware = async (req, res, next) => {
+    if (!req.session.userId || !req.session.email) {
+      return res.redirect('/Login'); 
+    }
+  
+    try {
+        const user = await User.findOne({ email: req.session.email });
+
+        if (!user.isAdmin) {
+            return res.status(403).json({ errorMessage: 'Admin only access page!' });
+        }
+        next();
+    } catch (error) {
+      console.error('Error checking admin status:', error.message);
+      return res.status(403).send('Access forbidden'); 
+    }
+  };
+
+
 class UserModel {
     constructor(userName, fullName, email, password) {
         this.userName = userName;
@@ -90,9 +110,11 @@ class UserModel {
         }
     }
 
+    
+
 }
 
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = {User, UserModel};
+module.exports = {User, UserModel, isAdminMiddleware};
