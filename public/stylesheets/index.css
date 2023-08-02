@@ -1,4 +1,36 @@
 
+.secondContainer {
+    display: inline-block;
+    width: 99vw;
+    height: 500px;
+    background-color: aquamarine;
+    margin: 20px 0px;
+    
+
+}
+
+.secondContainer p{
+    font-size: 3em;
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.highligth {
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+}
+
+.highligthChild {
+    width: 200px;
+    height: 230px;
+    background-color: brown;
+    margin: 20px;
+    border-radius: 15px;
+}
+
 
 .banner{
     width: 30px;
