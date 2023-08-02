@@ -18,6 +18,10 @@ const signup = async (req, res) => {
 
     UserModel.validateUser(userName, fullName, email);
 
+    if(!UserModel.validatePassword(password)) {
+        return res.status(400).json({ errorMessage: 'Invalid Password!' });
+        }
+
     const isUserRegistered = await User.isUserRegistered(email);
     if(isUserRegistered) {
         return res.status(400).json({errorMessage: 'User is already Registered'});
@@ -44,6 +48,10 @@ const login = async (req, res) => {
         const user = await User.verifyCredentials(email, password);
         req.session.userId = user._id;
         req.session.email = user.email;
+
+        if(!UserModel.validatePassword(password)) {
+            return res.status(400).json({ errorMessage: 'Invalid Password!' });
+        }
 
         if (user.isAdmin) {
             console.log("Admin Logged In");

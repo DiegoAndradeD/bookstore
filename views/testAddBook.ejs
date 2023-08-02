@@ -1,0 +1,61 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>E-commerce de Livros</title>
+</head>
+<body>
+  <h1>E-commerce de Livros</h1>
+
+  <form action="/add-book" method="post" enctype="multipart/form-data">
+    <label for="title">Tittle:</label>
+    <input type="text" id="title" name="title" required><br>
+
+    <label for="author">Author</label>
+    <input type="text" id="author" name="author" required><br>
+
+    <label for="pages_number">Number of Pages:</label>
+    <input type="number" id="pages_number" name="pages_number" required><br>
+
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" required><br>
+
+    <p>Is in stock?</p>
+    <input type="radio" id="stockTrue" name="isInStock" value="true">
+    <label for="stockTrue">True</label><br>
+    <input type="radio" id="stockFalse" name="isInStock" value="false">
+    <label for="stockFalse">False</label><br> 
+
+    <label for="category">Category</label>
+    <input type="text" id="category" name="category" required><br>
+
+    <label for="idiom">Idiom</label>
+    <input type="text" id="idiom" name="idiom" required><br>
+
+    <label for="publisher">Publisher</label>
+    <input type="text" id="publisher" name="publisher" required><br>
+
+    <label for="quantity">Quantity</label>
+    <input type="number" id="quantity" name="quantity" required><br>
+
+    <label for="cover">Cover</label>
+    <input type="file" id="cover" name="cover" accept="image/*" required><br>
+
+    <button type="submit">Add book to sell</button>
+  </form>
+
+  <h2>Livros Disponíveis:</h2>
+  <% if (books && books.length > 0) { %>
+    <% books.forEach(book => { %>
+      <div>
+        <h3><%= book.title %></h3>
+        <p>Autor: <%= book.author %></p>
+        <img src="/images/bookCovers/<%= book.cover %>" alt="Capa do Livro">
+      </div>
+    <% }); %>
+  <% } else { %>
+    <p>Nenhum livro disponível.</p>
+  <% } %>
+</body>
+</html>

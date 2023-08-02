@@ -81,6 +81,15 @@ class UserModel {
         }
     }
 
+    static validatePassword(password) {
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+        if(password === "" || password === null) {
+            throw new Error('Invalid Password');
+        } else {
+            return passwordPattern.test(password);
+        }
+    }
+
 }
 
 
