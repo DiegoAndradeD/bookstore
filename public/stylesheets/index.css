@@ -11,7 +11,7 @@
 
 float: right;
 width: 500px;
-margin-right: 60px;
+margin-right: 150px;
 
 }
 .texto-ini{
@@ -91,6 +91,42 @@ font-size: 20px
 
 }
 
+.destaques{
+    font-size: 30px;
+    position: absolute; 
+    top: 100%;
+    left: 46%;
 
+}
 
+.conteiner{
 
+    display: flex;
+    justify-content: center;
+    
+}
+
+.destaques1{
+
+    background-color: black;
+}
+
+.destaques2{
+
+    background-color: rgb(245, 19, 19);
+}
+
+.destaques3{
+
+    background-color: rgb(53, 26, 204);
+}
+
+.destaques4{
+
+    background-color: rgb(212, 200, 25);
+}
+
+.destaques5{
+
+    background-color: rgb(18, 197, 18);
+}
