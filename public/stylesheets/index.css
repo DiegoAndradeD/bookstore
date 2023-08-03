@@ -25,15 +25,24 @@
 }
 
 .highligthChild {
-    width: 200px;
-    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 230px;
+    height: 300px;
     background-color: brown;
     margin: 20px;
     border-radius: 15px;
     border: 1px solid #ffffff;
 }
 
-
+.book-cover {
+    width: 200px;
+    height: 275px;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+  } 
 
 .banner{
     width: 30px;
