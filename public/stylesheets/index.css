@@ -209,7 +209,7 @@ button{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(216, 113, 113);
     
 }
 
@@ -219,7 +219,7 @@ button{
     background-color: brown;
     margin: 20px;
     border-radius: 15px;
-    border: 1px solid #ffffff;
+    border: 1px solid #4d3232;
 }
 
 .button2{
@@ -235,6 +235,7 @@ button{
     background-color: orange;
     box-shadow: 3px 3px 3px black;
     margin-top: 0px;
+    cursor: pointer;
 }
 
 .highligthChildbuy p{
@@ -254,6 +255,8 @@ button{
     margin-left: 25px;
     display: flex;
     align-items: center;
+    
+    
 
 
 }
