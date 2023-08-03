@@ -228,13 +228,13 @@ button{
     margin-top: 0px;
 }
 
-.button3{
+.highligthChildbuy p{
 
     font-size: 22px;
     text-decoration: none;
     border: 1px solid black;
-    width: 100px;
-    height: 40px;
+    width: 45px;
+    height: 30px;
     text-align: center;
     padding: 10px;
     border-radius: 10px;
@@ -246,5 +246,24 @@ button{
     display: flex;
     align-items: center;
 
+
+}
+
+.button3 {
+    font-size: 22px;
+    text-decoration: none;
+    border: 1px solid black;
+    width: 45px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    margin : 20px;
+    background-color: orange;
+    box-shadow: 3px 3px 3px black;
+    margin-top: 0px;
+    margin-left: 25px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 
 }
