@@ -1,56 +1,24 @@
 
-.secondContainer {
-    display: inline-block;
-    width: 99vw;
-    height: 500px;
-    margin: 20px 0px;
-    position: relative;
-    
+  /*  baner e barra de pesquisa    */
+
+.cabecario{
+display: flex;
+justify-content: flex-end;
+width: 1850px;
+height: 10px;
+
+
 }
 
-.secondContainer p{
-    font-size: 20px;
-    text-align: center;
-    margin: 10px 0px;
-    font-size: 3em;
-    display: block;
-}
 
-.highligth {
-    font-size: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px dotted black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-}
 
-.highligthChild {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 230px;
-    height: 300px;
-    background-color: brown;
-    margin: 20px;
-    border-radius: 15px;
-    border: 1px solid #ffffff;
-}
 
-.book-cover {
-    width: 200px;
-    height: 275px;
-    object-fit: cover;
-    display: block;
-    margin: auto;
-  } 
 
-.banner{
-    width: 30px;
+
+
+
+  .banner{
+    width: 40px;
     margin: 35px;
     
 }
@@ -140,12 +108,72 @@ font-size: 20px
 
 }
 
+/* destaques dos livros */
+.secondContainer {
+    display: inline-block;
+    width: 99vw;
+    height: 500px;
+    margin: 20px 0px;
+    position: relative;
+    
+}
+
+.secondContainer p{
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0px;
+    font-size: 3em;
+    display: block;
+}
+
+.highligth {
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dotted black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+.highligthChild {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 230px;
+    height: 300px;
+    background-color: brown;
+    margin: 20px;
+    border-radius: 15px;
+    border: 1px solid #ffffff;
+}
+
+.book-cover {
+    width: 200px;
+    height: 275px;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+  } 
+
+
+
+
+
+
+
+/*categoria */
+
+
 
 
 .TContainer {
     display: inline-block;
     width: 99vw;
-    height: 500px;
+    height: 200px;
     background-color: aquamarine;
     margin: 20px 0px;
     
@@ -192,6 +220,7 @@ button{
 }
 
 
+/* categoria romance*/
 .fourthContainer {
     display: inline-block;
     width: 99vw;
@@ -203,10 +232,12 @@ button{
 }
 
 .fourthContainer p{
-    font-size: 20px;
+    font-size: 22px;
     text-align: left;
     left: 100px;
     margin: 10px 0px;
+    margin-left: 20px;
+    margin-top: 5px;
 }
 
 .highligth4 {
@@ -282,5 +313,44 @@ button{
     display: flex;
     align-items: center;
     cursor: pointer;
+
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+/* footer*/
+footer{
+
+    background-color: aqua;
+    padding: 40px;
+    
+   
+}
+
+footer .conteiner-footer{
+display: flex;
+
+
+}
+
+footer .conteiner-footer ul{
+    width: 100%;
+
+}
+
+
+
+.nomes {
+
+width: 70px;
+font-size: 20px;
+
 
 }

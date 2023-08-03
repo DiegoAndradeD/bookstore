@@ -14,7 +14,12 @@ a{
   color: #fff;
   text-decoration: none;
   transition: 0.3s;
-  border-radius: 8px;
+  border-radius: 100px;
+  
+  
+  
+  
+justify-content: center; 
 }
   
 a:hover {
@@ -24,7 +29,10 @@ a:hover {
 .logo {
   font-size: 24px;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
+  display: flex;
+  
+  
 }
   
 nav {
@@ -32,7 +40,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   background: #23232e;
-  height: 8vh;
+  height: 10vh;
 }
   
 main {
@@ -131,4 +139,38 @@ transform: translateX(0);
 
 .mobile-menu.active .line3 {
   transform: rotate(45deg) translate(-5px, -7px);
+}
+
+.prime{
+  font-size: 22px;
+  text-decoration: none;
+  border: 1px solid rgb(27, 3, 180);
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
+  background-color: orange(255, 255, 255);
+  
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+
+.s{
+  font-size: 22px;
+  text-decoration: none;
+  border: 1px solid rgb(27, 3, 180);
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 22px;
+  background-color: orange(255, 255, 255);
+  
+  margin-top: 5px;
+  cursor: pointer;
+
 }
