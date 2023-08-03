@@ -10,7 +10,7 @@
 }
 
 .secondContainer p{
-    font-size: 3em;
+    font-size: 20px;
     text-align: center;
     margin: 10px 0px;
 }
@@ -21,6 +21,7 @@
     align-items: center;
     justify-content: center;
     background-color: red;
+    
 }
 
 .highligthChild {
@@ -29,7 +30,9 @@
     background-color: brown;
     margin: 20px;
     border-radius: 15px;
+    border: 1px solid #ffffff;
 }
+
 
 
 .banner{
@@ -123,42 +126,49 @@ font-size: 20px
 
 }
 
-.destaques{
-    font-size: 30px;
-    position: absolute; 
-    top: 100%;
-    left: 46%;
+
+
+.TContainer {
+    display: inline-block;
+    width: 99vw;
+    height: 500px;
+    background-color: aquamarine;
+    margin: 20px 0px;
+    
 
 }
 
-.conteiner{
+.TContainer p{
+    font-size: 20px;
+    text-align: left;
+    left: 20px;
+    margin: 10px 0px;
+}
 
+.highligth1 {
+    font-size: 2em;
     display: flex;
+    align-items: center;
     justify-content: center;
+    background-color: rgb(255, 255, 255);
     
 }
 
-.destaques1{
+button{
+    font-size: 22px;
+    text-decoration: none;
+    border: 1px solid black;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px;
+    background-color: orange;
+    box-shadow: 3px 3px 3px black;
 
-    background-color: black;
 }
 
-.destaques2{
 
-    background-color: rgb(245, 19, 19);
-}
 
-.destaques3{
 
-    background-color: rgb(53, 26, 204);
-}
-
-.destaques4{
-
-    background-color: rgb(212, 200, 25);
-}
-
-.destaques5{
-
-    background-color: rgb(18, 197, 18);
-}
