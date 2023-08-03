@@ -141,8 +141,10 @@ font-size: 20px
 .TContainer p{
     font-size: 20px;
     text-align: left;
-    left: 20px;
+    left: 100px;
     margin: 10px 0px;
+    margin-left: 20px;
+    margin-top: 5px;
 }
 
 .highligth1 {
@@ -168,7 +170,81 @@ button{
     box-shadow: 3px 3px 3px black;
 
 }
+.img-cate{
+    width: 25px;
+    height: 25px;
+    margin-top: 0px;
+
+}
 
 
+.fourthContainer {
+    display: inline-block;
+    width: 99vw;
+    height: 500px;
+    background-color: aquamarine;
+    margin: 20px 0px;
+    
+
+}
+
+.fourthContainer p{
+    font-size: 20px;
+    text-align: left;
+    left: 100px;
+    margin: 10px 0px;
+}
+
+.highligth4 {
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    
+}
+
+.highligthChild4 {
+    width: 200px;
+    height: 230px;
+    background-color: brown;
+    margin: 20px;
+    border-radius: 15px;
+    border: 1px solid #ffffff;
+}
+
+.button2{
+    font-size: 22px;
+    text-decoration: none;
+    border: 1px solid black;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 22px;
+    background-color: orange;
+    box-shadow: 3px 3px 3px black;
+    margin-top: 0px;
+}
+
+.button3{
+
+    font-size: 22px;
+    text-decoration: none;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin : 20px;
+    background-color: orange;
+    box-shadow: 3px 3px 3px black;
+    margin-top: 0px;
+    margin-left: 25px;
+    display: flex;
+    align-items: center;
 
 
+}
