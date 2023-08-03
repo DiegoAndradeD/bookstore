@@ -3,16 +3,17 @@
     display: inline-block;
     width: 99vw;
     height: 500px;
-    background-color: aquamarine;
     margin: 20px 0px;
+    position: relative;
     
-
 }
 
 .secondContainer p{
     font-size: 20px;
     text-align: center;
     margin: 10px 0px;
+    font-size: 3em;
+    display: block;
 }
 
 .highligth {
@@ -20,7 +21,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: red;
+    border: 1px dotted black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     
 }
 

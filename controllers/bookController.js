@@ -30,7 +30,6 @@ const getTrendingBooks = async (req, res) => {
 
   try {
     const books = await Book.find();
-    console.log(books);
     return res.json(books);
   } catch (error) {
     res.status(error.statusCode || 500).json({errorMessage: error.message});
