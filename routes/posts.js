@@ -23,6 +23,12 @@ router.get('/', (req, res) => {
 	res.render('index', {isAdmin : isAdmin, email: email, navbar: 'navbar'});
   });
 
+router.get('/index', (req, res) => {
+	const email = req.session.email;
+	const isAdmin  = req.session.isAdmin;
+	res.render('index', {isAdmin : isAdmin, email: email, navbar: 'navbar'});
+  });
+
 
 router.get('/Login', (req, res) => {
 	const email = req.session.email;
@@ -41,7 +47,9 @@ router.get('/logout', (req, res) => {
     res.redirect('/Login');
 });
 
-router.get('/addBook', isAdminMiddleware, bookController.getBooks); 
+router.get('/addBook', isAdminMiddleware, bookController.getBooks);
+
+router.post('/index', bookController.getTrendingBooks);
 
 router.post('/Login', userController.login);
 

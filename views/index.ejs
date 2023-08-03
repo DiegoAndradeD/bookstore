@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="/stylesheets/index.css">
-
   </head>
 <body>
     
@@ -53,17 +52,16 @@
 
           <div class="secondContainer">
             <p class=""> <strong> Trending Books </strong></p>
-            <div class="highligth">
-              <div class="highligthChild"> item 1</div>
-              <div class="highligthChild">  item 2</div>
-              <div class="highligthChild"> item 3 </div>
-              <div class="highligthChild"> item 4 </div>
-              <div class="highligthChild">  item 5 </div>
+            <div id="highligth" class="highligth">
+              <div class="highligthChild" id="item1">item1</div>
+              <div class="highligthChild" id="item2">item2</div>
+              <div class="highligthChild" id="item3">item3</div>
+              <div class="highligthChild" id="item4">item4</div>
+              <div class="highligthChild" id="item5">item5</div>
             </div>
+            
           </div>
 
-    
-          
           <div class="TContainer">
             <p class=" catego"> <strong>  <img class="img-cate" src="/images/FOLDER_NOTCH_OPEN.svg" alt=" cat">Categories </strong></p>
             <div class="highligth1">
@@ -79,6 +77,7 @@
           </div>
           
           
+ 
           <div class="fourthContainer">
             <p class=""> <strong>Romance</strong></p>
             <div class="highligth4">
@@ -97,32 +96,41 @@
               <div class="highligthChildbuy"> <p>   Valor  </p>   <a href="#"> <button class="button3"> s </button>          <a href="#"> <button class="button2"> <img src="/images/SHOPPING_CART.svg" alt=""></button>  </a> </div>
             </div>
           </div>
-    
-    
-    
-    
+       
 
-
-
-
-
-
-
-    
-    
-    
         </main>
  
-  
-
-
- 
     <footer>
-
-      
     </footer>
 
-  
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', '/index', true);
+          xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+              var books = JSON.parse(xhr.responseText);
+
+              var highligth = document.getElementById('highligth');
+              var index = 0;
+              books.forEach((book, index) => {
+                if (index < 5) { // Adicionar apenas nas 5 primeiras divs highligthChild
+                  var itemElement = document.getElementById(`item${index + 1}`);
+
+                  var imgElement = document.createElement('img');
+                  imgElement.src = `/images/bookCovers/${book.cover}`;
+                  imgElement.classList.add('book-cover');
+
+                  itemElement.innerHTML = ''; // Limpar qualquer conteúdo existente na div
+                  itemElement.appendChild(imgElement);
+                }
+              });
+            }
+          };
+          xhr.send();
+        });
+  </script>
 
 </body>
 
