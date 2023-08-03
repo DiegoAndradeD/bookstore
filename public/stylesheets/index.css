@@ -1,356 +1,271 @@
-
-  /*  baner e barra de pesquisa    */
-
-.cabecario{
-display: flex;
-justify-content: flex-end;
-width: 1850px;
-height: 10px;
-
-
-}
-
-
-
-
-
-
-
-
-  .banner{
-    width: 40px;
-    margin: 35px;
-    
-}
-
-
-.imagem-inicial{
-
-float: right;
-width: 500px;
-margin-right: 150px;
-
-}
-.texto-ini{
-font-size: 50px;
-margin-left: 40px;
-
-}
-
-
-.texto-ini2{
-margin-left: 50px;
-font-size: 20px
-;
-
-}
-
-.caixa-procura{
+/* Default styles */
+* {
     margin: 0;
-   position: absolute; 
-   left: 250px;
-   top: 280px;
-   
-   background: orange;
-   height: 50px;
-   padding: 10px;
-   border-radius: 40px;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Common styles for different containers */
+  .firstContainer,
+  .secondContainer,
+  .TContainer,
+  .fourthContainer {
+    width: 100%;
+    max-width: 1500px;
+    margin: 20px auto;
+    min-height: 500px;
+    padding-bottom: 50px;
+  }
+  
+  .firstContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 600px;
+    margin-bottom: 100px;
+  }
+  
+  .firstContainerText {
+ 
+    width: 50%;
+    max-width: 500px;
+    margin-bottom: 30px;
+    text-align: left;
+    padding-left: 20px;
+  }
 
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+  .startText1 {
+    font-size: 3em;
+  }
 
-    
-}
-
-.Caixa-Texto{
-
+  .startText2 {
+    font-size: 1em;
+  }
+  
+  .startImage {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+  }
+  
+  /* Responsive search box */
+  .searchBox {
+    width: 50%;
+    max-width: 400px;
+    background: orange;
+    height: 50px;
+    padding: 10px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+    margin-top: 30px;
+  }
+  
+  .textBox {
     background: none;
     border: 0;
     outline: 0;
-
     padding: 0;
-
     font-size: 16px;
-   
     width: 0;
-
     transition: 0.4s;
-}
-
-.botao{
+  }
+  
+  .seachBoxButton {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    
     display: flex;
     justify-content: center;
     align-items: center;
-
     cursor: pointer;
-}
-
-
-
-.lop-white{ 
+  }
+  
+  .lop-white {
     display: none;
-}
-
-.caixa-procura:hover > .Caixa-Texto {
-    
+  }
+  
+  .searchBox:hover > .textBox {
     width: 320px;
     padding-left: 20px;
-
-}
-
-.caixa-procura:hover > .botao{
+  }
+  
+  .searchBox:hover > .seachBoxButton {
     background: #ffffff;
-
-}
-
-/* destaques dos livros */
-.secondContainer {
-    display: inline-block;
-    width: 99vw;
-    height: 500px;
-    margin: 20px 0px;
-    position: relative;
-    
-}
-
-.secondContainer p{
-    font-size: 20px;
-    text-align: center;
-    margin: 10px 0px;
-    font-size: 3em;
-    display: block;
-}
-
-.highligth {
-    font-size: 2em;
+  }
+  
+  /* Responsive Trending Books */
+  .highligth {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    border: 1px dotted black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-}
-
-.highligthChild {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 230px;
-    height: 300px;
+  }
+  
+  .highligthChild {
+    width: 100%;
+    max-width: 250px;
+    height: 400px;
     background-color: brown;
     margin: 20px;
     border-radius: 15px;
     border: 1px solid #ffffff;
-}
-
-.book-cover {
-    width: 200px;
-    height: 275px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .book-cover {
+    width: 100%;
+    max-width: 220px;
+    height: 375px;
     object-fit: cover;
     display: block;
     margin: auto;
-  } 
+  }
+  
+  /* Responsive Category */
+  .TContainer p,
+  .fourthContainer p {
+    margin-bottom: 30px;
+  }
 
-
-
-
-
-
-
-/*categoria */
-
-
-
-
-.TContainer {
-    display: inline-block;
-    width: 99vw;
-    height: 200px;
-    background-color: aquamarine;
-    margin: 20px 0px;
-    
-
-}
-
-.TContainer p{
-    font-size: 20px;
-    text-align: left;
-    left: 100px;
-    margin: 10px 0px;
-    margin-left: 20px;
-    margin-top: 5px;
-}
-
-.highligth1 {
-    font-size: 2em;
+  .categoryText {
+    font-size: 3em;
+  }
+  
+  .highligth1 {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-    background-color: rgb(255, 255, 255);
-    
-}
-
-button{
-    font-size: 22px;
-    text-decoration: none;
-    border: 1px solid black;
-    width: 200px;
-    height: 50px;
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 20px;
-    background-color: orange;
-    box-shadow: 3px 3px 3px black;
-
-}
-.img-cate{
-    width: 25px;
-    height: 25px;
-    margin-top: 0px;
-
-}
-
-
-/* categoria romance*/
-.fourthContainer {
-    display: inline-block;
-    width: 99vw;
-    height: 500px;
-    background-color: aquamarine;
-    margin: 20px 0px;
-    
-
-}
-
-.fourthContainer p{
-    font-size: 22px;
-    text-align: left;
-    left: 100px;
-    margin: 10px 0px;
-    margin-left: 20px;
-    margin-top: 5px;
-}
-
-.highligth4 {
-    font-size: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(216, 113, 113);
-    
-}
-
-.highligthChild4 {
-    width: 200px;
-    height: 230px;
-    background-color: brown;
-    margin: 20px;
-    border-radius: 15px;
-    border: 1px solid #4d3232;
-}
-
-.button2{
-    font-size: 22px;
-    text-decoration: none;
-    border: 1px solid black;
-    width: 200px;
-    height: 50px;
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 22px;
-    background-color: orange;
-    box-shadow: 3px 3px 3px black;
-    margin-top: 0px;
-    cursor: pointer;
-}
-
-.highligthChildbuy p{
-
-    font-size: 22px;
-    text-decoration: none;
-    border: 1px solid black;
-    width: 45px;
-    height: 30px;
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    margin : 20px;
-    background-color: orange;
-    box-shadow: 3px 3px 3px black;
-    margin-top: 0px;
-    margin-left: 25px;
-    display: flex;
-    align-items: center;
-    
-    
-
-
-}
-
-.button3 {
-    font-size: 22px;
-    text-decoration: none;
-    border: 1px solid black;
-    width: 45px;
-    height: 30px;
-    padding: 10px;
-    border-radius: 10px;
-    margin : 20px;
-    background-color: orange;
-    box-shadow: 3px 3px 3px black;
-    margin-top: 0px;
-    margin-left: 25px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-
-}
-
-.button-row {
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-
-
-/* footer*/
-footer{
-
-    background-color: aqua;
-    padding: 40px;
-    
-   
-}
-
-footer .conteiner-footer{
-display: flex;
-
-
-}
-
-footer .conteiner-footer ul{
+  }
+  
+  .highligth1 button {
     width: 100%;
+    max-width: 350px;
+    
+    font-size: 2em;
+    text-decoration: none;
+    border: 1px solid black;
+    width: 350px;
+    height: 100px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px;
+    background-color: orange;
+    box-shadow: 3px 3px 3px black;
+  }
 
-}
+  .highligth1 button:hover {
+    font-style: italic;
+    font-weight: 600;
+    color: red;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: darkgray;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    
+  }
+  
+  /* Media queries for responsiveness */
+  @media screen and (max-width: 768px) {
+    .firstContainer {
+      flex-direction: column-reverse;
+      height: auto;
+      align-items: center;
+    }
 
+    .firstContainer,
+  .secondContainer,
+  .TContainer,
+  .fourthContainer {
+    min-height: 300px;
+  }
+  
+    .firstContainerText {
+      width: 80%;
+      max-width: 500px;
+      margin-bottom: 20px;
+      text-align: center;
+      padding: 0;
+    }
+  
+    .startImage {
+      width: 80%;
+      max-width: 400px;
+      margin-top: 20px;
+    }
+  
+    .searchBox {
+      width: 80%;
+      max-width: 320px;
+      margin: 10px;
+    }
+  
+    .highligthChild {
+      width: 100%;
+      max-width: 180px;
+    }
+  
+    .highligth1 button {
+      max-width: 250px;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .startText1 {
+      font-size: 2.2em;
+    }
 
-
-.nomes {
-
-width: 70px;
-font-size: 20px;
-
-
-}
+    .firstContainer,
+  .secondContainer,
+  .TContainer,
+  .fourthContainer {
+    min-height: 300px;
+  }
+  
+    .startText2 {
+      font-size: 1em;
+    }
+  
+    .searchBox {
+      max-width: 280px;
+    }
+  
+    .highligthChild {
+      width: 100%;
+      max-width: 150px;
+    }
+  
+    .highligth1 button {
+      max-width: 200px;
+    }
+  
+    /* Adjust footer positioning for small screens */
+    footer {
+        background-color: darkgray;
+        padding: 10px;
+        text-align: center;
+      }
+      
+      footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        
+      }
+  }
+  

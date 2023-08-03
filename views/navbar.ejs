@@ -4,52 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/Navbar.css">
-    <style>
-
-
-.dropdown {
-    position: relative;
-    
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 210px;
-    background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 999;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.dropdown-menu li {
-    display: block;
-    margin: 0;
-    padding: 3px;
-   
-}
-
-.dropdown-menu li a {
-    color: black;
-    text-decoration: none;
-    display: block;
-    font-weight: 500;
-}
-
-.dropdown-menu li a:hover {
-    background-color: #F2A71B;
-  
-}
-
-
-    </style>
 </head>
+
 <body>
     <nav>
-        <a class="logo" href="/"> <img src="/images/BookOpen.svg" alt="">BOOKSCORE</a>
+        <a style="color: orange;" class="logo" href="/"> <img style="margin-right: 20px;" src="/images/BookOpen.svg" alt="">BOOKSCORE</a>
         <div class="mobile-menu">
         <div class="line1"></div>
         <div class="line2"></div>
@@ -72,9 +31,8 @@
                 <li><a class="navLinkClass" href="/Login">Login</a></li>
             <% } %>
             <li><a class="navLinkClass" href="#">Help</a></li>
-                <li> <a class="navLinkClass" href="#"> <button class=" prime"><img src="/images/favoritos.svg" alt=""></button></a>
-                    <a class="navLinkClass" href="#"> <button class="prime"><img src="/images/SHOPPING_CART top (1).svg" alt=""></button></a></li>
-                
+            <li><a href=""><img src="/images/favorite.svg" alt=""></a></li>
+            <li><a href=""><img src="/images/SHOPPING_CART.svg" alt=""></a></li>
               
 
         </ul>

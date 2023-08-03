@@ -14,16 +14,14 @@ a{
   color: #fff;
   text-decoration: none;
   transition: 0.3s;
-  border-radius: 100px;
-  
-  
-  
-  
-justify-content: center; 
+  border-radius: 100px;  
+  justify-content: center; 
 }
+
   
 a:hover {
   opacity: 0.7;
+  color: orange;
 }
   
 .logo {
@@ -31,8 +29,6 @@ a:hover {
   text-transform: uppercase;
   letter-spacing: 5px;
   display: flex;
-  
-  
 }
   
 nav {
@@ -60,23 +56,51 @@ main {
 }
 
 .mobile-menu  {
-  
-display: none;
-cursor: pointer;
-
-
+  display: none;
+  cursor: pointer;
 }
 
-
-
 .mobile-menu div {
-
     width: 32px;
     height: 2px;
     background: #fff;
     margin: 8px;
+}
 
+.dropdown {
+  position: relative;
+  
+}
 
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 210px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 999;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.dropdown-menu li {
+  display: block;
+  margin: 0;
+  padding: 3px;
+ 
+}
+
+.dropdown-menu li a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  font-weight: 500;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #F2A71B;
 
 }
 

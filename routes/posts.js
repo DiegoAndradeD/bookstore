@@ -49,7 +49,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/addBook', isAdminMiddleware, bookController.getBooks);
 
-router.post('/index', bookController.getTrendingBooks);
+router.post('/index', bookController.getTrendingBooks, bookController.getRomanceBooks);
 
 router.post('/Login', userController.login);
 

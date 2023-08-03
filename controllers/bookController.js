@@ -37,4 +37,13 @@ const getTrendingBooks = async (req, res) => {
 
 };
 
-module.exports = { addBook, getBooks, getTrendingBooks };
+const getRomanceBooks = async (req, res) => {
+  try {
+    const books = await Book.find({ category: 'fantasy' });
+    return res.json(books);
+  } catch (error) {
+    res.status(error.statusCode || 500).json({errorMessage: error.message});
+  }
+}
+
+module.exports = { addBook, getBooks, getTrendingBooks, getRomanceBooks };
