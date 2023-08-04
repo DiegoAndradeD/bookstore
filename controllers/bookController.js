@@ -27,18 +27,23 @@ const getBooks = async (req, res) => {
 };
 
 const getIndexBooks = async (req, res) => {
-
   try {
-    const trendingBooks = await Book.find();
-    const fantasyBooks = await Book.find({ category: 'fantasy' });
-    const adventureBooks = await Book.find({ category: 'adventure' });
+    const trendingBooks = await Book.aggregate([{ $sample: { size: 5 } }]);
+    const fantasyBooks = await Book.aggregate([
+      { $match: { category: 'fantasy' } },
+      { $sample: { size: 5 } }
+    ]);
+    const adventureBooks = await Book.aggregate([
+      { $match: { category: 'adventure' } },
+      { $sample: { size: 5 } }
+    ]);
 
     return res.json({ trendingBooks, fantasyBooks, adventureBooks });
   } catch (error) {
-    res.status(error.statusCode || 500).json({errorMessage: error.message});
+    res.status(error.statusCode || 500).json({ errorMessage: error.message });
   }
-
 };
+
 
 const getBookDetails = async (req, res) => {
 
