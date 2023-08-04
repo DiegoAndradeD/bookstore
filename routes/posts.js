@@ -47,6 +47,14 @@ router.get('/logout', (req, res) => {
     res.redirect('/Login');
 });
 
+
+router.get('/pagbook', (req, res) => {
+	const email = req.session.email;
+	const isAdmin  = req.session.isAdmin;
+	res.render('pagbook', {isAdmin: isAdmin, email: email, navbar: 'navbar'});
+});
+
+
 router.get('/addBook', isAdminMiddleware, bookController.getBooks);
 
 router.post('/index', bookController.getTrendingBooks, bookController.getRomanceBooks);
