@@ -48,10 +48,10 @@ router.get('/logout', (req, res) => {
 });
 
 
-router.get('/pagbook', (req, res) => {
+router.get('/bookPage', (req, res) => {
 	const email = req.session.email;
 	const isAdmin  = req.session.isAdmin;
-	res.render('pagbook', {isAdmin: isAdmin, email: email, navbar: 'navbar'});
+	res.render('bookPage', {isAdmin: isAdmin, email: email, navbar: 'navbar'});
 });
 
 
