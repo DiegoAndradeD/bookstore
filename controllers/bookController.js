@@ -26,24 +26,20 @@ const getBooks = async (req, res) => {
   }
 };
 
-const getTrendingBooks = async (req, res) => {
+const getIndexBooks = async (req, res) => {
 
   try {
-    const books = await Book.find();
-    return res.json(books);
+    const trendingBooks = await Book.find();
+    const fantasyBooks = await Book.find({ category: 'fantasy' });
+    const adventureBooks = await Book.find({ category: 'adventure' });
+
+    return res.json({ trendingBooks, fantasyBooks, adventureBooks });
   } catch (error) {
     res.status(error.statusCode || 500).json({errorMessage: error.message});
   }
 
 };
 
-const getRomanceBooks = async (req, res) => {
-  try {
-    const books = await Book.find({ category: 'fantasy' });
-    return res.json(books);
-  } catch (error) {
-    res.status(error.statusCode || 500).json({errorMessage: error.message});
-  }
-}
 
-module.exports = { addBook, getBooks, getTrendingBooks, getRomanceBooks };
+
+module.exports = { addBook, getBooks, getIndexBooks };

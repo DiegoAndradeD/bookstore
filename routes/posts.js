@@ -57,7 +57,7 @@ router.get('/pagbook', (req, res) => {
 
 router.get('/addBook', isAdminMiddleware, bookController.getBooks);
 
-router.post('/index', bookController.getTrendingBooks, bookController.getRomanceBooks);
+router.post('/index', bookController.getIndexBooks);
 
 router.post('/Login', userController.login);
 
