@@ -5,6 +5,7 @@ const multer = require('multer');
 
 const userController = require('../controllers/userController');
 const bookController = require('../controllers/bookController');
+const { Book } = require('../models/Book');
 
 const {isAdminMiddleware} = require('../models/User');
 
@@ -56,6 +57,8 @@ router.get('/bookPage', (req, res) => {
 
 
 router.get('/addBook', isAdminMiddleware, bookController.getBooks);
+
+router.get('/bookPageRedirect' ,bookController.getBookDetails);
 
 router.post('/index', bookController.getIndexBooks);
 

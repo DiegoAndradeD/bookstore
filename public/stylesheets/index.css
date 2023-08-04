@@ -173,6 +173,55 @@
     color: red;
     cursor: pointer;
   }
+
+  .highligthCard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .highligthChildElememt {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+    margin-left: 30px;
+  }
+  
+  .highligthChildElememt p {
+    font-size: 30px;
+    margin: 5px;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 50px;
+  }
+  
+  .cartImageContainer {
+    display: flex;
+    align-items: center; 
+    margin-left: 5px;
+  
+  }
+  
+  
+  .cartImageContainer img {
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 50px;
+    max-width: 100%; 
+    padding-right: 180px;
+    background-color: #FDBF0F;
+  
+  }
+  
+  .highligthCard {
+    width: fit-content;
+  }
   
   /* Footer */
   footer {

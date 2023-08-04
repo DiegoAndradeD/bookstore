@@ -43,7 +43,8 @@ const bookSchema = new mongoose.Schema({
     required: true,
   },
   synopsis: {
-    trype: String,
+    type: String,
+    required: true,
   }
 });
 

@@ -3,178 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/pagbook.css">
+    <link rel="stylesheet" href="/stylesheets/bookPage.css">
     <title>Document</title>
     <style>
-        .mainContainer {
-            width: 100%; 
-            height: auto; 
-            margin: auto;
-            margin-top: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            padding: 10px; 
-        }
 
-        .imageContainer {
-            background-color: greenyellow;
-            width: 400px;
-            height: 500px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 20px; 
-        }
-
-        .imageContainer img {
-            max-width: 100%;
-            max-height: 100%;
-            border: 1px solid black;
-            border-radius: 15%;
-            padding: 10px;
-        }
-
-        .bookInfoContainer {
-            width: 700px;
-            height: 500px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .bookInfoChild {
-            width: 70%;
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: auto;
-        }
-
-        .bookInfoChild p {
-            margin: 0;
-        }
-
-        .bookInfoChild3 p {
-            text-align: justify;
-            padding: 0 50px;
-        }
-
-        .bookInfoChild4_SubItems {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #stockNumber {
-            border: 1px solid black;
-            border-radius: 25%;
-            width: 30px;
-            text-align: center;
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-
-        .bookInfoChild5 {
-            width: 100%;
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        #cartBtn,
-        #buyNowBtn {
-            border: 1px solid black;
-            border-radius: 10px;
-            width: 190px;
-            text-align: center;
-            padding: 3px;
-            text-decoration: none;
-        }
-
-        #cartBtn {
-            background-color: #FDBF0F;
-        }
-
-        #buyNowBtn {
-            background-color: #F9784B;
-            font-size: 20px;
-            color: black;
-            padding: 5px;
-        }
-
-        #authorContainer,  #synopsisContainer{
-            border: 2px dotted black;
-            box-shadow: 6px 6px 6px #676767;
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 1.2em;
-        }
-
-        #titleContainer {
-            font-size: 2.5em;
-        }
-
-        #titleContainer img{
-            border: 1px solid black;
-            padding: 10px;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        
-        #priceStockContainer {
-            font-size: 1.3em;
-        }
-
-        .stockBtn {
-            background: none;
-            color: inherit;
-            border: none;
-            padding: 0;
-            padding-left: 6px;
-            padding-right: 6px;
-            font: inherit;
-            cursor: pointer;
-            outline: inherit;
-            border: 1px solid black;
-            border-radius: 50%;
-        }
-
-        @media (max-width: 600px) {
-            .mainContainer {
-                flex-direction: column; 
-            }
-
-            .imageContainer {
-                width: 100%; 
-                height: auto; 
-                margin-right: 0; 
-                margin-bottom: 20px; 
-
-            }
-
-            .bookInfoContainer {
-                width: 100%; 
-                height: auto; 
-            }
-
-            .bookInfoChild {
-                width: 100%; 
-                margin-top: 10px;
-                flex-direction: column; 
-            }
-
-            .bookInfoChild3 p {
-                padding: 0 20px;
-            }
-
-            .bookInfoChild4_SubItems {
-                flex-direction: column; 
-                margin-top: 10px; 
-            }
-        }
     </style>
 </head>
 <body>
@@ -187,21 +19,22 @@
     <main>
         <div class="mainContainer">
             <div class="imageContainer">
+                <img src="/images/bookCovers/<%=bookDetail.cover %>" alt="">
             </div>
             <div class="bookInfoContainer">
                 <div id="titleContainer" class="bookInfoChild">
-                    <p>Book Title</p>
+                    <p><%= bookDetail.title %></p>
                     <a href=""><img src="/images/favorite.svg" alt="Favorite Icon"></a>
                 </div>
                 <div id="authorContainer" class="bookInfoChild">
-                    <p>Author Name</p>
+                    <p><%= bookDetail.author %></p>
                     <p></p>
                 </div>
                 <div id="synopsisContainer" class="bookInfoChild">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis repudiandae voluptates voluptatibus hic officiis vitae nisi vel officia neque esse architecto, incidunt eaque nulla harum quibusdam odio? Unde, laboriosam nobis.</p>
+                    <p><%= bookDetail.synopsis %></p>
                 </div>
                 <div id="priceStockContainer" class="bookInfoChild">
-                    <p>R$ 30.00</p>
+                    <p>R$<%= bookDetail.price %>.00</p>
                     <div class="bookInfoChild4_SubItems">
                         <button class="stockBtn">-</button>
                         <p id="stockNumber">1</p>
