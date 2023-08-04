@@ -1,4 +1,8 @@
 /* Default styles */
+:root {
+  --bgColor1: #F9784B;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -154,8 +158,13 @@
     padding: 10px;
     border-radius: 10px;
     margin: 20px;
-    background-color: orange;
-    box-shadow: 3px 3px 3px black;
+    background-color: white;
+    box-shadow: 6px 6px 6px var(--bgColor1);
+  }
+
+  .highligth1 button {
+    border: 1px solid ;
+    box-shadow: 10px 10px var(--bgColor1);
   }
 
   .highligth1 button:hover {
