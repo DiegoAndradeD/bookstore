@@ -77,9 +77,6 @@ const searchBook = async (req, res) => {
           { author: { $regex: searchText, $options: 'i' } }
         ]
       });
-      searchResult.forEach(book => {
-        console.log(book._id); 
-    });
       const { email, isAdmin} = req.session;
       return res.render('searchResult', { searchResult, email, isAdmin, navbar: 'navbar' });
     } catch (error) {

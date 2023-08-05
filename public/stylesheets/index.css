@@ -119,6 +119,10 @@
     align-items: center;
     justify-content: center;
   }
+
+  .highligthChild img:hover{
+    opacity: .8;
+  }
   
   .book-cover {
     width: 100%;
@@ -278,7 +282,7 @@
       width: 100%;
       max-width: 180px;
     }
-  
+
     .highligth1 button {
       max-width: 250px;
     }
