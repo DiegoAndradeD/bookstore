@@ -21,17 +21,18 @@
 
     <main>
       <div class="firstContainer"> 
-          <div class="firstContainerText">
+        <div class="firstContainerText">
             <p class="startText1">Which book do you want to look for?</p>
             <p class="startText2">Explore our catalog and find your next read.</p>
-            <div class="searchBox">
-                <input type="text" class="textBox" placeholder="Research your book">
-                <button class="seachBoxButton">
+            <form class="searchBox" action="/searchBook" method="post">
+                <input type="text" class="textBox" id="searchText" name="searchText" placeholder="Research your book">
+                <button class="seachBoxButton" id="searchButton" type="submit">
                     <img class="lop-blue" src="/images/loupe-blue.svg" alt="" width="25px" height="25px">
                     <img class="lop-white" src="/images/loupe-white.svg" alt="" width="25px" height="25px">
                 </button>
-            </div>
-          </div>
+            </form>
+            
+        </div>
 
           <h2>
               <img src="/images/BannerImg.jpg" alt="oppeImage" class="startImage">

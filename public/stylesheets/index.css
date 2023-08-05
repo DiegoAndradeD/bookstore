@@ -111,7 +111,7 @@
     width: 100%;
     max-width: 250px;
     height: 400px;
-    background-color: brown;
+    background-color: #fbfbfb;
     margin: 20px;
     border-radius: 15px;
     border: 1px solid #ffffff;
@@ -207,7 +207,8 @@
     margin-left: 5px;
   
   }
-  
+
+
   
   .cartImageContainer img {
     border: 1px solid black;

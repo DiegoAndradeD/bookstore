@@ -55,6 +55,7 @@ router.get('/bookPage', (req, res) => {
 	res.render('bookPage', {isAdmin: isAdmin, email: email, navbar: 'navbar'});
 });
 
+router.post('/searchBook', bookController.searchBook);
 
 router.get('/addBook', isAdminMiddleware, bookController.getBooks);
 

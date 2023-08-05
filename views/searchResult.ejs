@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/stylesheets/bookPage.css">
+    <style>
+        .mainContainer {
+            border: 1px solid black;
+            border-radius: 15px;
+            width: 70%;
+            margin-bottom: 150px;
+        }
+
+        .noBookText {
+            width: 500px;
+            height: 30px;
+            margin: auto;
+            font-size: 3em;
+        }
+
+        .imageContainer {
+            cursor: pointer;
+        }
+        .imageContainer:hover {
+            opacity: .8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <%- include(navbar) %>
+    </header>
+
+    <% if (searchResult && searchResult.length > 0) { %>
+                  <% searchResult.forEach(book => { %>
+                    <div class="mainContainer">
+                        <div class="imageContainer">
+                            <img id="bookImage<%= book._id %>" src="/images/bookCovers/<%=book.cover %>" alt="">
+                        </div>
+                        <div class="bookInfoContainer">
+                            <div id="titleContainer" class="bookInfoChild">
+                                <p><%= book.title %></p>
+                                <a href=""><img src="/images/favorite.svg" alt="Favorite Icon"></a>
+                            </div>
+                            <div id="authorContainer" class="bookInfoChild">
+                                <p>Author: <%= book.author %></p>
+                                <p></p>
+                            </div>
+                            <div id="categoryContainer" class="bookInfoChild">
+                                <p>Category: <%= book.category %></p>
+                            </div>
+                            
+                            <div id="priceStockContainer" class="bookInfoChild">
+                                <p>R$<%= book.price %>.00</p>
+                                <div class="bookInfoChild4_SubItems">
+                                    <button class="stockBtn">-</button>
+                                    <p id="stockNumber">1</p>
+                                    <button class="stockBtn">+</button>
+                                </div>
+                            </div>
+                            <div class="bookInfoChild">
+                                <a href="#" id="cartBtn"><img src="/images/SHOPPING_CART _Black.svg" alt="Shopping Cart"></a>
+                                <a href="#" id="buyNowBtn">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                  <% }); %>
+      <% } else { %>
+        <div class="noBookText">
+            <p>No books found.</p>
+        </div>
+      <% } %>
+
+      <footer>
+        All Rights Reserved: by Diego Deiro & Henrique Viana 
+    </footer>
+
+    <script>
+        const images = document.querySelectorAll('.imageContainer img');
+        
+    
+        images.forEach(image => {
+            const bookId = image.id.replace('bookImage', '');
+            console.log(bookId);
+            image.addEventListener('click', () => {
+                window.location.href = '/bookPageRedirect?id=' + bookId;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -60,6 +60,17 @@ document.addEventListener('DOMContentLoaded', function () {
           window.location.href = '/bookPageRedirect?id=' + bookId;
         });
       });
+
+      const searchButton = document.getElementById('searchButton');
+      const searchText = document.getElementById('searchText');
+  
+      searchButton.addEventListener('click', () => {
+          const searchTerm = searchText.value.trim();
+          if (searchTerm) {
+              window.location.href = `/searchBook?searchText=${encodeURIComponent(searchTerm)}`;
+          }
+      });
+
     }
   };
   xhr.send();

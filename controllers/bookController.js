@@ -8,7 +8,14 @@ const addBook = async (req, res) => {
     const { title, author, synopsis, pages_number, price, isInStock, category, idiom, publisher, quantity} = req.body;
     const cover = req.file.filename;
 
-    await Book.create({ title, author, synopsis, pages_number, price, isInStock, category, idiom, publisher, quantity, cover });
+    const lowercaseTitle = title.toLowerCase();
+    console.log(lowercaseTitle);
+    const lowercaseAuthor = author.toLowerCase();
+    const lowercaseSynopsis = synopsis.toLowerCase();
+
+    await Book.create({title: lowercaseTitle, 
+      author: lowercaseAuthor, 
+      synopsis: lowercaseSynopsis, pages_number, price, isInStock, category, idiom, publisher, quantity, cover });
 
     res.redirect('/');
   } catch (error) {
@@ -59,6 +66,29 @@ const getBookDetails = async (req, res) => {
 
 };
 
+const searchBook = async (req, res) => {
+
+    const {searchText} = req.body;
+
+    try {
+      const searchResult = await Book.find({
+        $or: [
+          { title: { $regex: searchText, $options: 'i' } },
+          { author: { $regex: searchText, $options: 'i' } }
+        ]
+      });
+      searchResult.forEach(book => {
+        console.log(book._id); 
+    });
+      const { email, isAdmin} = req.session;
+      return res.render('searchResult', { searchResult, email, isAdmin, navbar: 'navbar' });
+    } catch (error) {
+      res.status(error.statusCode || 500).json({ errorMessage: error.message });
+    }
+
+}
 
 
-module.exports = { addBook, getBooks, getIndexBooks, getBookDetails };
+
+
+module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook };
