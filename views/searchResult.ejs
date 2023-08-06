@@ -113,6 +113,36 @@
         .searchBox:hover > .seachBoxButton {
             background: #ffffff;
         }
+
+        .info-block {
+        position: relative;
+        display: inline-block;
+        }
+
+        .info-icon img{
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        }
+
+        .info-card {
+        display: none;
+        position: absolute;
+        top: 30px;
+        left: -10px;
+        width: 200px;
+        background-color: white;
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-block:hover .info-card {
+        display: block;
+        }
+
+
   
     </style>
 </head>
@@ -140,7 +170,6 @@
                     <option value="idiom">Idiom</option>
                     <option value="length">Length</option>
                     <option value="price">Price</option>
-                    <option value="isInStock">In Stock</option>
                 </select>
                 <label for="secondFilter">Second Filter:</label>
                 <select id="secondFilter">
@@ -160,7 +189,7 @@
                         <div class="bookInfoContainer">
                             <div id="titleContainer" class="bookInfoChild">
                                 <p><%= book.title %></p>
-                                <a href=""><img src="/images/favorite.svg" alt="Favorite Icon"></a>
+                                <a href="#"><img src="/images/favorite.svg" alt="Favorite Icon"></a>
                             </div>
                             <div id="authorContainer" class="bookInfoChild">
                                 <p>Author: <%= book.author %></p>
@@ -178,19 +207,28 @@
                                     <button class="stockBtn">+</button>
                                 </div>
                             </div>
-                            <div class="bookInfoChild idiomContainer" id="idiomContainer">
-                                <p>Idiom: <%= book.idiom %></p>
-                            </div>
-                            <div class="bookInfoChild pagesContainer" id="pagesContainer">
-                                <p>Pages: <%= book.pages_number %> pages</p>
-                            </div>
-                            <div class="bookInfoChild priceContainer">
-                                <p>Price: R$<%= book.price %>.00</p>
-                            </div>
-                            <div class="bookInfoChild isInStockContainer">
-                                <p>In Stock: <%= book.isInStock ? 'Yes' : 'No' %></p>
-                            </div>
-                            <div class="bookInfoChild">
+
+                            <div class="info-block bookInfoChild">
+                                <span class="info-icon"><img src="/images/info.png" alt=""></span>
+                                <div class="info-card">
+                                    <h3>Info</h3>
+                                    <div class="bookInfoChild idiomContainer" id="idiomContainer">
+                                        <p>Idiom: <%= book.idiom %></p>
+                                    </div>
+                                    <div class="bookInfoChild pagesContainer" id="pagesContainer">
+                                        <p>Pages: <%= book.pages_number %> pages</p>
+                                    </div>
+                                    <div  class="bookInfoChild priceContainer" id="priceContainer">
+                                        <p>Price: R$<%= book.price %>.00</p>
+                                    </div>
+                                    <div class="bookInfoChild isInStockContainer" id="isInStockContainer">
+                                        <p>In Stock: <%= book.isInStock ? 'Yes' : 'No' %></p>
+                                    </div>
+                                </div>
+                              </div>
+
+                            
+                            <div  class="bookInfoChild">
                                 <a href="#" id="cartBtn"><img src="/images/SHOPPING_CART _Black.svg" alt="Shopping Cart"></a>
                                 <a href="#" id="buyNowBtn">Buy Now</a>
                             </div>
@@ -227,26 +265,25 @@
         });
 
         function updateSecondFilterOptions(selectedFirstFilter) {
-        const secondFilterOptions = document.getElementById('secondFilter');
-        secondFilterOptions.innerHTML = '<option value="all">All</option>';
+            const secondFilterOptions = document.getElementById('secondFilter');
+            secondFilterOptions.innerHTML = '<option value="all">All</option>';
 
-        if (selectedFirstFilter === 'category') {
-            const categoryContainers = document.querySelectorAll('.categoryContainer');
-            fillSecondFilterOptions(getUniqueCategories(categoryContainers), secondFilterOptions);
-        } else if (selectedFirstFilter === 'author') {
-            const authorContainers = document.querySelectorAll('.authorContainer');
-            fillSecondFilterOptions(getUniqueAuthors(authorContainers), secondFilterOptions);
-        } else if (selectedFirstFilter === 'idiom') {
-            const idiomContainers = document.querySelectorAll('.idiomContainer');
-            fillSecondFilterOptions(getUniqueIdioms(idiomContainers), secondFilterOptions);
-        } else if (selectedFirstFilter === 'length') {
-            fillSecondFilterOptions(lengthOptions, secondFilterOptions);
-        } else if (selectedFirstFilter === 'price') {
-            // Preencher com opções de preço
-        } else if (selectedFirstFilter === 'isInStock') {
-            const uniqueStockOptions = ['Yes', 'No'];
-            fillSecondFilterOptions(uniqueStockOptions, secondFilterOptions);
-        }
+            if (selectedFirstFilter === 'category') {
+                const categoryContainers = document.querySelectorAll('.categoryContainer');
+                fillSecondFilterOptions(getUniqueCategories(categoryContainers), secondFilterOptions);
+            } else if (selectedFirstFilter === 'author') {
+                const authorContainers = document.querySelectorAll('.authorContainer');
+                fillSecondFilterOptions(getUniqueAuthors(authorContainers), secondFilterOptions);
+            } else if (selectedFirstFilter === 'idiom') {
+                const idiomContainers = document.querySelectorAll('.idiomContainer');
+                fillSecondFilterOptions(getUniqueIdioms(idiomContainers), secondFilterOptions);
+            } else if (selectedFirstFilter === 'length') {
+                const pagesContainer = document.querySelectorAll('.pagesContainer');
+                fillSecondFilterOptions(getUniquePageLength(pagesContainer), secondFilterOptions);
+            } else if (selectedFirstFilter === 'price') {
+                const priceContainer = document.querySelectorAll('.priceContainer');
+                fillSecondFilterOptions(getUniquePrices(priceContainer), secondFilterOptions);
+            } 
     }
 
 
@@ -292,6 +329,44 @@
             return idioms;
         }
 
+        function getUniquePageLength() {
+            return ['< 100', '100', '100 - 300', '300 - 600', '600 - 900', '> 1000'];
+        }
+
+        function getUniquePrices() {
+            return ['< 10', '10 - 30', '30 - 60', '60 - 90', '> 100'];
+        }
+
+        function checkValueFilter(value, selectedSecondFilter) {
+            switch (selectedSecondFilter) {
+                case '< 100':
+                    return value < 100;
+                case '100':
+                    return value === 100;
+                case '100 - 300':
+                    return value >= 100 && value < 300;
+                case '300 - 600':
+                    return value >= 300 && value < 600;
+                case '600 - 900':
+                    return value >= 600 && value < 900;
+                case '> 1000':
+                    return value > 1000;
+
+                case '< 10':
+                    return value < 10;
+                case '10 - 30':
+                    return value >= 10 && value < 30;
+                case '30 - 60':
+                    return value >= 30 && value < 60;
+                case '60 - 90':
+                    return value >= 60 && value < 90;
+                case '> 100':
+                    return value > 100;
+                default:
+                    return true; 
+            }
+}
+
         secondFilter.addEventListener('change', () => {
             const selectedFirstFilter = firstFilter.value;
             const selectedSecondFilter = secondFilter.value;
@@ -312,14 +387,15 @@
                     const idiomContainer = container.querySelector('#idiomContainer');
                     showBook = selectedSecondFilter === 'all' || idiomContainer.textContent.includes(selectedSecondFilter);
                 } else if (selectedFirstFilter === 'length') {
-                    const pagesContainer = container.querySelector('#pagesContainer');
-                    showBook = selectedSecondFilter === 'all' || pagesContainer.textContent.includes(selectedSecondFilter);
+                    const pagesContainer = container.querySelector('#pagesContainer p');
+                    const pageLength = parseInt(pagesContainer.textContent.split(' ')[1]);
+                    showBook = checkValueFilter(pageLength, selectedSecondFilter);
                 } else if (selectedFirstFilter === 'price') {
-
-                } else if (selectedFirstFilter === 'isInStock') {
-
+                    const priceContainer = container.querySelector('#priceContainer p');
+                    const prices = priceContainer.textContent.split(' ')[1];
+                    const numericPrices = parseFloat(prices.replace('R$', ''));
+                    showBook = checkValueFilter(numericPrices, selectedSecondFilter);
                 }
-
                 container.style.display = showBook ? 'flex' : 'none';
             });
         }

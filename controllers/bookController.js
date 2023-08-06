@@ -9,13 +9,15 @@ const addBook = async (req, res) => {
     const cover = req.file.filename;
 
     const lowercaseTitle = title.toLowerCase();
-    console.log(lowercaseTitle);
     const lowercaseAuthor = author.toLowerCase();
     const lowercaseSynopsis = synopsis.toLowerCase();
+    const lowercaseCategory = category.toLowerCase();
+    const lowercaseIdiom = idiom.toLowerCase();
+    const lowercasePublisher = publisher.toLowerCase();
 
     await Book.create({title: lowercaseTitle, 
       author: lowercaseAuthor, 
-      synopsis: lowercaseSynopsis, pages_number, price, isInStock, category, idiom, publisher, quantity, cover });
+      synopsis: lowercaseSynopsis, pages_number, price, isInStock, category: lowercaseCategory, idiom: lowercaseIdiom, publisher: lowercasePublisher, quantity, cover });
 
     res.redirect('/');
   } catch (error) {
