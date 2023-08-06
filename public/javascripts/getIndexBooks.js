@@ -9,12 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
       var fantasyBooks = response.fantasyBooks;
       var adventureBooks = response.adventureBooks;
 
+
+
       var highligth = document.getElementById('highligth');
       var index = 0;
       trendingBooks.forEach((book, index) => {
         if (index < 5) {
           var itemElement = document.getElementById(`item${index + 1}`);
-
+          
           itemElement.setAttribute('data-id', book._id);
           itemElement.classList.add('clickable');
 
@@ -29,8 +31,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
       fantasyBooks.forEach((book, index) => {
         var itemElement = document.getElementById(`item${index + 1}Fantasy`);
+        var bookPrice = document.getElementById(`advItem${index + 1}Price`);
         itemElement.setAttribute('data-id', book._id);
         itemElement.classList.add('clickable');
+        bookPrice.textContent = '$' + book.price + '.00';
 
         var imgElement = document.createElement('img');
         imgElement.src = `/images/bookCovers/${book.cover}`;
@@ -42,8 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
       adventureBooks.forEach((book, index) => {
         var itemElement = document.getElementById(`item${index + 1}Adventure`);
+        var bookPrice =document.getElementById(`item${index + 1}Price`);
+        console.log(bookPrice);
         itemElement.setAttribute('data-id', book._id);
         itemElement.classList.add('clickable');
+        bookPrice.textContent = '$' + book.price + '.00';
 
         var imgElement = document.createElement('img');
         imgElement.src = `/images/bookCovers/${book.cover}`;
