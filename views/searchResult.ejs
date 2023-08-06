@@ -30,20 +30,21 @@
             opacity: .8;
         }
   
-        .firstContainer {
+        .searchContainer {
             display: flex;
             align-items: center;
             justify-content: center;
             height: 50px;
             margin: auto;
             margin-bottom: 100px;
-            margin-top: 100px;
+            margin-top: 200px;
 
         }
         
-        .firstContainerText {
+        .searchContainerText {
             width: 50%;
             max-width: 90%;
+
             margin-bottom: 30px;
             text-align: left;
             padding-left: 20px;
@@ -142,8 +143,59 @@
         display: block;
         }
 
+        .resultFilterContainer {
+            margin-top: 30px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-  
+        .resultText {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .resultText h2{
+            margin-right: 10px;
+        }
+
+        #firstFilter, #secondFilter {
+            text-decoration: none;
+            font-size: 20px;
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 20px;
+            background-color: white;
+            box-shadow: 7px 7px #F9784B;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 768px) {
+            .searchContainer {
+                flex-direction: column;
+                align-items: center;
+                margin-top: 200px;
+            
+            }
+            
+            .searchContainerText {
+                width: 90%;
+                margin-bottom: 0;
+                text-align: center;
+                padding-left: 0;
+            }
+        }
+
+
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -151,8 +203,8 @@
         <%- include(navbar) %>
     </header>
 
-    <div class="firstContainer">
-        <div class="firstContainerText">
+    <div class="searchContainer">
+        <div class="searchContainerText">
             <form class="searchBox" action="/searchBook" method="post">
                 <input type="text" class="textBox" id="searchText" name="searchText" placeholder="Research your book">
                 <button class="seachBoxButton" id="searchButton" type="submit">
@@ -160,22 +212,24 @@
                     <img class="lop-white" src="/images/loupe-white.svg" alt="" width="25px" height="25px">
                 </button>
             </form>
-            <h2>RESULTS: <%=searchText %></h2>
-            <div class="filter-container">
-                <label for="firstFilter">First Filter:</label>
-                <select id="firstFilter">
-                    <option value="filter">Filter</option>
-                    <option value="category">Category</option>
-                    <option value="author">Author</option>
-                    <option value="idiom">Idiom</option>
-                    <option value="length">Length</option>
-                    <option value="price">Price</option>
-                </select>
-                <label for="secondFilter">Second Filter:</label>
-                <select id="secondFilter">
-                    <option value="all">All</option>
-                </select>
-            </div>
+                <div class="resultFilterContainer">
+                    <div class="resultText">
+                        <h2>RESULTS: <h2 style="color: #3AB8EB;">"<%=searchText %>"</h2></h2>
+                    </div>
+                    <div class="filter-container">
+                        <select id="firstFilter">
+                            <option value="filter">Filter</option>
+                            <option value="category">Category</option>
+                            <option value="author">Author</option>
+                            <option value="idiom">Idiom</option>
+                            <option value="length">Length</option>
+                            <option value="price">Price</option>
+                        </select>
+                        <select id="secondFilter">
+                            <option value="all">All</option>
+                        </select>
+                    </div>
+                </div>
         </div>
     </div>
 
