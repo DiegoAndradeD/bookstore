@@ -195,6 +195,7 @@
     gap: 10px;
     margin-top: 5px;
     margin-left: 30px;
+    width: 246px;
   }
   
   .highligthChildElememt p {
@@ -203,24 +204,15 @@
     border: 1px solid black;
     padding: 10px;
     border-radius: 50px;
+    width: 105px;
+
   }
-  
-  .cartImageContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 5px;
-  
-  }
-  .cartImageContainer img {
-    border: 1px solid black;
-    padding: 15px;
-    border-radius: 50px;
-    max-width: 100%; 
-    padding-right: 180px;
+
+  #cartImg {
+    width: 236px;
     background-color: #FDBF0F;
-  
   }
+  
   
   .highligthCard {
     width: fit-content;
