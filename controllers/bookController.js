@@ -78,7 +78,7 @@ const searchBook = async (req, res) => {
         ]
       });
       const { email, isAdmin} = req.session;
-      return res.render('searchResult', { searchResult, email, isAdmin, navbar: 'navbar' });
+      return res.render('searchResult', { searchText, searchResult, email, isAdmin, navbar: 'navbar' });
     } catch (error) {
       res.status(error.statusCode || 500).json({ errorMessage: error.message });
     }

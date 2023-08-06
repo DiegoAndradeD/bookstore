@@ -14,6 +14,7 @@
     justify-content: space-evenly;
     padding: 10px; 
     margin-bottom: 250px;
+    
 }
 
 .imageContainer {
@@ -117,7 +118,7 @@
 }
 
 #titleContainer {
-    font-size: 2.5em;
+    font-size: 2em;
 }
 
 #titleContainer img{
@@ -163,6 +164,8 @@ footer {
     .mainContainer {
         flex-direction: column; 
     }
+
+    
 
     .imageContainer {
         width: 100%; 

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+<!-- Make the filter case-insensitive -->
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +13,7 @@
             border-radius: 15px;
             width: 70%;
             margin-bottom: 150px;
+            padding-bottom: 50px;
         }
 
         .noBookText {
@@ -26,6 +29,91 @@
         .imageContainer:hover {
             opacity: .8;
         }
+  
+        .firstContainer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            margin: auto;
+            margin-bottom: 100px;
+            margin-top: 100px;
+
+        }
+        
+        .firstContainerText {
+            width: 50%;
+            max-width: 90%;
+            margin-bottom: 30px;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .startText1 {
+            font-size: 3em;
+        }
+
+        .startText2 {
+            font-size: 1em;
+        }
+        
+        .startImage {
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+        }
+
+        #searchText {
+            width: 90%;
+        }
+        
+        /* Responsive search box */
+        .searchBox {
+            width: 100%;
+            background: orange;
+            height: 50px;
+            padding: 10px;
+            border-radius: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-right: 20px;
+            margin-top: 30px;
+        }
+        
+        .textBox {
+            background: none;
+            border: 0;
+            outline: 0;
+            padding: 0;
+            font-size: 16px;
+            width: 0;
+            transition: 0.4s;
+        }
+        
+        .seachBoxButton {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .lop-white {
+            display: none;
+        }
+        
+        .searchBox:hover > .textBox {
+            width: 320px;
+            padding-left: 20px;
+        }
+        
+        .searchBox:hover > .seachBoxButton {
+            background: #ffffff;
+        }
+  
     </style>
 </head>
 <body>
@@ -33,6 +121,36 @@
         <%- include(navbar) %>
     </header>
 
+    <div class="firstContainer">
+        <div class="firstContainerText">
+            <form class="searchBox" action="/searchBook" method="post">
+                <input type="text" class="textBox" id="searchText" name="searchText" placeholder="Research your book">
+                <button class="seachBoxButton" id="searchButton" type="submit">
+                    <img class="lop-blue" src="/images/loupe-blue.svg" alt="" width="25px" height="25px">
+                    <img class="lop-white" src="/images/loupe-white.svg" alt="" width="25px" height="25px">
+                </button>
+            </form>
+            <h2>RESULTS: <%=searchText %></h2>
+            <div class="filter-container">
+                <label for="firstFilter">First Filter:</label>
+                <select id="firstFilter">
+                    <option value="filter">Filter</option>
+                    <option value="category">Category</option>
+                    <option value="author">Author</option>
+                    <option value="idiom">Idiom</option>
+                    <option value="length">Length</option>
+                    <option value="price">Price</option>
+                    <option value="isInStock">In Stock</option>
+                </select>
+                <label for="secondFilter">Second Filter:</label>
+                <select id="secondFilter">
+                    <option value="all">All</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    
     <% if (searchResult && searchResult.length > 0) { %>
                   <% searchResult.forEach(book => { %>
                     <div class="mainContainer">
@@ -49,7 +167,7 @@
                                 <p></p>
                             </div>
                             <div id="categoryContainer" class="bookInfoChild">
-                                <p>Category: <%= book.category %></p>
+                                <p >Category: <%= book.category %></p>
                             </div>
                             
                             <div id="priceStockContainer" class="bookInfoChild">
@@ -59,6 +177,18 @@
                                     <p id="stockNumber">1</p>
                                     <button class="stockBtn">+</button>
                                 </div>
+                            </div>
+                            <div class="bookInfoChild idiomContainer" id="idiomContainer">
+                                <p>Idiom: <%= book.idiom %></p>
+                            </div>
+                            <div class="bookInfoChild pagesContainer" id="pagesContainer">
+                                <p>Pages: <%= book.pages_number %> pages</p>
+                            </div>
+                            <div class="bookInfoChild priceContainer">
+                                <p>Price: R$<%= book.price %>.00</p>
+                            </div>
+                            <div class="bookInfoChild isInStockContainer">
+                                <p>In Stock: <%= book.isInStock ? 'Yes' : 'No' %></p>
                             </div>
                             <div class="bookInfoChild">
                                 <a href="#" id="cartBtn"><img src="/images/SHOPPING_CART _Black.svg" alt="Shopping Cart"></a>
@@ -80,14 +210,119 @@
     <script>
         const images = document.querySelectorAll('.imageContainer img');
         
-    
         images.forEach(image => {
             const bookId = image.id.replace('bookImage', '');
-            console.log(bookId);
             image.addEventListener('click', () => {
                 window.location.href = '/bookPageRedirect?id=' + bookId;
             });
         });
+
+        const firstFilter = document.getElementById('firstFilter');
+        const secondFilter = document.getElementById('secondFilter');
+        const mainContainers = document.querySelectorAll('.mainContainer');
+
+        firstFilter.addEventListener('change', () => {
+            const selectedFirstFilter = firstFilter.value;
+            updateSecondFilterOptions(selectedFirstFilter);
+        });
+
+        function updateSecondFilterOptions(selectedFirstFilter) {
+        const secondFilterOptions = document.getElementById('secondFilter');
+        secondFilterOptions.innerHTML = '<option value="all">All</option>';
+
+        if (selectedFirstFilter === 'category') {
+            const categoryContainers = document.querySelectorAll('.categoryContainer');
+            fillSecondFilterOptions(getUniqueCategories(categoryContainers), secondFilterOptions);
+        } else if (selectedFirstFilter === 'author') {
+            const authorContainers = document.querySelectorAll('.authorContainer');
+            fillSecondFilterOptions(getUniqueAuthors(authorContainers), secondFilterOptions);
+        } else if (selectedFirstFilter === 'idiom') {
+            const idiomContainers = document.querySelectorAll('.idiomContainer');
+            fillSecondFilterOptions(getUniqueIdioms(idiomContainers), secondFilterOptions);
+        } else if (selectedFirstFilter === 'length') {
+            fillSecondFilterOptions(lengthOptions, secondFilterOptions);
+        } else if (selectedFirstFilter === 'price') {
+            // Preencher com opções de preço
+        } else if (selectedFirstFilter === 'isInStock') {
+            const uniqueStockOptions = ['Yes', 'No'];
+            fillSecondFilterOptions(uniqueStockOptions, secondFilterOptions);
+        }
+    }
+
+
+        function fillSecondFilterOptions(options, filterElement) {
+            options.forEach(optionValue => {
+                const option = document.createElement('option');
+                option.value = optionValue;
+                option.textContent = optionValue;
+                filterElement.appendChild(option);
+            });
+        }
+
+        function getUniqueCategories() {
+            const categories = [];
+            mainContainers.forEach(container => {
+                const categoryContainer = container.querySelector('#categoryContainer');
+                if (!categories.includes(categoryContainer.textContent)) {
+                    categories.push(categoryContainer.textContent);
+                }
+            });
+            return categories;
+        }
+
+        function getUniqueAuthors() {
+            const authors = [];
+            mainContainers.forEach(container => {
+                const authorContainer = container.querySelector('#authorContainer');
+                if (!authors.includes(authorContainer.textContent)) {
+                    authors.push(authorContainer.textContent);
+                }
+            });
+            return authors;
+        }
+
+        function getUniqueIdioms() {
+            const idioms = [];
+            mainContainers.forEach(container => {
+                const idiomContainer = container.querySelector('#idiomContainer');
+                if (!idioms.includes(idiomContainer.textContent)) {
+                    idioms.push(idiomContainer.textContent);
+                }
+            });
+            return idioms;
+        }
+
+        secondFilter.addEventListener('change', () => {
+            const selectedFirstFilter = firstFilter.value;
+            const selectedSecondFilter = secondFilter.value;
+            filterBooks(selectedFirstFilter, selectedSecondFilter);
+        });
+
+        function filterBooks(selectedFirstFilter, selectedSecondFilter) {
+            mainContainers.forEach(container => {
+                let showBook = true;
+
+                if (selectedFirstFilter === 'category') {
+                    const categoryContainer = container.querySelector('#categoryContainer');
+                    showBook = selectedSecondFilter === 'all' || categoryContainer.textContent.includes(selectedSecondFilter);
+                } else if (selectedFirstFilter === 'author') {
+                    const authorContainer = container.querySelector('#authorContainer');
+                    showBook = selectedSecondFilter === 'all' || authorContainer.textContent.includes(selectedSecondFilter);
+                } else if (selectedFirstFilter === 'idiom') {
+                    const idiomContainer = container.querySelector('#idiomContainer');
+                    showBook = selectedSecondFilter === 'all' || idiomContainer.textContent.includes(selectedSecondFilter);
+                } else if (selectedFirstFilter === 'length') {
+                    const pagesContainer = container.querySelector('#pagesContainer');
+                    showBook = selectedSecondFilter === 'all' || pagesContainer.textContent.includes(selectedSecondFilter);
+                } else if (selectedFirstFilter === 'price') {
+
+                } else if (selectedFirstFilter === 'isInStock') {
+
+                }
+
+                container.style.display = showBook ? 'flex' : 'none';
+            });
+        }
     </script>
 </body>
 </html>
