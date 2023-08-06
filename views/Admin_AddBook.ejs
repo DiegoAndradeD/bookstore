@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>E-commerce de Livros</title>
+  <link rel="shortcut icon" href="/images/BookOpen.svg" type="image/x-icon">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.dataContainer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.card {
+    flex-basis: calc(50% - 10px);
+    border: 2px solid #351C59;
+    border-radius: 8px;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: #fdbd0f2f;
+}
+
+form, label, input, textarea, select, p {
+    font-family: 'Playfair Display', serif;
+}
+
+form {
+    margin: 0 auto;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    border: 3px dotted #F9784B;
+    margin-top: 20px;
+}
+
+label, p {
+    font-weight: bold;
+    display: block;
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    height: 40px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 20px;
+
+}
+
+textarea {
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    padding: 8px;
+    resize: vertical;
+    font-size: 20px;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    form {
+        padding: 10px;
+    }
+
+    label, p {
+        font-size: 1.1em;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+        height: 30px; 
+        font-size: 16px; 
+    }
+
+    button[type="submit"] {
+        padding: 8px 16px; 
+    }
+}
+
+footer {
+    background-color: darkgray;
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+}
+</style>
+<body>
+  <header>
+    <%- include(navbar) %>
+  </header>
+<main>
+  
+      <form action="/addBook" method="post" enctype="multipart/form-data">
+          <div class="dataContainer">
+            <div class="card">
+                <label for="title">TITLE</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="card">
+                <label for="author">AUTHOR</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+          </div>
+
+          <div class="dataContainer">
+            <div class="card">
+                <label for="synopsis">SYNOPSIS</label>
+                <textarea id="synopsis" name="synopsis" rows="8" cols="33"></textarea>
+            </div>
+            <div class="card">
+                <label for="pages_number">NUMBER OF PAGES</label>
+                <input type="number" id="pages_number" name="pages_number" required>
+            </div>
+          </div>
+
+          <div class="dataContainer">
+            <div class="card">
+                <label for="price">PRICE</label>
+                <input type="number" id="price" name="price" required>
+            </div>
+            <div class="card">
+                <p>IS IN STOCK?</p>
+                <div class="stockDiv">
+                  <input type="radio" id="stockTrue" name="isInStock" value="true">
+                  <label for="stockTrue">True</label>
+                  <input type="radio" id="stockFalse" name="isInStock" value="false">
+                  <label for="stockFalse">False</label>
+                </div>
+            </div>
+          </div>
+
+          <div class="dataContainer">
+            <div class="card">
+                <label for="category">CATEGORY</label>
+                <input type="text" id="category" name="category" required>
+            </div>
+            <div class="card">
+                <label for="idiom">IDIOM</label>
+                <input type="text" id="idiom" name="idiom" required>
+            </div>
+          </div>
+
+          <div class="dataContainer">
+            <div class="card">
+                <label for="publisher">PUBLISHER</label>
+                <input type="text" id="publisher" name="publisher" required>
+            </div>
+            <div class="card">
+                <label for="quantity">QUANTITY</label>
+                <input type="number" id="quantity" name="quantity" required>
+            </div>
+          </div>
+
+          <div class="dataContainer">
+            <div class="card">
+                <label for="cover">COVER</label>
+                <input type="file" id="cover" name="cover" accept="image/*" required>
+            </div>
+            <div class="card">
+                <button type="submit">Add book to sell</button>
+            </div>
+          </div>
+
+        </form> 
+
+    <footer>
+      All Rights Reserved: by Diego Deiro & Henrique Viana 
+  </footer>
+</main>
+</body>
+</html>

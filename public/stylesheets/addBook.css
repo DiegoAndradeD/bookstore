@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.dataContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+form, label, input, textarea, select, p {
+    font-family: 'Playfair Display', serif;
+}
+
+
+
+form {
+    margin: 0 auto;
+    border-radius: 5px;
+
+  }
+
+
+  label, p {
+    font-weight: bold;
+    display: block;
+    font-size: 1.3em;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 500px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  input[type="radio"] {
+  }
+
+  button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 480px) {
+    form {
+      padding: 10px;
+    }
+
+    label {
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+      padding: 6px;
+      font-size: 14px;
+    }
+
+    button[type="submit"] {
+      padding: 8px 16px;
+    }
+  }
+
+
+
+footer {
+    background-color: darkgray;
+    padding: 10px;
+    text-align: center;
+  }
+  
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    
+  }

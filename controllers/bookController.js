@@ -29,7 +29,7 @@ const getBooks = async (req, res) => {
   try {
     const books = await Book.find();
     const { email, isAdmin } = req.session;
-    res.render('testAddBook', { books, email, isAdmin, navbar: 'navbar' });
+    res.render('Admin_AddBook', { books, email, isAdmin, navbar: 'navbar' });
   } catch (error) {
     res.status(error.statusCode || 500).json({errorMessage: error.message});
   }
