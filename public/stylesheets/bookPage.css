@@ -14,6 +14,7 @@
     justify-content: space-evenly;
     padding: 10px; 
     margin-bottom: 250px;
+    
 }
 
 .imageContainer {
@@ -102,7 +103,7 @@
     padding: 5px;
 }
 
-#authorContainer,  #synopsisContainer{
+#authorContainer,  #synopsisContainer, #categoryContainer{
     border: 2px dotted black;
     box-shadow: 6px 6px 6px #676767;
     padding: 10px;
@@ -117,7 +118,7 @@
 }
 
 #titleContainer {
-    font-size: 2.5em;
+    font-size: 2em;
 }
 
 #titleContainer img{
@@ -130,6 +131,7 @@
 #priceStockContainer {
     font-size: 1.3em;
 }
+
 
 .stockBtn {
     background: none;
@@ -145,10 +147,26 @@
     border-radius: 50%;
 }
 
+footer {
+    background-color: darkgray;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    
+  }
+
 @media (max-width: 600px) {
     .mainContainer {
         flex-direction: column; 
     }
+
+    
 
     .imageContainer {
         width: 100%; 
@@ -178,3 +196,4 @@
         margin-top: 10px; 
     }
 }
+

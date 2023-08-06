@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/bookPage.css">
     <link rel="stylesheet" href="/stylesheets/index.css">
-    <title>Document</title>
+    <link rel="shortcut icon" href="/images/BookOpen.svg" type="image/x-icon">
+    <title>Book Page</title>
     <style>
 
     </style>
@@ -28,7 +29,7 @@
                     <a href=""><img src="/images/favorite.svg" alt="Favorite Icon"></a>
                 </div>
                 <div id="authorContainer" class="bookInfoChild">
-                    <p><%= bookDetail.author %></p>
+                    <p>Author: <%= bookDetail.author %></p>
                     <p></p>
                 </div>
                 <div id="synopsisContainer" class="bookInfoChild">
@@ -61,6 +62,12 @@
         </div>
     </main>
 
+    <footer>
+        All Rights Reserved: by Diego Deiro & Henrique Viana 
+    </footer>
+
     <script src="/javascripts/getIndexBooks.js"></script>
+
+    
 </body>
 </html>

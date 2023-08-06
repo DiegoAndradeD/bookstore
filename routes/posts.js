@@ -61,6 +61,7 @@ router.get('/Favoritebook', (req, res) => {
 	res.render('Favoritebook', {isAdmin: isAdmin, email: email, navbar: 'navbar'});
 });
 
+router.post('/searchBook', bookController.searchBook);
 
 router.get('/addBook', isAdminMiddleware, bookController.getBooks);
 

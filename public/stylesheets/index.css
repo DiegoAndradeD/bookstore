@@ -1,4 +1,4 @@
-/* Default styles */
+
 :root {
   --bgColor1: #F9784B;
 }
@@ -9,7 +9,7 @@
     box-sizing: border-box;
   }
   
-  /* Common styles for different containers */
+
   .firstContainer,
   .secondContainer,
   .TContainer,
@@ -52,7 +52,7 @@
     height: auto;
   }
   
-  /* Responsive search box */
+
   .searchBox {
     width: 50%;
     max-width: 400px;
@@ -100,7 +100,7 @@
     background: #ffffff;
   }
   
-  /* Responsive Trending Books */
+
   .highligth {
     display: flex;
     flex-wrap: wrap;
@@ -111,13 +111,17 @@
     width: 100%;
     max-width: 250px;
     height: 400px;
-    background-color: brown;
+    background-color: #fbfbfb;
     margin: 20px;
     border-radius: 15px;
     border: 1px solid #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  .highligthChild img:hover{
+    opacity: .8;
   }
   
   .book-cover {
@@ -129,7 +133,7 @@
     margin: auto;
   }
   
-  /* Responsive Category */
+
   .TContainer p,
   .fourthContainer p {
     margin-bottom: 30px;
@@ -191,6 +195,7 @@
     gap: 10px;
     margin-top: 5px;
     margin-left: 30px;
+    width: 246px;
   }
   
   .highligthChildElememt p {
@@ -199,31 +204,21 @@
     border: 1px solid black;
     padding: 10px;
     border-radius: 50px;
+    width: 105px;
+
   }
-  
-  .cartImageContainer {
-    display: flex;
-    align-items: center; 
-    margin-left: 5px;
-  
-  }
-  
-  
-  .cartImageContainer img {
-    border: 1px solid black;
-    padding: 15px;
-    border-radius: 50px;
-    max-width: 100%; 
-    padding-right: 180px;
+
+  #cartImg {
+    width: 236px;
     background-color: #FDBF0F;
-  
   }
+  
   
   .highligthCard {
     width: fit-content;
   }
   
-  /* Footer */
+
   footer {
     background-color: darkgray;
     padding: 10px;
@@ -238,7 +233,7 @@
     
   }
   
-  /* Media queries for responsiveness */
+
   @media screen and (max-width: 768px) {
     .firstContainer {
       flex-direction: column-reverse;
@@ -277,7 +272,7 @@
       width: 100%;
       max-width: 180px;
     }
-  
+
     .highligth1 button {
       max-width: 250px;
     }
@@ -312,7 +307,7 @@
       max-width: 200px;
     }
   
-    /* Adjust footer positioning for small screens */
+
     footer {
         background-color: darkgray;
         padding: 10px;

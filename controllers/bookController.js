@@ -8,7 +8,16 @@ const addBook = async (req, res) => {
     const { title, author, synopsis, pages_number, price, isInStock, category, idiom, publisher, quantity} = req.body;
     const cover = req.file.filename;
 
-    await Book.create({ title, author, synopsis, pages_number, price, isInStock, category, idiom, publisher, quantity, cover });
+    const lowercaseTitle = title.toLowerCase();
+    const lowercaseAuthor = author.toLowerCase();
+    const lowercaseSynopsis = synopsis.toLowerCase();
+    const lowercaseCategory = category.toLowerCase();
+    const lowercaseIdiom = idiom.toLowerCase();
+    const lowercasePublisher = publisher.toLowerCase();
+
+    await Book.create({title: lowercaseTitle, 
+      author: lowercaseAuthor, 
+      synopsis: lowercaseSynopsis, pages_number, price, isInStock, category: lowercaseCategory, idiom: lowercaseIdiom, publisher: lowercasePublisher, quantity, cover });
 
     res.redirect('/');
   } catch (error) {
@@ -20,7 +29,7 @@ const getBooks = async (req, res) => {
   try {
     const books = await Book.find();
     const { email, isAdmin } = req.session;
-    res.render('testAddBook', { books, email, isAdmin, navbar: 'navbar' });
+    res.render('Admin_AddBook', { books, email, isAdmin, navbar: 'navbar' });
   } catch (error) {
     res.status(error.statusCode || 500).json({errorMessage: error.message});
   }
@@ -59,6 +68,26 @@ const getBookDetails = async (req, res) => {
 
 };
 
+const searchBook = async (req, res) => {
+
+    const {searchText} = req.body;
+
+    try {
+      const searchResult = await Book.find({
+        $or: [
+          { title: { $regex: searchText, $options: 'i' } },
+          { author: { $regex: searchText, $options: 'i' } }
+        ]
+      });
+      const { email, isAdmin} = req.session;
+      return res.render('searchResult', { searchText, searchResult, email, isAdmin, navbar: 'navbar' });
+    } catch (error) {
+      res.status(error.statusCode || 500).json({ errorMessage: error.message });
+    }
+
+}
 
 
-module.exports = { addBook, getBooks, getIndexBooks, getBookDetails };
+
+
+module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook };
