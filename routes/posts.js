@@ -21,26 +21,30 @@ const storage = multer.diskStorage({
 router.get('/', (req, res) => {
 	const email = req.session.email;
 	const isAdmin  = req.session.isAdmin;
-	res.render('index', {isAdmin : isAdmin, email: email, navbar: 'navbar'});
+	const userId = req.session.userId;
+	res.render('index', {userId: userId, isAdmin : isAdmin, email: email, navbar: 'navbar'});
   });
 
 router.get('/index', (req, res) => {
 	const email = req.session.email;
 	const isAdmin  = req.session.isAdmin;
-	res.render('index', {isAdmin : isAdmin, email: email, navbar: 'navbar'});
+	const userId = req.session.userId;
+	res.render('index', {userId: userId, isAdmin : isAdmin, email: email, navbar: 'navbar'});
   });
 
 
 router.get('/Login', (req, res) => {
 	const email = req.session.email;
 	const isAdmin  = req.session.isAdmin;
-	res.render('Login', {isAdmin: isAdmin, email: email, navbar: 'navbar'});
+	const userId = req.session.userId;
+	res.render('Login', {userId: userId, isAdmin: isAdmin, email: email, navbar: 'navbar'});
 });
 
 router.get('/Signup', (req, res) => {
 	const email = req.session.email;
 	const isAdmin  = req.session.isAdmin;
-	res.render('Signup', {isAdmin: isAdmin, email: email, navbar: 'navbar'});
+	const userId = req.session.userId;
+	res.render('Signup', {userId: userId, isAdmin: isAdmin, email: email, navbar: 'navbar'});
 });
 
 router.get('/logout', (req, res) => {
@@ -52,7 +56,8 @@ router.get('/logout', (req, res) => {
 router.get('/bookPage', (req, res) => {
 	const email = req.session.email;
 	const isAdmin  = req.session.isAdmin;
-	res.render('bookPage', {isAdmin: isAdmin, email: email, navbar: 'navbar'});
+	const userId = req.session.userId;
+	res.render('bookPage', {userId: userId, isAdmin: isAdmin, email: email, navbar: 'navbar'});
 });
 
 router.post('/searchBook', bookController.searchBook);
