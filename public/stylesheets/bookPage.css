@@ -197,3 +197,54 @@ footer {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+.menuOculto {
+    background: red;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 1; /* Defina a largura desejada para o menu */
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 10px;
+    float: right;
+    width: 0;
+    z-index: 1;
+}
+
+.menuOculto a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+}
+
+.menuconteiner .btnclose {
+    margin-left: 125px;
+    font-size: 30px;
+}
+
+#buyNowBtn {
+    transition: 0.5s;
+}
+
+@media screen and (max-height: 450px) {
+    .menuconteiner {}
+}
+
+
+
+
+

@@ -17,38 +17,87 @@
         include(navbar)
         %>
     </header>
+    
+
+
+
+
+
+
 
     <main>
+        
+        
+        
+        
         <div class="mainContainer">
+            
+            
+            
+            
+            
+            
             <div class="imageContainer">
                 <img src="/images/bookCovers/<%=bookDetail.cover %>" alt="">
-            </div>
-            <div class="bookInfoContainer">
-                <div id="titleContainer" class="bookInfoChild">
+                 </div>
+                 <div class="bookInfoContainer">
+                    <div id="titleContainer" class="bookInfoChild">
                     <p><%= bookDetail.title %></p>
                     <a href=""><img src="/images/favorite.svg" alt="Favorite Icon"></a>
-                </div>
-                <div id="authorContainer" class="bookInfoChild">
+                    </div>
+                    <div id="authorContainer" class="bookInfoChild">
                     <p>Author: <%= bookDetail.author %></p>
                     <p></p>
-                </div>
-                <div id="synopsisContainer" class="bookInfoChild">
+                    </div>
+                    <div id="synopsisContainer" class="bookInfoChild">
                     <p><%= bookDetail.synopsis %></p>
-                </div>
-                <div id="priceStockContainer" class="bookInfoChild">
+                    </div>
+                    <div id="priceStockContainer" class="bookInfoChild">
                     <p>R$<%= bookDetail.price %>.00</p>
                     <div class="bookInfoChild4_SubItems">
                         <button class="stockBtn">-</button>
                         <p id="stockNumber">1</p>
                         <button class="stockBtn">+</button>
                     </div>
-                </div>
-                <div class="bookInfoChild">
+                    </div>
+                    <div class="bookInfoChild">
                     <a href="#" id="cartBtn"><img src="/images/SHOPPING_CART _Black.svg" alt="Shopping Cart"></a>
-                    <a href="#" id="buyNowBtn">Buy Now</a>
+                    
+                    <section id="buyNowBtn">
+                        <samp style="font-size: 23px; cursor: pointer;" onclick="openNav()"> Buy Now </samp>
+                    </section>
+
+                    
+                
+                
+                
+                
+                
+                
+                
                 </div>
+
+            
+
             </div>
+
+            
+                <aside id="menuOculto" class="menuOculto">
+                    <a href="#" class="btnclose" onclick="closeNav()">&times;</a>
+                    <a href="#">teste</a>
+                    <a href="#">teste</a>
+                    <a href="#">teste</a>
+                </aside>
+           
+
+
+
+
+            
         </div>
+
+        
+
 
         <div class="secondContainer">
             <p style="text-align: center;" class="categoryText"><strong>View More</strong></p>
@@ -66,7 +115,13 @@
         All Rights Reserved: by Diego Deiro & Henrique Viana 
     </footer>
 
-    <script src="/javascripts/getIndexBooks.js"></script>
+    <script src="/javascripts/getIndexBooks.js"> </script>
+
+
+
+    <script src="/javascripts/menBuy.js"></script>
+
+
 
     
 </body>
