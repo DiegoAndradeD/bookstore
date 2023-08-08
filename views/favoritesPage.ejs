@@ -14,7 +14,7 @@
 
     <div class="searchContainer">
         <div class="searchContainerText">
-            <form class="searchBox" action="/searchBook" method="post">
+            <form class="searchBox" action="/favoritePage" method="get">
                 <input type="text" class="textBox" id="searchText" name="searchText" placeholder="Research your book">
                 <button class="seachBoxButton" id="searchButton" type="submit">
                     <img class="lop-blue" src="/images/loupe-blue.svg" alt="" width="25px" height="25px">
@@ -43,8 +43,8 @@
     </div>
 
     
-    <% if (searchResult && searchResult.length > 0) { %>
-                  <% searchResult.forEach(book => { %>
+    <% if (favoriteBooks && favoriteBooks.length > 0) { %>
+                  <% favoriteBooks.forEach(book => { %>
                     <div class="mainContainer">
                         <div class="imageContainer">
                             <img id="bookImage<%= book._id %>" src="/images/bookCovers/<%=book.cover %>" alt="">
@@ -104,13 +104,12 @@
         </div>
       <% } %>
 
+      <div id="errorMessage"></div>
+    <div id="successMessage"></div>
+
       <footer>
         All Rights Reserved: by Diego Deiro & Henrique Viana 
     </footer>
-
-    <script>
-        
-    </script>
 
     <script src="/javascripts/searchResult.js"></script>
 </body>

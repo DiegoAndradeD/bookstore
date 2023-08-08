@@ -73,7 +73,7 @@
                 <div class="highligthChildElememt">
                     <p id="item1Price"></p>
                     <% if (userId) { %>
-                        <a class="favLinks" href="/user/<%= userId %>/favorite/:">
+                        <a class="favLinks" href="/user/<%= userId %>/favorite/">
                             <p><img src="images/favorite.svg" alt=""></p>
                         </a>
                       <% } else { %>
@@ -91,7 +91,7 @@
                 <div class="highligthChildElememt">
                     <p id="item2Price"></p>
                     <% if (userId) { %>
-                        <a class="favLinks" href="/user/<%= userId %>/favorite/:">
+                        <a class="favLinks" href="/user/<%= userId %>/favorite/">
                             <p><img src="images/favorite.svg" alt=""></p>
                         </a>
                       <% } else { %>
@@ -109,7 +109,7 @@
                 <div class="highligthChildElememt">
                     <p id="item3Price"></p>
                     <% if (userId) { %>
-                        <a class="favLinks" href="/user/<%= userId %>/favorite/:">
+                        <a class="favLinks" href="/user/<%= userId %>/favorite/">
                             <p><img src="images/favorite.svg" alt=""></p>
                         </a>
                       <% } else { %>
@@ -127,7 +127,7 @@
                 <div class="highligthChildElememt">
                     <p id="item4Price"></p>
                     <% if (userId) { %>
-                        <a class="favLinks" href="/user/<%= userId %>/favorite/:">
+                        <a class="favLinks" href="/user/<%= userId %>/favorite/">
                             <p><img src="images/favorite.svg" alt=""></p>
                         </a>
                       <% } else { %>
@@ -145,7 +145,7 @@
                 <div class="highligthChildElememt">
                     <p id="item5Price"></p>
                     <% if (userId) { %>
-                        <a class="favLinks" href="/user/<%= userId %>/favorite/:">
+                        <a class="favLinks" href="/user/<%= userId %>/favorite/">
                             <p><img src="images/favorite.svg" alt=""></p>
                         </a>
                       <% } else { %>
@@ -170,7 +170,7 @@
                 <div class="highligthChildElememt">
                     <p id="advItem1Price"></p>
                     <% if (userId) { %>
-                        <a class="favLinks2" href="/user/<%= userId %>/favorite/:">
+                        <a class="favLinks2" href="/user/<%= userId %>/favorite/">
                             <p><img src="images/favorite.svg" alt=""></p>
                         </a>
                       <% } else { %>
@@ -188,7 +188,7 @@
                 <div class="highligthChildElememt">
                     <p id="advItem2Price"></p>
                     <% if (userId) { %>
-                        <a class="favLinks2" href="/user/<%= userId %>/favorite/:">
+                        <a class="favLinks2" href="/user/<%= userId %>/favorite/">
                             <p><img src="images/favorite.svg" alt=""></p>
                         </a>
                       <% } else { %>
@@ -206,7 +206,7 @@
                 <div class="highligthChildElememt">
                     <p id="advItem3Price"></p>
                     <% if (userId) { %>
-                        <a class="favLinks2" href="/user/<%= userId %>/favorite/:">
+                        <a class="favLinks2" href="/user/<%= userId %>/favorite/">
                             <p><img src="images/favorite.svg" alt=""></p>
                         </a>
                       <% } else { %>
@@ -224,7 +224,7 @@
                 <div class="highligthChildElememt">
                     <p id="advItem4Price"></p>
                     <% if (userId) { %>
-                        <a class="favLinks2" href="/user/<%= userId %>/favorite/:">
+                        <a class="favLinks2" href="/user/<%= userId %>/favorite/">
                             <p><img src="images/favorite.svg" alt=""></p>
                         </a>
                       <% } else { %>
@@ -242,7 +242,7 @@
                 <div class="highligthChildElememt">
                     <p id="advItem5Price"></p>
                     <% if (userId) { %>
-                        <a class="favLinks2" href="/user/<%= userId %>/favorite/:">
+                        <a class="favLinks2" href="/user/<%= userId %>/favorite/">
                             <p><img src="images/favorite.svg" alt=""></p>
                         </a>
                       <% } else { %>
@@ -259,14 +259,16 @@
       </div>
   </main>
 
+  <div id="errorMessage"></div>
+    <div id="successMessage"></div>
+
 
   <footer>
     All Rights Reserved: by Diego Deiro & Henrique Viana 
 </footer>
-    <script src="/javascripts/getIndexBooks.js"></script>
-    
-    <script>
-      </script>
+    <script src="/javascripts/index.js"></script>
+    <script src="/javascripts/popup.js"></script>
+    <script src="/javascripts/messageHandler.js"></script>
 </body>
 
 

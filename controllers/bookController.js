@@ -87,7 +87,58 @@ const searchBook = async (req, res) => {
 
 }
 
+const favoriteBook = async (req, res) => {
+
+  try {
+    const user = await User.findById(req.params.userId);
+    const book = await Book.findById(req.params.bookId);
+  
+    if(!user || !book) {
+      return res.status(404).json({errorMessage: error.message});
+    }
+
+    const isBookInFavorites = user.favoriteBooks.some(favorite => favorite.equals(book._id));
+    
+    if (isBookInFavorites) {
+      return res.status(201).json({ successMessage: 'Book is already in your favorites.' });
+    }
+  
+    user.favoriteBooks.push(book);
+    await user.save();
+  
+    res.json({successMessage: 'Book added to your favorites!'});
+  } catch (error) {
+    res.status(error.statusCode || 500).json({ errorMessage: error.message });
+  }
+
+}
+
+const getFavoriteBooks = async (req, res) => {
+  try {
+    const userId = req.session.userId;
+    const user = await User.findById(userId).populate('favoriteBooks');
+
+    if (!user) {
+      return res.status(404).json({ errorMessage: "User not found." });
+    }
+
+    let favoriteBooks = user.favoriteBooks;
+    const { email, isAdmin } = req.session;
+
+    const { searchText } = req.query;
+
+    favoriteBooks = favoriteBooks.filter(book =>
+      book.title.match(new RegExp(searchText, 'i')) ||
+      book.author.match(new RegExp(searchText, 'i'))
+    );
+
+    return res.render('favoritesPage', { favoriteBooks, email, isAdmin, navbar: 'navbar', searchText });
+  } catch (error) {
+    res.status(error.statusCode || 500).json({ errorMessage: error.message });
+  }
+};
 
 
 
-module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook };
+
+module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook, favoriteBook, getFavoriteBooks };

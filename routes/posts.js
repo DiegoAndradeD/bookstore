@@ -80,5 +80,9 @@ router.post('/addBook', upload.single('cover'), (req, res, next) => {
 	}
 });
 
+router.get('/user/:userId/favorite/:bookId', bookController.favoriteBook);
+
+router.get('/favoritePage', bookController.getFavoriteBooks);
+
 
 module.exports = router;
