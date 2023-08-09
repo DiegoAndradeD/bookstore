@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/stylesheets/index.css">
     <link rel="shortcut icon" href="/images/BookOpen.svg" type="image/x-icon">
   </head>
-<body>
+<body data-user-id="<%= userId %>">
     
     <header>
       <%- include(navbar) %>
@@ -72,15 +72,9 @@
                 <div class="highligthChild" id="item1Fantasy">item1</div>
                 <div class="highligthChildElememt">
                     <p id="item1Price"></p>
-                    <% if (userId) { %>
-                        <a class="favLinks" href="/user/<%= userId %>/favorite/">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } else { %>
-                        <a class="popupClick"  href="#">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } %>
+                    <a href="" class="favLinks">
+                        <p class="favImg"></p>
+                    </a>
                     <a href="">
                         <p id="cartImg"><img src="/images/SHOPPING_CART _Black.svg" alt=""></p>
                     </a>
@@ -90,15 +84,9 @@
                 <div class="highligthChild" id="item2Fantasy">item2</div>
                 <div class="highligthChildElememt">
                     <p id="item2Price"></p>
-                    <% if (userId) { %>
-                        <a class="favLinks" href="/user/<%= userId %>/favorite/">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } else { %>
-                        <a class="popupClick"  href="#">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } %>
+                    <a href="" class="favLinks">
+                        <p class="favImg"></p>
+                    </a>
                     <a href="">
                         <p id="cartImg"><img src="/images/SHOPPING_CART _Black.svg" alt=""></p>
                     </a>
@@ -108,15 +96,9 @@
                 <div class="highligthChild" id="item3Fantasy">item3</div>
                 <div class="highligthChildElememt">
                     <p id="item3Price"></p>
-                    <% if (userId) { %>
-                        <a class="favLinks" href="/user/<%= userId %>/favorite/">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } else { %>
-                        <a class="popupClick"  href="#">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } %>
+                    <a href="" class="favLinks">
+                        <p class="favImg"></p>
+                    </a>
                     <a href="">
                         <p id="cartImg"><img src="/images/SHOPPING_CART _Black.svg" alt=""></p>
                     </a>
@@ -126,15 +108,9 @@
                 <div class="highligthChild" id="item4Fantasy">item4</div>
                 <div class="highligthChildElememt">
                     <p id="item4Price"></p>
-                    <% if (userId) { %>
-                        <a class="favLinks" href="/user/<%= userId %>/favorite/">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } else { %>
-                        <a class="popupClick"  href="#">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } %>
+                    <a href="" class="favLinks">
+                        <p class="favImg"></p>
+                    </a>
                     <a href="">
                         <p id="cartImg"><img src="/images/SHOPPING_CART _Black.svg" alt=""></p>
                     </a>
@@ -144,15 +120,9 @@
                 <div class="highligthChild" id="item5Fantasy">item5</div>
                 <div class="highligthChildElememt">
                     <p id="item5Price"></p>
-                    <% if (userId) { %>
-                        <a class="favLinks" href="/user/<%= userId %>/favorite/">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } else { %>
-                        <a class="popupClick"  href="#">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } %>
+                    <a href="" class="favLinks">
+                        <p class="favImg"></p>
+                    </a>
                     <a href="">
                         <p id="cartImg"><img src="/images/SHOPPING_CART _Black.svg" alt=""></p>
                     </a>
@@ -169,15 +139,9 @@
                 <div class="highligthChild" id="item1Adventure"></div>
                 <div class="highligthChildElememt">
                     <p id="advItem1Price"></p>
-                    <% if (userId) { %>
-                        <a class="favLinks2" href="/user/<%= userId %>/favorite/">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } else { %>
-                        <a class="popupClick"  href="#">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } %>
+                    <a href="" class="favLinks">
+                        <p class="favImg"></p>
+                    </a>
                     <a href="">
                         <p id="cartImg"><img src="/images/SHOPPING_CART _Black.svg" alt=""></p>
                     </a>
@@ -187,15 +151,9 @@
                 <div class="highligthChild" id="item2Adventure"></div>
                 <div class="highligthChildElememt">
                     <p id="advItem2Price"></p>
-                    <% if (userId) { %>
-                        <a class="favLinks2" href="/user/<%= userId %>/favorite/">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } else { %>
-                        <a class="popupClick"  href="#">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } %>
+                    <a href="" class="favLinks">
+                        <p class="favImg"></p>
+                    </a>
                     <a href="">
                         <p id="cartImg"><img src="/images/SHOPPING_CART _Black.svg" alt=""></p>
                     </a>
@@ -205,15 +163,9 @@
                 <div class="highligthChild" id="item3Adventure"></div>
                 <div class="highligthChildElememt">
                     <p id="advItem3Price"></p>
-                    <% if (userId) { %>
-                        <a class="favLinks2" href="/user/<%= userId %>/favorite/">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } else { %>
-                        <a class="popupClick"  href="#">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } %>
+                    <a href="" class="favLinks">
+                        <p class="favImg"></p>
+                    </a>
                     <a href="">
                         <p id="cartImg"><img src="/images/SHOPPING_CART _Black.svg" alt=""></p>
                     </a>
@@ -223,15 +175,9 @@
                 <div class="highligthChild" id="item4Adventure"></div>
                 <div class="highligthChildElememt">
                     <p id="advItem4Price"></p>
-                    <% if (userId) { %>
-                        <a class="favLinks2" href="/user/<%= userId %>/favorite/">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } else { %>
-                        <a class="popupClick"  href="#">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } %>
+                    <a href="" class="favLinks">
+                        <p class="favImg"></p>
+                    </a>
                     <a href="">
                         <p id="cartImg"><img src="/images/SHOPPING_CART _Black.svg" alt=""></p>
                     </a>
@@ -241,15 +187,9 @@
                 <div class="highligthChild" id="item5Adventure"></div>
                 <div class="highligthChildElememt">
                     <p id="advItem5Price"></p>
-                    <% if (userId) { %>
-                        <a class="favLinks2" href="/user/<%= userId %>/favorite/">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } else { %>
-                        <a class="popupClick"  href="#">
-                            <p><img src="images/favorite.svg" alt=""></p>
-                        </a>
-                      <% } %>
+                    <a href="" class="favLinks">
+                        <p class="favImg"></p>
+                    </a>
                     <a href="">
                         <p id="cartImg"><img src="/images/SHOPPING_CART _Black.svg" alt=""></p>
                     </a>
@@ -266,6 +206,52 @@
   <footer>
     All Rights Reserved: by Diego Deiro & Henrique Viana 
 </footer>
+
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+    const highlightChildElements = document.querySelectorAll(".highligthChildElememt");
+    var body = document.querySelector('body');
+    var userId = body.getAttribute('data-user-id');
+    console.log('userId:', userId);
+
+    highlightChildElements.forEach(highlightChildElement => {
+        const favLinks = highlightChildElement.querySelector('.favLinks');
+        const p = highlightChildElement.querySelector('.favImg'); 
+        const img = document.createElement("img");
+
+        if (userId) {
+            favLinks.href = `/user/${userId}/favorite/`;
+        } else {
+            favLinks.className = "popupClick";
+            favLinks.href = "#";
+        }
+
+        const popupClickLinks = document.querySelectorAll(".popupClick");
+        const myPopup = document.getElementById("myPopup");
+        const closePopup = document.getElementById("closePopup");
+        const popupParagraph = document.getElementById("popupParagraph");
+
+        const popupMessage = 'You need to be logged in to add this book to your favorites';
+
+        popupClickLinks.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                popupParagraph.innerHTML = popupMessage;
+                myPopup.style.display = "block";
+            });
+        });
+
+        closePopup.addEventListener("click", function () {
+            myPopup.style.display = "none";
+        });
+
+        img.src = "images/favorite.svg";
+        img.alt = "";
+
+        p.appendChild(img);
+    });
+});
+  </script>
     <script src="/javascripts/index.js"></script>
     <script src="/javascripts/popup.js"></script>
     <script src="/javascripts/messageHandler.js"></script>

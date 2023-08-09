@@ -120,6 +120,8 @@ document.addEventListener('DOMContentLoaded', function () {
               window.location.href = `/searchBook?searchText=${encodeURIComponent(searchTerm)}`;
           }
       });
+
+      
     }
   };
   xhr.send();

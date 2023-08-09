@@ -27,6 +27,7 @@
             <div class="card">
                 <label for="synopsis">SYNOPSIS</label>
                 <textarea id="synopsis" name="synopsis" rows="8" cols="33"></textarea>
+                <p>Synopsis Max Length: <span id="charCount">500</span></p>
             </div>
             <div class="card">
                 <label for="pages_number">NUMBER OF PAGES</label>
@@ -90,6 +91,24 @@
     <footer>
       All Rights Reserved: by Diego Deiro & Henrique Viana 
   </footer>
+
+  <script>
+    const textarea = document.getElementById('synopsis');
+    const charCountSpan = document.getElementById('charCount');
+    const maxLength = 500; 
+
+    textarea.addEventListener('input', function() {
+        const currentLength = textarea.value.length;
+        const remainingChars = maxLength - currentLength;
+
+        charCountSpan.textContent = remainingChars;
+
+        if (remainingChars < 0) {
+            textarea.value = textarea.value.substring(0, maxLength);
+            charCountSpan.textContent = 0;
+        }
+    });
+</script>
 </main>
 </body>
 </html>
