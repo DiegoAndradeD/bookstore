@@ -60,6 +60,12 @@ router.get('/bookPage', (req, res) => {
 	res.render('bookPage', {userId: userId, isAdmin: isAdmin, email: email, navbar: 'navbar'});
 });
 
+router.get('/Favoritebook', (req, res) => {
+	const email = req.session.email;
+	const isAdmin  = req.session.isAdmin;
+	res.render('Favoritebook', {isAdmin: isAdmin, email: email, navbar: 'navbar'});
+});
+
 router.post('/searchBook', bookController.searchBook);
 
 router.get('/addBook', isAdminMiddleware, bookController.getBooks);
