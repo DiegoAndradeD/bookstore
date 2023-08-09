@@ -100,13 +100,13 @@ const favoriteBook = async (req, res) => {
     const isBookInFavorites = user.favoriteBooks.some(favorite => favorite.equals(book._id));
     
     if (isBookInFavorites) {
-      return res.status(201).json({ successMessage: 'Book is already in your favorites.' });
+      return res.status(201).json('Book is already in your favorites.');
     }
   
     user.favoriteBooks.push(book);
     await user.save();
   
-    res.json({successMessage: 'Book added to your favorites!'});
+    return res.status(201).json('Book added to your favorites!');
   } catch (error) {
     res.status(error.statusCode || 500).json({ errorMessage: error.message });
   }

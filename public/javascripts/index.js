@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4) {
-
+    var response = JSON.parse(xhr.responseText);
+    
+        
       //Variables
 
       var response = JSON.parse(xhr.responseText);
@@ -22,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const searchButton = document.getElementById('searchButton');
       const searchText = document.getElementById('searchText');
+      
 
       //Place the Trending books in the container images
 
@@ -125,4 +128,67 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
   xhr.send();
+});
+
+// load event listener to configure the behavior that the favorite link should take
+//It's behavior depends on if the user is logged in or not
+
+document.addEventListener("DOMContentLoaded", function () {
+  const highlightChildElements = document.querySelectorAll(".highligthChildElememt");
+  var body = document.querySelector('body');
+  var userId = body.getAttribute('data-user-id');
+  console.log('userId:', userId);
+
+  highlightChildElements.forEach(highlightChildElement => {
+      const favLinks = highlightChildElement.querySelector('.favLinks');
+      const favLinks2List = highlightChildElement.querySelectorAll('.favLinks2');
+      console.log(favLinks);
+      const p = highlightChildElement.querySelector('.favImg'); 
+      const img = document.createElement("img");
+
+      if (favLinks) {
+        if (userId) {
+            favLinks.href = `/user/${userId}/favorite/`;
+        } else {
+            favLinks.className = "popupClick";
+            favLinks.href = "#";
+        } 
+      }
+
+      favLinks2List.forEach(favLink2 => {
+        if (userId) {
+          favLink2.href = `/user/${userId}/favorite/`;
+        } else {
+          favLink2.className = "popupClick";
+          favLink2.href = "#";
+        }
+      });
+
+      const popupClickLinks = document.querySelectorAll(".popupClick");
+      const myPopup = document.getElementById("myPopup");
+      const closePopup = document.getElementById("closePopup");
+      const popupParagraph = document.getElementById("popupParagraph");
+
+      const popupMessage = 'You need to be logged in to add this book to your favorites';
+
+      popupClickLinks.forEach(link => {
+          link.addEventListener("click", function (event) {
+              event.preventDefault();
+              popupParagraph.innerHTML = popupMessage;
+              myPopup.style.display = "block";
+          });
+      });
+
+      closePopup.addEventListener("click", function () {
+          myPopup.style.display = "none";
+      });
+
+      img.src = "images/favorite.svg";
+      img.alt = "";
+
+      p.appendChild(img);
+
+      
+  });
+
 });

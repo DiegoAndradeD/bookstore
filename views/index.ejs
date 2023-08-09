@@ -6,13 +6,20 @@
     <title>Home</title>
     <link rel="stylesheet" href="/stylesheets/index.css">
     <link rel="shortcut icon" href="/images/BookOpen.svg" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
   </head>
-<body data-user-id="<%= userId %>">
+
+  <style>
+</style>
+
+<body data-user-id="<%= userId %>">  
     
     <header>
       <%- include(navbar) %>
     </header>
-
+    
     <div class="popup" id="myPopup">
         <p id="popupParagraph"></p>
         <button id="closePopup">Close</button>
@@ -139,7 +146,7 @@
                 <div class="highligthChild" id="item1Adventure"></div>
                 <div class="highligthChildElememt">
                     <p id="advItem1Price"></p>
-                    <a href="" class="favLinks">
+                    <a href="" class="favLinks2">
                         <p class="favImg"></p>
                     </a>
                     <a href="">
@@ -151,7 +158,7 @@
                 <div class="highligthChild" id="item2Adventure"></div>
                 <div class="highligthChildElememt">
                     <p id="advItem2Price"></p>
-                    <a href="" class="favLinks">
+                    <a href="" class="favLinks2">
                         <p class="favImg"></p>
                     </a>
                     <a href="">
@@ -163,7 +170,7 @@
                 <div class="highligthChild" id="item3Adventure"></div>
                 <div class="highligthChildElememt">
                     <p id="advItem3Price"></p>
-                    <a href="" class="favLinks">
+                    <a href="" class="favLinks2">
                         <p class="favImg"></p>
                     </a>
                     <a href="">
@@ -175,7 +182,7 @@
                 <div class="highligthChild" id="item4Adventure"></div>
                 <div class="highligthChildElememt">
                     <p id="advItem4Price"></p>
-                    <a href="" class="favLinks">
+                    <a href="" class="favLinks2">
                         <p class="favImg"></p>
                     </a>
                     <a href="">
@@ -187,7 +194,7 @@
                 <div class="highligthChild" id="item5Adventure"></div>
                 <div class="highligthChildElememt">
                     <p id="advItem5Price"></p>
-                    <a href="" class="favLinks">
+                    <a href="" class="favLinks2">
                         <p class="favImg"></p>
                     </a>
                     <a href="">
@@ -199,62 +206,64 @@
       </div>
   </main>
 
-  <div id="errorMessage"></div>
-    <div id="successMessage"></div>
-
-
   <footer>
     All Rights Reserved: by Diego Deiro & Henrique Viana 
 </footer>
-
-<script>
-   document.addEventListener("DOMContentLoaded", function () {
-    const highlightChildElements = document.querySelectorAll(".highligthChildElememt");
-    var body = document.querySelector('body');
-    var userId = body.getAttribute('data-user-id');
-    console.log('userId:', userId);
-
-    highlightChildElements.forEach(highlightChildElement => {
-        const favLinks = highlightChildElement.querySelector('.favLinks');
-        const p = highlightChildElement.querySelector('.favImg'); 
-        const img = document.createElement("img");
-
-        if (userId) {
-            favLinks.href = `/user/${userId}/favorite/`;
-        } else {
-            favLinks.className = "popupClick";
-            favLinks.href = "#";
-        }
-
-        const popupClickLinks = document.querySelectorAll(".popupClick");
-        const myPopup = document.getElementById("myPopup");
-        const closePopup = document.getElementById("closePopup");
-        const popupParagraph = document.getElementById("popupParagraph");
-
-        const popupMessage = 'You need to be logged in to add this book to your favorites';
-
-        popupClickLinks.forEach(link => {
-            link.addEventListener("click", function (event) {
-                event.preventDefault();
-                popupParagraph.innerHTML = popupMessage;
-                myPopup.style.display = "block";
-            });
-        });
-
-        closePopup.addEventListener("click", function () {
-            myPopup.style.display = "none";
-        });
-
-        img.src = "images/favorite.svg";
-        img.alt = "";
-
-        p.appendChild(img);
-    });
-});
-  </script>
     <script src="/javascripts/index.js"></script>
     <script src="/javascripts/popup.js"></script>
     <script src="/javascripts/messageHandler.js"></script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const favLinks = document.querySelectorAll('.favLinks'); 
+    favLinks.forEach(link => {
+        link.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const route = link.getAttribute('href'); 
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', route, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 201) {
+                        popupParagraph.textContent = xhr.responseText;
+                    } else {
+                        popupParagraph.textContent = 'An error occurred.';
+                    }
+                    myPopup.style.display = 'block';
+                }
+            };
+            xhr.send();
+        });
+    });
+
+    const favLinks2List = document.querySelectorAll('.favLinks2');
+    favLinks2List.forEach(link => {
+        link.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const route = link.getAttribute('href'); 
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', route, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 201) {
+                        popupParagraph.textContent = xhr.responseText;
+                    } else {
+                        myPopup.style.display = 'block';
+                    }
+                    myPopup.style.display = 'block';
+                }
+            };
+            xhr.send();
+        });
+    });
+});
+
+</script>
+
+
+
+
 </body>
 
 
