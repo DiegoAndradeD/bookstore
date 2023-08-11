@@ -91,8 +91,7 @@ function initializePage() {
           }
         }
 
-        //Add an click event to the elements with the clickable class
-        //Redirecting the to their book page after being clicked
+        
 
         /*
           This function is responsible for: 
