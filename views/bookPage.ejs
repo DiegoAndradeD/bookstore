@@ -22,7 +22,7 @@
         }
     </style>
 </head>
-<body>
+<body data-user-id="<%= userId %>">
     <header>
         <%-
         include(navbar)
@@ -42,7 +42,7 @@
                  <div class="bookInfoContainer">
                     <div id="titleContainer" class="bookInfoChild">
                     <p><%= bookDetail.title %></p>
-                    <a href="" class="favLinks">
+                    <a href="<%= bookDetail._id %>" class="favLinks" id="favLinks">
                         <p class="favImg"><img src="/images/favorite.svg" alt="Favorite Icon"></p>
                     </a>
                     </div>
@@ -93,6 +93,7 @@
         All Rights Reserved: by Diego Deiro & Henrique Viana 
     </footer>
     <script src="/javascripts/menBuy.js"></script>
+    <script src="/javascripts/handleFavLink.js"></script>
 
 </body>
 </html>
