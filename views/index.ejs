@@ -78,7 +78,7 @@
             <div class="highligthCard">
                 <div class="highligthChild" id="item1Fantasy">item1</div>
                 <div class="highligthChildElememt">
-                    <p id="item1Price"></p>
+                    <p id="item1FantasyPrice"></p>
                     <a href="" class="favLinks">
                         <p class="favImg"></p>
                     </a>
@@ -90,7 +90,7 @@
             <div class="highligthCard">
                 <div class="highligthChild" id="item2Fantasy">item2</div>
                 <div class="highligthChildElememt">
-                    <p id="item2Price"></p>
+                    <p id="item2FantasyPrice"></p>
                     <a href="" class="favLinks">
                         <p class="favImg"></p>
                     </a>
@@ -102,7 +102,7 @@
             <div class="highligthCard">
                 <div class="highligthChild" id="item3Fantasy">item3</div>
                 <div class="highligthChildElememt">
-                    <p id="item3Price"></p>
+                    <p id="item3FantasyPrice"></p>
                     <a href="" class="favLinks">
                         <p class="favImg"></p>
                     </a>
@@ -114,7 +114,7 @@
             <div class="highligthCard">
                 <div class="highligthChild" id="item4Fantasy">item4</div>
                 <div class="highligthChildElememt">
-                    <p id="item4Price"></p>
+                    <p id="item4FantasyPrice"></p>
                     <a href="" class="favLinks">
                         <p class="favImg"></p>
                     </a>
@@ -126,7 +126,7 @@
             <div class="highligthCard">
                 <div class="highligthChild" id="item5Fantasy">item5</div>
                 <div class="highligthChildElememt">
-                    <p id="item5Price"></p>
+                    <p id="item5FantasyPrice"></p>
                     <a href="" class="favLinks">
                         <p class="favImg"></p>
                     </a>
@@ -145,7 +145,7 @@
             <div class="highligthCard">
                 <div class="highligthChild" id="item1Adventure"></div>
                 <div class="highligthChildElememt">
-                    <p id="advItem1Price"></p>
+                    <p id="item1AdventurePrice"></p>
                     <a href="" class="favLinks2">
                         <p class="favImg"></p>
                     </a>
@@ -157,7 +157,7 @@
             <div class="highligthCard">
                 <div class="highligthChild" id="item2Adventure"></div>
                 <div class="highligthChildElememt">
-                    <p id="advItem2Price"></p>
+                    <p id="item2AdventurePrice"></p>
                     <a href="" class="favLinks2">
                         <p class="favImg"></p>
                     </a>
@@ -169,7 +169,7 @@
             <div class="highligthCard">
                 <div class="highligthChild" id="item3Adventure"></div>
                 <div class="highligthChildElememt">
-                    <p id="advItem3Price"></p>
+                    <p id="item3AdventurePrice"></p>
                     <a href="" class="favLinks2">
                         <p class="favImg"></p>
                     </a>
@@ -181,7 +181,7 @@
             <div class="highligthCard">
                 <div class="highligthChild" id="item4Adventure"></div>
                 <div class="highligthChildElememt">
-                    <p id="advItem4Price"></p>
+                    <p id="item4AdventurePrice"></p>
                     <a href="" class="favLinks2">
                         <p class="favImg"></p>
                     </a>
@@ -193,7 +193,7 @@
             <div class="highligthCard">
                 <div class="highligthChild" id="item5Adventure"></div>
                 <div class="highligthChildElememt">
-                    <p id="advItem5Price"></p>
+                    <p id="item5AdventurePrice"></p>
                     <a href="" class="favLinks2">
                         <p class="favImg"></p>
                     </a>
@@ -211,59 +211,6 @@
 </footer>
     <script src="/javascripts/index.js"></script>
     <script src="/javascripts/popup.js"></script>
-    <script src="/javascripts/messageHandler.js"></script>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const favLinks = document.querySelectorAll('.favLinks'); 
-    favLinks.forEach(link => {
-        link.addEventListener('click', async (event) => {
-            event.preventDefault();
-            const route = link.getAttribute('href'); 
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', route, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 201) {
-                        popupParagraph.textContent = xhr.responseText;
-                    } else {
-                        popupParagraph.textContent = 'An error occurred.';
-                    }
-                    myPopup.style.display = 'block';
-                }
-            };
-            xhr.send();
-        });
-    });
-
-    const favLinks2List = document.querySelectorAll('.favLinks2');
-    favLinks2List.forEach(link => {
-        link.addEventListener('click', async (event) => {
-            event.preventDefault();
-            const route = link.getAttribute('href'); 
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', route, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 201) {
-                        popupParagraph.textContent = xhr.responseText;
-                    } else {
-                        myPopup.style.display = 'block';
-                    }
-                    myPopup.style.display = 'block';
-                }
-            };
-            xhr.send();
-        });
-    });
-});
-
-</script>
-
-
-
-
 </body>
 
 

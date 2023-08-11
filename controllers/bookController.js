@@ -59,9 +59,11 @@ const getBookDetails = async (req, res) => {
   const bookId = req.query.id;
 	
 	try {
+    const trendingBooks = await Book.aggregate([{ $sample: { size: 5 } }]);
+
 	  const bookDetail = await Book.findById(bookId);
     const { email, isAdmin} = req.session;
-	  return res.render('bookPage', { bookDetail, email, isAdmin, navbar: 'navbar' });
+	  return res.render('bookPage', { bookDetail, email, isAdmin, navbar: 'navbar', trendingBooks });
 	} catch (error) {
 	  res.status(error.statusCode || 500).json({ errorMessage: error.message });
 	}
@@ -69,9 +71,7 @@ const getBookDetails = async (req, res) => {
 };
 
 const searchBook = async (req, res) => {
-
     const {searchText} = req.body;
-
     try {
       const searchResult = await Book.find({
         $or: [

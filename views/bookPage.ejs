@@ -8,7 +8,18 @@
     <link rel="shortcut icon" href="/images/BookOpen.svg" type="image/x-icon">
     <title>Book Page</title>
     <style>
+        .highligthChild {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        .highligthChild img {
+            width: 479;
+            height: 316px;
+            object-fit: cover; /* Maintain aspect ratio and cover the entire container */
 
+        }
     </style>
 </head>
 <body>
@@ -17,33 +28,23 @@
         include(navbar)
         %>
     </header>
-    
 
-
-
-
-
-
+    <div class="popup" id="myPopup">
+        <p id="popupParagraph"></p>
+        <button id="closePopup">Close</button>
+    </div>
 
     <main>
-        
-        
-        
-        
         <div class="mainContainer">
-            
-            
-            
-            
-            
-            
             <div class="imageContainer">
                 <img src="/images/bookCovers/<%=bookDetail.cover %>" alt="">
                  </div>
                  <div class="bookInfoContainer">
                     <div id="titleContainer" class="bookInfoChild">
                     <p><%= bookDetail.title %></p>
-                    <a href=""><img src="/images/favorite.svg" alt="Favorite Icon"></a>
+                    <a href="" class="favLinks">
+                        <p class="favImg"><img src="/images/favorite.svg" alt="Favorite Icon"></p>
+                    </a>
                     </div>
                     <div id="authorContainer" class="bookInfoChild">
                     <p>Author: <%= bookDetail.author %></p>
@@ -65,71 +66,33 @@
                     
                     <section id="buyNowBtn">
                         <samp style="font-size: 23px; cursor: pointer;" onclick="openNav()"> Buy Now </samp>
-                    </section>
-
-                    
-                
-                
-                
-                
-                
-                
-                
+                    </section>           
                 </div>
-
-            
-
             </div>
-
-            
-                <aside id="menuOculto" class="menuOculto">
-                    <a href="#" class="btnclose" onclick="closeNav()">&times;</a>
-                    <a href="#"> <button>dsd</button></a>
-                    <a href="#">teste</a>
-                    <a href="#">teste</a>
-                
-                
-                
-                </aside>
-           
-
-
-
-
-            
+            <aside id="menuOculto" class="menuOculto">
+                <a href="#" class="btnclose" onclick="closeNav()">&times;</a>
+                <a href="#"> <button>dsd</button></a>
+                <a href="#">teste</a>
+                <a href="#">teste</a>
+            </aside>
         </div>
-
-        
-
 
         <div class="secondContainer">
             <p style="text-align: center;" class="categoryText"><strong>View More</strong></p>
             <div id="highligth" class="highligth">
-                <div class="highligthChild" id="item1">item1</div>
-                <div class="highligthChild" id="item2">item2</div>
-                <div class="highligthChild" id="item3">item3</div>
-                <div class="highligthChild" id="item4">item4</div>
-                <div class="highligthChild" id="item5">item5</div>
+                <% for (let i = 0; i < trendingBooks.length; i++) { %>
+                    <div class="highligthChild" id="item<%= i + 1 %>">
+                        <a href="/bookPageRedirect?id=<%= trendingBooks[i]._id %>"><img src="/images/bookCovers/<%= trendingBooks[i].cover %>" alt=""></a>
+                    </div>
+                <% } %>
             </div>
         </div>
     </main>
 
-    <div id="errorMessage"></div>
-    <div id="successMessage"></div>
-
     <footer>
         All Rights Reserved: by Diego Deiro & Henrique Viana 
     </footer>
-
-    <script src="/javascripts/getIndexBooks.js"> </script>
-
-
-
     <script src="/javascripts/menBuy.js"></script>
 
-
-    <script src="/javascripts/index.js"></script>
-
-    
 </body>
 </html>
