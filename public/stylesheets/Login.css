@@ -91,6 +91,7 @@ body{
 .btn-primory{
     background-color: rgb(77, 77, 233);
     color: white;
+    cursor: pointer;
 
 }
 .brn-secondery{
