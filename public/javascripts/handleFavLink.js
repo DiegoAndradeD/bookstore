@@ -1,10 +1,14 @@
+const body = document.querySelector('body');
+const userId = body.getAttribute('data-user-id');
+
+
 function setupFavoritesPopup() {
     document.addEventListener("DOMContentLoaded", function () {
       const favLinks = document.getElementById('favLinks');
       const p = document.querySelector('.favImg');
       const img = document.createElement("img");
-      const body = document.querySelector('body');
-      const userId = body.getAttribute('data-user-id');
+
+     
   
       var hrefValue = favLinks.getAttribute('href');
       if (favLinks) {
@@ -63,4 +67,7 @@ function setupFavoritesPopup() {
       });
     });
   }
-  setupFavLinksClick()
+
+if (userId) {
+    setupFavLinksClick(); 
+}

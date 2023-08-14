@@ -73,6 +73,7 @@ const getBookDetails = async (req, res) => {
 
 const searchBook = async (req, res) => {
     const {searchText} = req.body;
+    const userId = req.session.userId;
     try {
       const searchResult = await Book.find({
         $or: [
@@ -81,7 +82,7 @@ const searchBook = async (req, res) => {
         ]
       });
       const { email, isAdmin} = req.session;
-      return res.render('searchResult', { searchText, searchResult, email, isAdmin, navbar: 'navbar' });
+      return res.render('searchResult', {userId: userId, searchText, searchResult, email, isAdmin, navbar: 'navbar' });
     } catch (error) {
       res.status(error.statusCode || 500).json({ errorMessage: error.message });
     }
