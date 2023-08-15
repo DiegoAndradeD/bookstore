@@ -187,12 +187,10 @@
                     <p><%= bookDetail.synopsis %></p>
                 </div>
                 <div id="priceStockContainer" class="bookInfoChild">
-                    <p>$<%= bookDetail.price %>.00</p>
                     <div class="bookInfoChild4_SubItems">
-                        <button class="stockBtn">-</button>
-                        <p id="stockNumber">1</p>
-                        <button class="stockBtn">+</button>
+                        <p>Price:</p>
                     </div>
+                    <p>$<%= bookDetail.price %>.00</p>
                     </div>
                     <div class="bookInfoChild">
                     <a href="#" id="cartBtn"><img src="/images/SHOPPING_CART _Black.svg" data-book-id="<%= bookDetail._id %>" alt="Shopping Cart"></a>
