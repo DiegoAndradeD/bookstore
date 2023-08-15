@@ -1,25 +1,46 @@
+//This script is responsible for the search result page functionality
+//The comments in this section shall be plentier to facilitate the understand of its functionality
+
+
+// Selects all images inside elements with the 'imageContainer' class
 const images = document.querySelectorAll('.imageContainer img');
-        
+
+// For each image, add a click event listener
 images.forEach(image => {
+    // Get the image ID and remove the 'bookImage' part to get the book ID
     const bookId = image.id.replace('bookImage', '');
+    // When the image is clicked, it redirects to the book page with the ID as a parameter
     image.addEventListener('click', () => {
         window.location.href = '/bookPageRedirect?id=' + bookId;
     });
 });
 
+// Select filter elements
 const firstFilter = document.getElementById('firstFilter');
 const secondFilter = document.getElementById('secondFilter');
 const mainContainers = document.querySelectorAll('.mainContainer');
 
+// Add an event listener for the first filter
 firstFilter.addEventListener('change', () => {
+    // Gets the value selected in the first filter
     const selectedFirstFilter = firstFilter.value;
+    // Update second filter options based on selected value
     updateSecondFilterOptions(selectedFirstFilter);
 });
 
+// Function to update the second filter options
 function updateSecondFilterOptions(selectedFirstFilter) {
     const secondFilterOptions = document.getElementById('secondFilter');
+    // Reinitialize the second filter options with a default option
     secondFilterOptions.innerHTML = '<option value="all">All</option>';
 
+
+    /*
+        Update the options based on the value selected in the first filter
+        Get all containers from the selectedFirstFilter value
+        Populate second filter options with unique option of the selectedFirstFilter value
+        (This proceding repeats itself for the whole if-else structure, onyl changing the first filter value: category, author, etc...)
+    */
     if (selectedFirstFilter === 'category') {
         const categoryContainers = document.querySelectorAll('.categoryContainer');
         fillSecondFilterOptions(getUniqueCategories(categoryContainers), secondFilterOptions);
@@ -38,16 +59,20 @@ function updateSecondFilterOptions(selectedFirstFilter) {
     } 
 }
 
-
+// Function to fill in the second filter options
 function fillSecondFilterOptions(options, filterElement) {
     options.forEach(optionValue => {
+        // Create an option element
         const option = document.createElement('option');
+        // Set the option values
         option.value = optionValue;
         option.textContent = optionValue;
+        // Add the option to the filter element
         filterElement.appendChild(option);
     });
 }
 
+// Functions to get unique options for categories, authors, languages, etc.
 function getUniqueCategories() {
     const categories = [];
     mainContainers.forEach(container => {
@@ -89,6 +114,7 @@ function getUniquePrices() {
     return ['< 10', '10 - 30', '30 - 60', '60 - 90', '> 100'];
 }
 
+// Function to check if a value meets a certain filter
 function checkValueFilter(value, selectedSecondFilter) {
     switch (selectedSecondFilter) {
         case '< 100':
@@ -119,12 +145,17 @@ function checkValueFilter(value, selectedSecondFilter) {
     }
 }
 
+// Add an event listener for the second filter
 secondFilter.addEventListener('change', () => {
+    // Gets the values selected in the filters
     const selectedFirstFilter = firstFilter.value;
     const selectedSecondFilter = secondFilter.value;
+    // Filter books based on filter values
     filterBooks(selectedFirstFilter, selectedSecondFilter);
 });
 
+
+// Function to filter books based on filter values
 function filterBooks(selectedFirstFilter, selectedSecondFilter) {
     mainContainers.forEach(container => {
         let showBook = true;

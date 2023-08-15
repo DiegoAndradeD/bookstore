@@ -1,3 +1,7 @@
+//This controller may have function that return json or render an page with parameters passage.
+
+
+//Modules import
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -5,17 +9,23 @@ const bodyParser = require('body-parser');
 const {db} = require('../public/javascripts/db');
 const {User, UserModel} = require('../models/User');
 
+
+// Middleware configuration for parsing HTML form data
 app.use(bodyParser.urlencoded({extended: false}));
+// Middleware configuration for parsing data in JSON format
 app.use(bodyParser.json());
+// Additional middleware configuration for parsing data in JSON format
 app.use(express.json());
+// Middleware configuration to serve static files
+// from the 'public' directory in the application path
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Function responsible for processing the user signup
 const signup = async (req, res) => {
 
    const {userName, fullName, email, password} = req.body;
 
    try {   
-
     UserModel.validateUser(userName, fullName, email);
 
     if(!UserModel.validatePassword(password)) {
@@ -28,11 +38,9 @@ const signup = async (req, res) => {
     }
 
     const newUser = new User({userName, fullName, email, password});
-
     await newUser.save();
-
     res.status(201).json({successMessage: 'User registered Successfully'});
-    console.log('User registered Successfully');
+
    } catch (error) {
     res.status(error.statusCode || 500).json({errorMessage: error.message});
     console.log(error.message);
@@ -40,6 +48,7 @@ const signup = async (req, res) => {
 
 }
 
+//Function responsible for processing the user login
 const login = async (req, res) => {
 
     const {email, password} = req.body;

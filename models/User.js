@@ -123,9 +123,6 @@ class UserModel {
             return passwordPattern.test(password);
         }
     }
-
-    
-
 }
 
 

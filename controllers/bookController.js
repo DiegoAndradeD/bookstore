@@ -190,6 +190,8 @@ const removeFavorite = async (req, res) => {
   }
 }
 
+//Function to add a book to an user's cart
+//If the book is already added, it will only increase it's quantity in the cart
 const addBookToCart = async(req, res) => {
 
   try {
@@ -223,6 +225,8 @@ const addBookToCart = async(req, res) => {
 
 }
 
+
+//Function to get the items on the user's cart
 const getCartItems = async(req, res) => {
 
   try {
