@@ -1,14 +1,18 @@
+//This application uses EJS as its main render
+//This controller may have function that return json or render an page with parameters passage.
+
 const {User} = require('../models/User');
 const Book = require('../models/Book');
 const { json } = require('express');
 
-
+//Function to add a book to database
 const addBook = async (req, res) => {
   try {
 
     const { title, author, synopsis, pages_number, price, isInStock, category, idiom, publisher, quantity} = req.body;
     const cover = req.file.filename;
 
+    //Conversion to lowercase for better matching
     const lowercaseTitle = title.toLowerCase();
     const lowercaseAuthor = author.toLowerCase();
     const lowercaseSynopsis = synopsis.toLowerCase();
@@ -26,6 +30,8 @@ const addBook = async (req, res) => {
   }
 };
 
+//Function to get books from database
+//This is an function used in an only admin page
 const getBooks = async (req, res) => {
   try {
     const books = await Book.find();
@@ -36,6 +42,12 @@ const getBooks = async (req, res) => {
   }
 };
 
+//Function to get books to index page
+/*
+  This function aggregate 5 random books to 3 categorys each:
+    Trending Books - Any book that is get first from the database
+    Fantasy and Adventure Books - Books that match the category fantasy and adventure
+*/
 const getIndexBooks = async (req, res) => {
   try {
     const trendingBooks = await Book.aggregate([{ $sample: { size: 5 } }]);
@@ -54,7 +66,8 @@ const getIndexBooks = async (req, res) => {
   }
 };
 
-
+//Function to get a specific book's data
+//Also, it get's five random books to the lower part of the page
 const getBookDetails = async (req, res) => {
 
   const bookId = req.query.id;
@@ -72,6 +85,9 @@ const getBookDetails = async (req, res) => {
 
 };
 
+
+//Function responsible for searching any matching for book name or author in the database
+//The search is based in similarity from the user input to the database data
 const searchBook = async (req, res) => {
     const {searchText} = req.body;
     const userId = req.session.userId;
@@ -90,6 +106,9 @@ const searchBook = async (req, res) => {
 
 }
 
+
+//Function to favorite a book
+//This function it's only to work if the user is logged and the book id is valid
 const favoriteBook = async (req, res) => {
 
   try {
@@ -116,6 +135,8 @@ const favoriteBook = async (req, res) => {
 
 }
 
+//Function to get an user's favorite books
+//Also, this function implements search functionalities for serach into the user's favorite books
 const getFavoriteBooks = async (req, res) => {
   try {
     const userId = req.session.userId;
@@ -141,6 +162,8 @@ const getFavoriteBooks = async (req, res) => {
   }
 };
 
+
+//Function to remove a book from a user's favorite books collection
 const removeFavorite = async (req, res) => {
   try {
       const userId = req.session.userId;
@@ -169,5 +192,5 @@ const removeFavorite = async (req, res) => {
 
 
 
-
+//Functions exports
 module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook, favoriteBook, getFavoriteBooks, removeFavorite };
