@@ -86,5 +86,9 @@ router.get('/favoritePage', bookController.getFavoriteBooks);
 
 router.get('/book/:bookId/removeFavorite', bookController.removeFavorite);
 
+router.get('/addToCart/:bookId', bookController.addBookToCart);
+
+router.get('/getCartItems/:bookId', bookController.getCartItems);
+
 
 module.exports = router;

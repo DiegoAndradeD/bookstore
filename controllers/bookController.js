@@ -190,7 +190,58 @@ const removeFavorite = async (req, res) => {
   }
 }
 
+const addBookToCart = async(req, res) => {
+
+  try {
+    const userId = req.session.userId;
+    const bookId = req.params.bookId;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User Not Found' });
+    }
+
+    const book = await Book.findById(bookId);
+
+    if (!book) {
+      return res.status(404).json({ message: 'Book not found' });
+    }
+
+    const existingCartItem = user.shoppingCart.find(item => item.book.equals(book._id));
+    if (existingCartItem) {
+      existingCartItem.quantity++;
+    } else {
+      user.shoppingCart.push({ book: book._id });
+    }
+
+    await user.save();
+    console.log('Book Added to Your Cart');
+    res.status(200).json({ message: 'Book Added to Your Cart' });
+  } catch (error) {
+    res.status(500).json({ message: 'Erro adding book to cart'});
+  }
+
+}
+
+const getCartItems = async(req, res) => {
+
+  try {
+    const userId = req.session.userId;
+    const user = await User.findById(userId).populate('shoppingCart.book');
+
+    if (!user) {
+      console.log("user not found");
+      return res.status(404).json({ message: 'User Not found' });
+    }
+
+    res.status(200).json(user.shoppingCart);
+  } catch (error) {
+    res.status(500).json({ message: 'Erro getting cart items.' });
+  }
+
+}
+
 
 
 //Functions exports
-module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook, favoriteBook, getFavoriteBooks, removeFavorite };
+module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook, favoriteBook, getFavoriteBooks, removeFavorite, addBookToCart, getCartItems };
