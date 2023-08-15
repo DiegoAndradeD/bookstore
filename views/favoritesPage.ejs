@@ -2,15 +2,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results</title>
+    <title>Favorite Page</title>
     <link rel="stylesheet" href="/stylesheets/bookPage.css">
     <link rel="stylesheet" href="/stylesheets/searchResult.css">
     <link rel="shortcut icon" href="/images/BookOpen.svg" type="image/x-icon">
 </head>
+<style>
+
+    .favLinks img{
+        background-color: rgba(206, 148, 40, 0.859);
+    }
+
+</style>
 <body>
     <header>
         <%- include(navbar) %>
     </header>
+
+    <div class="popup" id="myPopup">
+        <p id="popupParagraph"></p>
+        <button id="closePopup">Close</button>
+    </div>
 
     <div class="searchContainer">
         <div class="searchContainerText">
@@ -52,6 +64,9 @@
                         <div class="bookInfoContainer">
                             <div id="titleContainer" class="bookInfoChild">
                                 <p><%= book.title %></p>
+                                <a href="/book/<%=book._id%>/removeFavorite" class="favLinks" id="favLinks">
+                                    <p class="favImg"><img src="/images/favorite.svg" alt="Favorite Icon"></p>
+                                </a>
                             </div>
                             <div id="authorContainer" class="bookInfoChild">
                                 <p>Author: <%= book.author %></p>
@@ -111,5 +126,45 @@
     </footer>
 
     <script src="/javascripts/searchResult.js"></script>
+
+
+    <script>
+
+        function setupFavLinksClick() {
+            document.addEventListener("DOMContentLoaded", function () {
+                const favLinks = document.querySelectorAll('.favLinks');
+                favLinks.forEach(link => {
+                    link.addEventListener('click', async (event) => {
+                        event.preventDefault();
+                        const route = link.getAttribute('href'); 
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('GET', route, true);
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState === XMLHttpRequest.DONE) {
+                                const popupParagraph = document.getElementById("popupParagraph");
+                                const myPopup = document.getElementById("myPopup");
+                                if (xhr.status === 200) {
+                                    popupParagraph.textContent = xhr.responseText;
+                                } else {
+                                    popupParagraph.textContent = 'An error occurred.';
+                                }
+                                myPopup.style.display = 'block';
+                            }
+                        };
+                        xhr.send();
+                    });
+                });
+            });
+        }
+  
+
+  closePopup.addEventListener("click", function () {
+        myPopup.style.display = "none";
+        location.reload()
+      });
+
+      setupFavLinksClick()
+
+    </script>
 </body>
 </html>

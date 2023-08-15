@@ -90,5 +90,7 @@ router.get('/user/:userId/favorite/:bookId', bookController.favoriteBook);
 
 router.get('/favoritePage', bookController.getFavoriteBooks);
 
+router.get('/book/:bookId/removeFavorite', bookController.removeFavorite);
+
 
 module.exports = router;

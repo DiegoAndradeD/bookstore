@@ -1,5 +1,6 @@
 const {User} = require('../models/User');
 const Book = require('../models/Book');
+const { json } = require('express');
 
 
 const addBook = async (req, res) => {
@@ -140,7 +141,33 @@ const getFavoriteBooks = async (req, res) => {
   }
 };
 
+const removeFavorite = async (req, res) => {
+  try {
+      const userId = req.session.userId;
+      const bookIdToRemove = req.params.bookId;
+      const user = await User.findById(userId).populate('favoriteBooks');
+
+      if (!user) {
+          return res.status(404).json({ errorMessage: "User Not found" });
+      }
+
+      const bookIndex = user.favoriteBooks.findIndex(book => book._id.toString() === bookIdToRemove);
+
+      if (bookIndex === -1) {
+          return res.status(404).json({ errorMessage: "Book Not found in favorites" });
+      }
+
+      user.favoriteBooks.splice(bookIndex, 1);
+      await user.save();
+
+      res.status(200).json("Book removed from favorites" );
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ errorMessage: "Internal Server Error" });
+  }
+}
 
 
 
-module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook, favoriteBook, getFavoriteBooks };
+
+module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook, favoriteBook, getFavoriteBooks, removeFavorite };
