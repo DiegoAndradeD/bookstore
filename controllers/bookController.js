@@ -200,13 +200,13 @@ const addBookToCart = async(req, res) => {
     const user = await User.findById(userId);
 
     if (!user) {
-      return res.status(404).json({ message: 'User Not Found' });
+      return res.status(404).json('Please LogIn to buy this book' );
     }
 
     const book = await Book.findById(bookId);
 
     if (!book) {
-      return res.status(404).json({ message: 'Book not found' });
+      return res.status(404).json( 'Book not found' );
     }
 
     const existingCartItem = user.shoppingCart.find(item => item.book.equals(book._id));
@@ -215,12 +215,13 @@ const addBookToCart = async(req, res) => {
     } else {
       user.shoppingCart.push({ book: book._id });
     }
+    console.log(existingCartItem.quantity);
 
     await user.save();
     console.log('Book Added to Your Cart');
-    res.status(200).json({ message: 'Book Added to Your Cart' });
+    res.status(200).json('Book Added to Your Cart! You have ' +  existingCartItem.quantity + " of this book in your cart");
   } catch (error) {
-    res.status(500).json({ message: 'Erro adding book to cart'});
+    res.status(500).json('Erro adding book to cart');
   }
 
 }
@@ -235,12 +236,12 @@ const getCartItems = async(req, res) => {
 
     if (!user) {
       console.log("user not found");
-      return res.status(404).json({ message: 'User Not found' });
+      return res.status(404).json('Please LogIn to buy this book' );
     }
 
     res.status(200).json(user.shoppingCart);
   } catch (error) {
-    res.status(500).json({ message: 'Erro getting cart items.' });
+    res.status(500).json('Erro getting cart items.');
   }
 
 }
