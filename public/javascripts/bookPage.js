@@ -83,7 +83,7 @@ if(userId) {
 
                 subtotal += book.price * quantity;;
 
-                sidebarFilled = true;
+                
             });
 
             const buyContainer = document.createElement("div");
@@ -117,6 +117,7 @@ if(userId) {
             closeSidebarButton.addEventListener("click", () => {
                 sidebar.classList.remove('active');
             });
+            sidebarFilled = true;
 
         } catch (error) {
             console.error("Error fetching cart items:", error);
