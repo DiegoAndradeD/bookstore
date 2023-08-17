@@ -65,6 +65,10 @@ if(userId) {
                 authorPara.textContent = `Author: ${book.author}`;
                 bookDetail2.appendChild(authorPara);
 
+                const quantityPara = document.createElement("p");
+                quantityPara.textContent = `Quantity: ${quantity}`;
+                bookDetail2.appendChild(quantityPara);
+
                 const pricePara = document.createElement("p");
                 pricePara.textContent = `$${book.price}.00`;
                 pricePara.style.color = "#F9784B"
@@ -77,7 +81,7 @@ if(userId) {
                 bookContainer.appendChild(bookDetailsContainer);
                 sidebar.appendChild(bookContainer);
 
-                subtotal += book.price;
+                subtotal += book.price * quantity;;
 
                 sidebarFilled = true;
             });
@@ -98,6 +102,7 @@ if(userId) {
             subtotalValue.innerHTML = "R$" + subtotal + ",00";
             const payButton = document.createElement("a");
             payButton.innerHTML = "Pay";
+            payButton.href = "/officializePurchase";
 
             buyContainerDetails1.appendChild(buyContainerH2);
             buyContainerDetails1.appendChild(subtotalValue);
@@ -141,6 +146,10 @@ document.addEventListener("DOMContentLoaded", function () {
             popupParagraph.textContent = 'An error occurred.';
           }
           myPopup.style.display = 'block';
+
+          setTimeout(() => {
+            window.location.reload();
+        }, 2000);
         }
       };
       xhr.send();

@@ -204,22 +204,26 @@ const addBookToCart = async(req, res) => {
     }
 
     const book = await Book.findById(bookId);
-
     if (!book) {
       return res.status(404).json( 'Book not found' );
     }
 
     const existingCartItem = user.shoppingCart.find(item => item.book.equals(book._id));
+
     if (existingCartItem) {
       existingCartItem.quantity++;
     } else {
       user.shoppingCart.push({ book: book._id });
     }
-    console.log(existingCartItem.quantity);
 
     await user.save();
+
+    const message = existingCartItem
+    ? `Book Added to Your Cart! You have ${existingCartItem.quantity} of this book in your cart`
+    : 'Book Added to Your Cart!';
+
     console.log('Book Added to Your Cart');
-    res.status(200).json('Book Added to Your Cart! You have ' +  existingCartItem.quantity + " of this book in your cart");
+    res.status(200).json(message);
   } catch (error) {
     res.status(500).json('Erro adding book to cart');
   }
@@ -246,7 +250,44 @@ const getCartItems = async(req, res) => {
 
 }
 
+const officializePurchase = async (req, res) => {
+  try {
+    const userId = req.session.userId;
+
+    if (!userId) {
+      return res.status(401).json('Please LogIn to make a purchase');
+    }
+
+    const user = await User.findById(userId).populate('shoppingCart.book');
+
+    if (!user) {
+      return res.status(404).json('User not found');
+    }
+
+    if (user.shoppingCart.length === 0) {
+      return res.status(400).json('Your cart is empty');
+    }
+
+    const purchaseData = user.shoppingCart.map(item => {
+      return {
+        bookTitle: item.book.title,
+        bookPrice: item.book.price,
+        quantity: item.quantity,
+        subtotal: item.quantity * item.book.price
+      };
+    });
+
+    user.shoppingCart = [];
+    await user.save();
+
+    const queryString = encodeURIComponent(JSON.stringify(purchaseData));
+    res.redirect(`/SuccessPage?data=${queryString}`);
+  } catch (error) {
+    res.status(500).json('Error officializing purchase');
+  }
+};
+
 
 
 //Functions exports
-module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook, favoriteBook, getFavoriteBooks, removeFavorite, addBookToCart, getCartItems };
+module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook, favoriteBook, getFavoriteBooks, removeFavorite, addBookToCart, getCartItems, officializePurchase };

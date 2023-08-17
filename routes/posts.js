@@ -60,6 +60,13 @@ router.get('/bookPage', (req, res) => {
 	res.render('bookPage', {userId: userId, isAdmin: isAdmin, email: email, navbar: 'navbar'});
 });
 
+router.get('/SuccessPage', (req, res) => {
+	const email = req.session.email;
+	const isAdmin  = req.session.isAdmin;
+	const userId = req.session.userId;
+	res.render('SuccessPage', {userId: userId, isAdmin: isAdmin, email: email, navbar: 'navbar'});
+});
+
 router.post('/searchBook', bookController.searchBook);
 
 router.get('/addBook', isAdminMiddleware, bookController.getBooks);
@@ -90,5 +97,6 @@ router.get('/addToCart/:bookId', bookController.addBookToCart);
 
 router.get('/getCartItems/:bookId', bookController.getCartItems);
 
+router.get('/officializePurchase', bookController.officializePurchase);
 
 module.exports = router;
