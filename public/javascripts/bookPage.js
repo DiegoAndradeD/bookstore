@@ -2,6 +2,7 @@ let sidebarFilled = false;
 
 if(userId) {
     document.addEventListener("DOMContentLoaded", function () {
+    const cartBtns = document.querySelectorAll(".cartBtn");
     const cartBtn = document.getElementById("cartBtn");
     const cartItemsContainer = document.getElementById("cartItems");
     const bookId = cartBtn.getAttribute("data-book-id");
@@ -12,8 +13,9 @@ if(userId) {
     
     let subtotal = 0;
     
-    cartBtn.addEventListener("click", async () => {
-        if (!sidebarFilled) { 
+    cartBtns.forEach(cartBtn => {
+      cartBtn.addEventListener("click", async () => {
+          if (!sidebarFilled) {
         try {
             console.log(`/getCartItems?bookId${bookId}`)
             const response = await fetch(`/getCartItems/${bookId}`);
@@ -126,33 +128,38 @@ if(userId) {
     sidebar.classList.add('active');
     });
 });
+});
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const buyNowText = document.getElementById('buyNowText');
-    buyNowText.addEventListener('click', async (event) => {
-      event.preventDefault();
-      const route = buyNowText.getAttribute('href'); 
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', route, true);
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          const popupParagraph = document.getElementById("popupParagraph");
-          const myPopup = document.getElementById("myPopup");
-          if (xhr.status === 200) {
-            popupParagraph.textContent = xhr.responseText;
-          } else if(xhr.status === 404) {
-            popupParagraph.textContent = xhr.responseText;
-          } else {
-            popupParagraph.textContent = 'An error occurred.';
-          }
-          myPopup.style.display = 'block';
+  const buyNowTexts = document.querySelectorAll(".buyNowText"); 
 
-          setTimeout(() => {
-            window.location.reload();
-        }, 2000);
-        }
-      };
-      xhr.send();
-    });
+  buyNowTexts.forEach(buyNowText => {
+      buyNowText.addEventListener('click', async (event) => {
+          event.preventDefault();
+          const route = buyNowText.getAttribute('href');
+          const xhr = new XMLHttpRequest();
+          xhr.open('GET', route, true);
+          xhr.onreadystatechange = function () {
+              if (xhr.readyState === XMLHttpRequest.DONE) {
+                  console.log(xhr.status);
+                  const popupParagraph = document.getElementById("popupParagraph");
+                  const myPopup = document.getElementById("myPopup");
+                  if (xhr.status === 200) {
+                      popupParagraph.textContent = xhr.responseText;
+                  } else if (xhr.status === 404) {
+                      popupParagraph.textContent = xhr.responseText;
+                  } else {
+                      popupParagraph.textContent = 'An error occurred.';
+                  }
+                  myPopup.style.display = 'block';
+
+                  setTimeout(() => {
+                      window.location.reload();
+                  }, 2000);
+              }
+          };
+          xhr.send();
+      });
   });
+});

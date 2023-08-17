@@ -1,6 +1,7 @@
 //Get the user id that was defined in the body by EJS
 const body = document.querySelector('body');
 const userId = body.getAttribute('data-user-id');
+console.log(userId);
 
 /* 
   Function to handle the processing the favorite link

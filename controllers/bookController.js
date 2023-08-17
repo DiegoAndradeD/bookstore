@@ -147,7 +147,7 @@ const getFavoriteBooks = async (req, res) => {
     }
 
     let favoriteBooks = user.favoriteBooks;
-    const { email, isAdmin } = req.session;
+    const { email, isAdmin} = req.session;
 
     const { searchText } = req.query;
 
@@ -156,7 +156,7 @@ const getFavoriteBooks = async (req, res) => {
       book.author.match(new RegExp(searchText, 'i'))
     );
 
-    return res.render('favoritesPage', { favoriteBooks, email, isAdmin, navbar: 'navbar', searchText });
+    return res.render('favoritesPage', { favoriteBooks, userId, email, isAdmin, navbar: 'navbar', searchText });
   } catch (error) {
     res.status(error.statusCode || 500).json({ errorMessage: error.message });
   }
