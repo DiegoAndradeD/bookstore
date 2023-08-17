@@ -42,3 +42,10 @@ class MobileNavbar {
     ".nav-list li",
   );
   mobileNavbar.init();
+
+  const chk = document.getElementById ('chk')
+
+  chk.addEventListener('change' , () => {
+    document.body.classList.toggle('dark')
+
+  })
