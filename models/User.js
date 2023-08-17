@@ -1,6 +1,7 @@
 const {db} = require('../public/javascripts/db');
 const mongoose = require('mongoose');
 
+//User model mongoDB schema
 const userSchema = new mongoose.Schema ({
 
     userName: {
@@ -41,6 +42,7 @@ const userSchema = new mongoose.Schema ({
 
 });
 
+//Static method to verify the user credentials
 userSchema.statics.verifyCredentials = async function(email, password) {
 
     console.log('Verifying credentials...');
@@ -48,11 +50,13 @@ userSchema.statics.verifyCredentials = async function(email, password) {
     console.log('Password:', password);
 
     try {
+        //Verify the user by it's email, that is unique in the Database
         const user = await this.findOne({email});
         if(!user) {
             console.log('User not found');
             throw new Error('User not found');
         }
+        //Verify if the password matches the user registered password
         const isPasswordValid = user.password === password;
         if(!isPasswordValid) {
             console.log('Password Invalid')
@@ -65,6 +69,8 @@ userSchema.statics.verifyCredentials = async function(email, password) {
     }
 };
 
+//Static method to verify if the user is registered
+//The search looks for an email in the database, that is a unique attribute, to see if it matches
 userSchema.statics.isUserRegistered = async function(email) {
 
     try {
@@ -77,12 +83,14 @@ userSchema.statics.isUserRegistered = async function(email) {
 
 };
 
-
+//This middleware verifies if the user logged is an admin
 const isAdminMiddleware = async (req, res, next) => {
+    //Prevents the normal user from being able to enter an admin-only access page, redirecting him to the login page
     if (!req.session.userId || !req.session.email) {
       return res.redirect('/Login'); 
     }
-  
+    
+    //Check the isAdmin attribute from the user after finding him in the database by an email search
     try {
         const user = await User.findOne({ email: req.session.email });
 
@@ -96,7 +104,7 @@ const isAdminMiddleware = async (req, res, next) => {
     }
   };
 
-
+//UserModel class and attributes
 class UserModel {
     constructor(userName, fullName, email, password) {
         this.userName = userName;
@@ -105,6 +113,7 @@ class UserModel {
         this.password = password;
     }
 
+    //Basic validation to not empty and not null username, full name or email
     static validateUser(userName, fullName, email) {
         if (userName === "" || userName === null) {
             throw new Error('Invalid User Name');
@@ -115,6 +124,7 @@ class UserModel {
         }
     }
 
+    //Basic validation for non-empty, non-null and standardized password
     static validatePassword(password) {
         const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
         if(password === "" || password === null) {
@@ -125,7 +135,7 @@ class UserModel {
     }
 }
 
-
+// Creation of the user model based on the schema
 const User = mongoose.model('User', userSchema);
 
 module.exports = {User, UserModel, isAdminMiddleware};

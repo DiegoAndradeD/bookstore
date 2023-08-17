@@ -250,6 +250,12 @@ const getCartItems = async(req, res) => {
 
 }
 
+/* 
+  Function to officializer the user purchase
+    This function, after verifying if the user is logged, is a valid user and does not have and empty cart...
+    ...creates a copy of his cart data, empties the user's cart, and redirects to the success page with...
+    ...the purchase data. 
+*/
 const officializePurchase = async (req, res) => {
   try {
     const userId = req.session.userId;
