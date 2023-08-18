@@ -37,6 +37,7 @@ nav {
   align-items: center;
   background: #23232e;
   height: 10vh;
+  
 }
   
 main {
@@ -48,6 +49,7 @@ main {
 .nav-list {
     list-style: none;
     display: flex;
+    margin-bottom: 0;
   }
   
 .nav-list li {

@@ -97,6 +97,8 @@ router.get('/addToCart/:bookId', bookController.addBookToCart);
 
 router.get('/getCartItems/:bookId', bookController.getCartItems);
 
+router.get('/removeBookFromCart/:bookId', bookController.removeBookFromCart);
+
 router.get('/officializePurchase', bookController.officializePurchase);
 
 module.exports = router;

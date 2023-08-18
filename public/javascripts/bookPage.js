@@ -15,7 +15,9 @@ if(userId) {
     
     cartBtns.forEach(cartBtn => {
       cartBtn.addEventListener("click", async () => {
+        
           if (!sidebarFilled) {
+            
         try {
             console.log(`/getCartItems?bookId${bookId}`)
             const response = await fetch(`/getCartItems/${bookId}`);
@@ -44,6 +46,7 @@ if(userId) {
                 bookContainer.classList.add("bookContainer");
 
                 const coverImg = document.createElement("img");
+                coverImg.classList.add("coverImg");
                 coverImg.src = `/images/bookCovers/${book.cover}`;
                 coverImg.alt = book.title;
                 coverImg.width = 130; 
@@ -62,6 +65,7 @@ if(userId) {
                 const titlePara = document.createElement("p");
                 titlePara.textContent = book.title;
                 bookDetail1.appendChild(titlePara);
+                
 
                 const authorPara = document.createElement("p");
                 authorPara.textContent = `Author: ${book.author}`;
@@ -76,8 +80,24 @@ if(userId) {
                 pricePara.style.color = "#F9784B"
                 bookDetail1.appendChild(pricePara);
 
+                const removeBookBtn = document.createElement("a")
+                removeBookBtn.id = 'removeBookBtn';
+                removeBookBtn.classList.add("removeBookBtn");
+                removeBookBtn.setAttribute("href", `/removeBookFromCart/${book._id}`);
+
+                const removeBookImg = document.createElement('img');
+                removeBookImg.src = '/images/TRASH.svg';
+                removeBookImg.alt = 'Remove Book';
+
+                removeBookBtn.appendChild(removeBookImg);
+                
+                
+
                 bookDetailsContainer.appendChild(bookDetail1);
                 bookDetailsContainer.appendChild(bookDetail2);
+                bookDetailsContainer.appendChild(removeBookBtn);
+
+                
 
                 bookContainer.appendChild(coverImg);
                 bookContainer.appendChild(bookDetailsContainer);
@@ -87,6 +107,8 @@ if(userId) {
 
                 
             });
+
+            bookRemoveNotice();
 
             const buyContainer = document.createElement("div");
             buyContainer.classList.add("buyContainer");
@@ -156,10 +178,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
                   setTimeout(() => {
                       window.location.reload();
-                  }, 2000);
+                  }, 1000);
               }
           };
           xhr.send();
       });
   });
 });
+
+function bookRemoveNotice() {
+    const removeBookBtns = document.querySelectorAll(".removeBookBtn");
+    console.log("Number of removeBookBtns:", removeBookBtns.length)
+    removeBookBtns.forEach(removeBookBtn => {
+        console.log("here2");
+        removeBookBtn.addEventListener('click', async (event) => {
+            event.preventDefault();
+            const route = removeBookBtn.getAttribute('href');
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', route, true);
+            xhr.onreadystatechange = function () {
+              if (xhr.readyState === XMLHttpRequest.DONE) {
+                console.log(xhr.status);
+                const popupParagraph = document.getElementById("popupParagraph");
+                const myPopup = document.getElementById("myPopup");
+                if (xhr.status === 200) {
+                  popupParagraph.textContent = xhr.responseText;
+                } else if (xhr.status === 404) {
+                  popupParagraph.textContent = xhr.responseText;
+                } else {
+                  popupParagraph.textContent = 'An error occurred.';
+                }
+                myPopup.style.display = 'block';
+      
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1000);
+              }
+            };
+            xhr.send();
+          });
+        });
+}

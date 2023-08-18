@@ -293,7 +293,33 @@ const officializePurchase = async (req, res) => {
   }
 };
 
+const removeBookFromCart = async (req, res) => {
+  try {
+      const userId = req.session.userId;
+      const bookIdToRemove = req.params.bookId;
+      const user = await User.findById(userId).populate('shoppingCart.book');
+
+      if (!user) {
+          return res.status(404).json("User not found" );
+      }
+
+      const cartItemIndex = user.shoppingCart.findIndex(item => item.book._id.toString() === bookIdToRemove);
+
+      if (cartItemIndex === -1) {
+          return res.status(404).json("Book not found in cart" );
+      }
+
+      user.shoppingCart.splice(cartItemIndex, 1);
+      await user.save();
+
+      res.status(200).json("Book removed from cart");
+  } catch (error) {
+      console.error(error);
+      res.status(500).json("Internal Server Error" );
+  }
+};
+
 
 
 //Functions exports
-module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook, favoriteBook, getFavoriteBooks, removeFavorite, addBookToCart, getCartItems, officializePurchase };
+module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook, favoriteBook, getFavoriteBooks, removeFavorite, addBookToCart, getCartItems, officializePurchase, removeBookFromCart };
