@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Unica+One&display=swap');
+
+:root{
+    --login-primary-color : #d3d6df;
+
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body{
+    font-family: 'Oswald', sans-serif;
+    margin: 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--login-primary-color);
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+
+}
+
+.form{
+    padding: 0px 10px 20px 20px;
+    width: 80%;
+    max-width: 32rem;
+    background-image: linear-gradient(to right, rgba(0,0,0, .5) .5rem, white  .3rem);
+}
+
+.form__fieldset{
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: .25em;
+    padding-top: 2rem;
+
+}
+
+.form__title {
+    font-weight: 300;
+    font-size: 2rem;
+    color: rgb(77, 77, 233);
+    padding-top: 2rem;
+}
+
+
+.form__label{
+    font-family: 'Unica One', cursive;
+    font-size: .8rem;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.form__input {
+    font-family: 'Oswald', sans-serif;
+    padding: .5em 0; 
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgb(77, 77, 233);
+    margin-bottom: .8rem;
+    outline: none;
+    transition: padding-left .08s;
+}
+
+.form__input:focus{
+    outline: 2px solid rgb(77, 77, 233); 
+    padding-left: .3rem;
+}
+
+.btn{
+    text-transform: uppercase;
+    font-size: 1rem;
+    
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    
+    padding: .8rem 1.2rem;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.btn-primory{
+    background-color: rgb(77, 77, 233);
+    color: white;
+    cursor: pointer;
+
+}
+.brn-secondery{
+    background-color: rgb(77, 77, 233);
+
+
+}
+
+.form__action{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap ;
+
+}
+
+.form__action__aside{
+    font-size: .85rem;
+    flex-grow: 1;
+    text-align: right;
+    text-decoration: none;
+    color: orange;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+footer {
+    background-color: darkgray;
+    padding: 10px;
+    text-align: center;
+  }
+  
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    
+  }

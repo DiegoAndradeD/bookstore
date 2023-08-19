@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="/stylesheets/Settings.css">
+
+</head>
+<body>
+
+    <header>
+        <%- include(navbar) %>
+    </header>
+
+    <div class="container">
+        <form action="/Signup" method="post" autocomplete="off" class="form">
+            <fieldset class="form__fieldset">
+                <legend class="form__title"> Signup</legend>
+        
+                <label for="userName" class="form__label">User Name</label>
+                <input type="text" name="userName" id="userName" required placeholder="User Name" minlength="8" maxlength="20" autocomplete="off" autofocus class="form__input">
+                <label for="fullName" class="form__label">Full Name</label>
+                <input type="text" name="fullName" id="fullName"
+                required placeholder="Full Name" minlength="10" autocomplete="off" autofocus class="form__input">
+                <label for="email" class="form__label">Email</label>
+                <input type="email" name="email" id="email" required placeholder="Email" minlength="10" autocomplete="off" autofocus class="form__input">
+                <label for="password" class="form__label">Password</label>
+                <input type="password" name="password" id="password" required minlength="6" placeholder="Password" autocomplete="off" autofocus class="form__input" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$">
+        
+                <div class="form__action">
+                    <input type="submit" value=" Signup " class="btn btn-primory" >
+                    <p class="form__action__aside">
+                        Already registered? <a href="/Login">make your Login</a>
+                     </p>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+            </fieldset>
+    </form>
+</div>
+
+        <div id="errorMessage"></div>
+        <div id="successMessage"></div>
+
+    <footer>
+        All Rights Reserved: by Diego Deiro & Henrique Viana  
+    </footer>
+
+    <script src="/javascripts/messageHandler.js"></script>
+
+
+    
+</body>
+</html>
