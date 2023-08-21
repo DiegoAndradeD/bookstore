@@ -213,6 +213,7 @@ transform: translateX(0);
 
 body.dark{
   background-color: #232c35;
+  color: white;
 
 }
 
@@ -264,6 +265,13 @@ transition: transform 0.2s linear;
 .fa-sun{
 
   color: rgb(216, 216, 146);
+}
+
+.fa-moon{
+
+  color: black;
+
+
 }
 
 
