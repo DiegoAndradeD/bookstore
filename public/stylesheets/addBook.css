@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+*,
+::after,
+::before {
+    box-sizing: border-box;
+}
 
 .dataContainer {
     display: flex;
@@ -29,6 +34,7 @@ form {
     padding: 20px;
     border: 3px dotted rgb(77, 77, 233);
     margin-top: 20px;
+    margin-bottom: 20px;
     
 }
 
@@ -108,7 +114,14 @@ button[type="submit"] {
 
 footer {
     background-color: darkgray;
-    margin-top: 20px;
     padding: 10px;
     text-align: center;
-}
+  }
+  
+footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    
+  } 
