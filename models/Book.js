@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose');
 
+//Book model mongoDB schema
 const bookSchema = new mongoose.Schema({
   title: {
     type: String,

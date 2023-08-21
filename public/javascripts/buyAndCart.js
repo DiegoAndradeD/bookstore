@@ -1,7 +1,18 @@
+/*
+  This script is responsible for handling the cart and buy buttons as well its functionalities
+  It's used in the books individual page, favorites page and search results page
+*/
+
+/* 
+  This variable is for checking if the sidebar is filled. 
+  It impedes the sidebar of getting duplicate fields when the click action is executed
+*/
 let sidebarFilled = false;
 
+//The cart button will only works if the user is logged, therefore having his id present in the session
 if(userId) {
     document.addEventListener("DOMContentLoaded", function () {
+    //Getting fields and values from the html page
     const cartBtns = document.querySelectorAll(".cartBtn");
     const cartBtn = document.getElementById("cartBtn");
     const cartItemsContainer = document.getElementById("cartItems");
@@ -13,12 +24,14 @@ if(userId) {
     
     let subtotal = 0;
     
-    cartBtns.forEach(cartBtn => {
-      cartBtn.addEventListener("click", async () => {
-        
-          if (!sidebarFilled) {
-            
+    /*
+      Iteration responsible for, responding to all cart buttons, fetching the backend on the corresponding route
+       to get the book data stored in the logged in user's cart and populating the sidebar with them
+    */
+       async function populateSidebar() { if (!sidebarFilled) {
+      
         try {
+          //Fetching the backend to get the book in user cart data
             console.log(`/getCartItems?bookId${bookId}`)
             const response = await fetch(`/getCartItems/${bookId}`);
             console.log(response);
@@ -27,6 +40,7 @@ if(userId) {
 
             sidebar.classList.add('active');
 
+            //Creating the elements of the sidebar header.
             const closeSidebarButton = document.createElement("button");
             const closeArrow = document.createElement("img");
             const message = document.createElement("h3");
@@ -38,7 +52,12 @@ if(userId) {
             sidebarHeader.appendChild(closeSidebarButton);
             sidebarHeader.appendChild(message);
 
+            //Iteration over each item inside the data returned from the backend
             data.forEach(item => {
+                /* 
+                  For each book, it will be created its container with corresponding data
+                  Some css may be aplied here
+                */
                 const book = item.book; 
                 const quantity = item.quantity;
 
@@ -66,7 +85,6 @@ if(userId) {
                 titlePara.textContent = book.title;
                 bookDetail1.appendChild(titlePara);
                 
-
                 const authorPara = document.createElement("p");
                 authorPara.textContent = `Author: ${book.author}`;
                 bookDetail2.appendChild(authorPara);
@@ -91,25 +109,24 @@ if(userId) {
 
                 removeBookBtn.appendChild(removeBookImg);
                 
-                
-
                 bookDetailsContainer.appendChild(bookDetail1);
                 bookDetailsContainer.appendChild(bookDetail2);
                 bookDetailsContainer.appendChild(removeBookBtn);
-
-                
 
                 bookContainer.appendChild(coverImg);
                 bookContainer.appendChild(bookDetailsContainer);
                 sidebar.appendChild(bookContainer);
 
+                //Defines the subtotal of all the books inserted in the user's cart
                 subtotal += book.price * quantity;;
 
                 
             });
 
+            //Call to function responsible for the book remove button message
             bookRemoveNotice();
 
+            //Creation and append of the buy container items
             const buyContainer = document.createElement("div");
             buyContainer.classList.add("buyContainer");
 
@@ -126,6 +143,21 @@ if(userId) {
             subtotalValue.innerHTML = "R$" + subtotal + ",00";
             const payButton = document.createElement("a");
             payButton.innerHTML = "Pay";
+            payButton.id = 'payButton';
+
+            const bookContainers = document.querySelectorAll(".bookContainer");
+              if (bookContainers.length === 0) {
+                payButton.addEventListener("click", function(event) {
+                  event.preventDefault();
+                  
+                    const popupParagraph = document.getElementById("popupParagraph");
+                    const myPopup = document.getElementById("myPopup");
+                    popupParagraph.textContent = "empty cart";
+                    myPopup.style.display = 'block';
+                });
+              }
+              
+
             payButton.href = "/officializePurchase";
 
             buyContainerDetails1.appendChild(buyContainerH2);
@@ -135,24 +167,35 @@ if(userId) {
             buyContainer.appendChild(buyContainerDetails1);
             buyContainer.appendChild(buyContainerDetails2);
 
+            
+
             sidebar.appendChild(buyContainer);
             
             console.log(closeSidebarButton);
+
+            //Close sidebar button event listener
             closeSidebarButton.addEventListener("click", () => {
                 sidebar.classList.remove('active');
             });
+
+            //Makes the sidebar filled to not duplicate new elements
             sidebarFilled = true;
 
         } catch (error) {
             console.error("Error fetching cart items:", error);
         }
-    }
-    sidebar.classList.add('active');
-    });
+    } 
+
+
+
+    sidebar.classList.add('active');}
+    cartBtns.forEach(cartBtn => {
+      cartBtn.addEventListener("click", populateSidebar);
 });
 });
 }
 
+//Buy now button message handling
 document.addEventListener("DOMContentLoaded", function () {
   const buyNowTexts = document.querySelectorAll(".buyNowText"); 
 
@@ -186,6 +229,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+//This function handle the message returned from the backend of the click event of the remove book from cart buttons
 function bookRemoveNotice() {
     const removeBookBtns = document.querySelectorAll(".removeBookBtn");
     console.log("Number of removeBookBtns:", removeBookBtns.length)
@@ -219,3 +263,4 @@ function bookRemoveNotice() {
           });
         });
 }
+
