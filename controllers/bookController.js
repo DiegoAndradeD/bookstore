@@ -92,14 +92,14 @@ const searchBook = async (req, res) => {
     const {searchText} = req.body;
     const userId = req.session.userId;
     try {
-      const searchResult = await Book.find({
+      const books = await Book.find({
         $or: [
           { title: { $regex: searchText, $options: 'i' } },
           { author: { $regex: searchText, $options: 'i' } }
         ]
       });
       const { email, isAdmin} = req.session;
-      return res.render('searchResult', {userId: userId, searchText, searchResult, email, isAdmin, navbar: 'navbar' });
+      return res.render('searchResult', {userId: userId, searchText, books, email, isAdmin, navbar: 'navbar' });
     } catch (error) {
       res.status(error.statusCode || 500).json({ errorMessage: error.message });
     }
@@ -319,7 +319,28 @@ const removeBookFromCart = async (req, res) => {
   }
 };
 
+const getBooksByCategory = async (req, res) => {
+  const bookCategory = req.params.category;
+  try {
+    let books = await Book.find({category: bookCategory});
+    const { searchText } = req.query;
+
+    if(searchText) {
+      books = books.filter(book =>
+        book.title.match(new RegExp(searchText, 'i')) ||
+        book.author.match(new RegExp(searchText, 'i'))
+      );
+    } 
+    
+    const { email, isAdmin, userId} = req.session;
+    return res.render('booksByCategory', {bookCategory, userId: userId,  books, email, isAdmin, navbar: 'navbar' });
+  } catch (error) {
+    res.status(error.statusCode || 500).json({ errorMessage: error.message });
+  }
+
+}
+
 
 
 //Functions exports
-module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook, favoriteBook, getFavoriteBooks, removeFavorite, addBookToCart, getCartItems, officializePurchase, removeBookFromCart };
+module.exports = { addBook, getBooks, getIndexBooks, getBookDetails, searchBook, favoriteBook, getFavoriteBooks, removeFavorite, addBookToCart, getCartItems, officializePurchase, removeBookFromCart, getBooksByCategory };

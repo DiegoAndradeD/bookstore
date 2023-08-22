@@ -108,4 +108,6 @@ router.get('/removeBookFromCart/:bookId', bookController.removeBookFromCart);
 
 router.get('/officializePurchase', bookController.officializePurchase);
 
+router.get('/books/category/:category', bookController.getBooksByCategory);
+
 module.exports = router;

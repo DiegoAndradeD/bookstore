@@ -1,15 +1,15 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results</title>
+    <title>Books</title>
     <link rel="stylesheet" href="/stylesheets/bookPage.css">
     <link rel="stylesheet" href="/stylesheets/searchResult.css">
-    <link rel="shortcut icon" href="/images/BookOpen.svg" type="image/x-icon">
 </head>
-<style>
-
-.sidebar {
+<body>
+    <style>
+    .sidebar {
         width: 600px;
         max-height: calc(100vh - 200px);
         position: fixed;
@@ -157,7 +157,7 @@
 
     <div class="searchContainer">
         <div class="searchContainerText">
-            <form class="searchBox" action="/searchBook" method="post">
+            <form class="searchBox" action="/books/category/<%= bookCategory %>" method="get">
                 <input type="text" class="textBox" id="searchText" name="searchText" placeholder="Research your book">
                 <button class="seachBoxButton" id="searchButton" type="submit">
                     <img class="lop-blue" src="/images/loupe-blue.svg" alt="" width="25px" height="25px">
@@ -166,7 +166,7 @@
             </form>
                 <div class="resultFilterContainer">
                     <div class="resultText">
-                        <h2>RESULTS: <h2 style="color: #3AB8EB;">"<%=searchText %>"</h2></h2>
+                        <h2>RESULTS: <h2 style="color: #3AB8EB;"></h2></h2>
                     </div>
                     <div class="filter-container">
                         <select id="firstFilter">
