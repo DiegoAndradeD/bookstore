@@ -1,4 +1,4 @@
-# Bookstore Web Page Project
+# Bookstore Website Project
 
 All credits of the page layout to: *eduardamirelly*  
 Thank you for providing the Figma template. It was instrumental in enabling us to create this project!
