@@ -61,9 +61,11 @@ if(userId) {
                 const book = item.book; 
                 const quantity = item.quantity;
 
+                //Container to each book in the cart
                 const bookContainer = document.createElement("div");
                 bookContainer.classList.add("bookContainer");
 
+                //Creation and append of book cover
                 const coverImg = document.createElement("img");
                 coverImg.classList.add("coverImg");
                 coverImg.src = `/images/bookCovers/${book.cover}`;
@@ -72,15 +74,18 @@ if(userId) {
                 coverImg.height = 170;
                 bookContainer.appendChild(coverImg);
 
+                //Container for book details
                 const bookDetailsContainer = document.createElement("div");
                 bookDetailsContainer.classList.add("bookDetailsContainer");
 
+                //Divs to store the book details, appended in the bookDetailsContainer
                 const bookDetail1 = document.createElement("div");
                 bookDetail1.classList.add("bookDetail1");
 
                 const bookDetail2 = document.createElement("div");
                 bookDetail2.classList.add("bookDetail2");
 
+                // Book parameters created and apended to details containers
                 const titlePara = document.createElement("p");
                 titlePara.textContent = book.title;
                 bookDetail1.appendChild(titlePara);
@@ -98,6 +103,7 @@ if(userId) {
                 pricePara.style.color = "#F9784B"
                 bookDetail1.appendChild(pricePara);
 
+                //Button to remove book from cart
                 const removeBookBtn = document.createElement("a")
                 removeBookBtn.id = 'removeBookBtn';
                 removeBookBtn.classList.add("removeBookBtn");

@@ -63,13 +63,7 @@ const login = async (req, res) => {
             return res.status(400).json({ errorMessage: 'Invalid Password!' });
         }
 
-        if (user.isAdmin) {
-            console.log("Admin Logged In");
-            return res.status(201).json({ successMessage: 'Admin Logged In'});
-        } else {
-            console.log("user logged");
-            return res.status(201).json({ successMessage: 'Login Completed'});
-        }
+        res.redirect("/index");
         
     } catch (error) {
         console.log('error logging', error.message);
