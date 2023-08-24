@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+/*Container that holds the book's information such as cover, title, author, price and etc*/
 .mainContainer {
     width: 100%; 
     height: auto; 
@@ -17,6 +18,7 @@
     
 }
 
+/*Book cover container*/
 .imageContainer {
     width: 400px;
     height: 500px;
@@ -32,6 +34,7 @@
     padding: 10px;
 }
 
+/*Container for the book's information and bookInfoChild container*/
 .bookInfoContainer {
     width: 700px;
     height: 500px;
@@ -40,6 +43,7 @@
     justify-content: space-between;
 }
 
+/*Container for cart and buy buttons*/
 .bookInfoChild {
     width: 70%;
     margin-top: 10px;
@@ -53,34 +57,14 @@
     margin: 0;
 }
 
-.bookInfoChild3 p {
-    text-align: justify;
-    padding: 0 50px;
-}
-
+/*Container where the price text and value are*/
 .bookInfoChild4_SubItems {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#stockNumber {
-    border: 1px solid black;
-    border-radius: 25%;
-    width: 30px;
-    text-align: center;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.bookInfoChild5 {
-    width: 100%;
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
+/*Cart and buy buttons*/
 #cartBtn,
 #buyNowBtn {
     border: 1px solid black;
@@ -103,6 +87,7 @@
     padding: 5px;
 }
 
+/*Book data containers*/
 #authorContainer,  #synopsisContainer, #categoryContainer{
     border: 2px dotted black;
     box-shadow: 6px 6px 6px #676767;
@@ -128,59 +113,182 @@
     border-radius: 10px;
 }
 
-#priceStockContainer {
-    font-size: 1.3em;
+#buyNowBtn {
+    transition: 0.5s;
 }
 
+/*Container for each book cover in the View more section*/
+.highligthChild {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-.stockBtn {
+.highligthChild img {
+    width: 479;
+    height: 316px;
+    object-fit: cover; 
+
+}
+
+/*Cart*/
+.sidebar {
+    width: 600px;
+    max-height: calc(100vh - 200px);
+    position: fixed;
+    top: 100px; 
+    right: -600px; 
+    background-color: white;
+    color: #fff;
+    transition: right 0.3s;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 999; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.sidebar.active {
+    right: 0; 
+}
+
+/*Cart close buttom*/
+.closeSidebarButton {
+    width: 30px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+.sidebarHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-bottom: 20px;
+}
+
+/*Cart popup message*/
+.cartMessage {
+    font-size: 1em;
+    color: Black;
+}
+
+/*Container for the books in the cart*/
+.bookContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px dotted black;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 10px;
+    color: black;
+}
+
+/*Container for each book details*/
+.bookDetailsContainer {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-grow: 1; 
+    padding-left: 20px; 
+}
+
+/*First and second divs for book's information*/
+.bookDetail1, .bookDetail2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 10px; 
+    width: 100%;
+}
+
+.bookDetail1 p {
+    margin-bottom: 5px;
+    font-size: 2em;
+    margin-left: 10px; 
+    white-space: normal; 
+}
+
+.bookDetail2 p {
+    margin-bottom: 5px;
+    font-size: 1.3em;
+    margin-left: 10px; 
+    white-space: normal;
+}
+
+/*Container to view the subtotal and finish the purchase*/
+.buyContainer {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-grow: 1; 
+    padding-left: 20px; 
+    margin-bottom: 10px;
+    color: black;
+    height: 200px;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.buyContainerDetails1  .subtotalValue{
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: #FDBF0F;
+}
+
+.subtotalValue {
+    padding: 10px;
+}
+
+/*Containers for the buyContainer elements*/
+.buyContainerDetails1 {
+    display: flex; 
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px; 
+}
+
+.buyContainerDetails2 {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.buyContainerDetails2 a {
+    text-align: center;
+    width: 100%;
+    font-size: 2em;
+    border: 1px solid #F9784B;
+    background-color: #F9784B;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+/*Book to remove a book from the user's cart*/
+.removeBookBtn {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+
     background: none;
     color: inherit;
     border: none;
     padding: 0;
-    padding-left: 6px;
-    padding-right: 6px;
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    border: 1px solid black;
-    border-radius: 50%;
 }
 
-
-.hiddenMenu {
-    background: #23232e;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 1; 
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 10px;
-    float: right;
-    width: 0;
-    z-index: 1;
-}
-
-.hiddenMenu a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 30px;
-    color: white;
-    display: block;
-}
-
-.menuconteiner .btnclose {
-    margin-left: 300px;
-    font-size: 10px;
-    width: 10px;
-    
-
-}
-
-#buyNowBtn {
-    transition: 0.5s;
+.coverImg {
+    width: 100px;
+    height: 150px;
 }
 
 
@@ -188,22 +296,20 @@ footer {
     background-color: darkgray;
     padding: 10px;
     text-align: center;
-  }
+}
   
-  footer {
+footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    
-  }
+}
 
+/*Media Screen to responsiveness*/
 @media (max-width: 600px) {
     .mainContainer {
         flex-direction: column; 
     }
-
-    
 
     .imageContainer {
         width: 100%; 

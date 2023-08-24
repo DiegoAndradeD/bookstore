@@ -3,9 +3,7 @@
 
 :root{
     --login-primary-color : #d3d6df;
-
 }
-
 
 * {
     margin: 0;
@@ -24,6 +22,7 @@ body{
 
 }
 
+/*Login form Container*/
 .container {
     display: flex;
     justify-content: center;
@@ -45,7 +44,6 @@ body{
     flex-direction: column;
     gap: .25em;
     padding-top: 2rem;
-
 }
 
 .form__title {
@@ -102,8 +100,6 @@ body{
 }
 .brn-secondery{
     background-color: rgb(77, 77, 233);
-
-
 }
 
 .form__action{

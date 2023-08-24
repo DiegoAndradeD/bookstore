@@ -1,3 +1,4 @@
+/*Containers for each book correspondent to the search*/
 .mainContainer {
     border: 1px solid black;
     border-radius: 15px;
@@ -6,6 +7,7 @@
     padding-bottom: 50px;
 }
 
+/*Message if no book is found*/
 .noBookText {
     width: 500px;
     height: 30px;
@@ -13,6 +15,7 @@
     font-size: 3em;
 }
 
+/*Book cover container*/
 .imageContainer {
     cursor: pointer;
 }
@@ -20,6 +23,7 @@
     opacity: .8;
 }
 
+/*Search fild container*/
 .searchContainer {
     display: flex;
     align-items: center;
@@ -28,7 +32,6 @@
     margin: auto;
     margin-bottom: 100px;
     margin-top: 200px;
-
 }
 
 .searchContainerText {
@@ -58,7 +61,7 @@
     width: 90%;
 }
 
-/* Responsive search box */
+/*Search field*/
 .searchBox {
     width: 100%;
     background: orange;
@@ -105,34 +108,36 @@
     background: #ffffff;
 }
 
+/*Info block that, when hovered, show more information about the book*/
 .info-block {
-position: relative;
-display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .info-icon img{
-width: 30px;
-height: 30px;
-cursor: pointer;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }
 
 .info-card {
-display: none;
-position: absolute;
-top: 30px;
-left: -10px;
-width: 200px;
-background-color: white;
-border: 1px solid gray;
-border-radius: 5px;
-padding: 10px;
-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: -10px;
+    width: 200px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .info-block:hover .info-card {
-display: block;
+    display: block;
 }
 
+/*Container that holds the text searched and the filters for the page*/
 .resultFilterContainer {
     margin-top: 30px;
     padding: 30px;
@@ -164,6 +169,7 @@ display: block;
     text-align: center;
 }
 
+
 .popup {
     display: none;
     position: fixed;
@@ -175,14 +181,14 @@ display: block;
     border: 1px solid red;
     border-radius: 15px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-        }
+}
 
+/*Media Screen to responsiveness*/
 @media screen and (max-width: 768px) {
     .searchContainer {
         flex-direction: column;
         align-items: center;
         margin-top: 200px;
-    
     }
     
     .searchContainerText {

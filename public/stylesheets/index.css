@@ -1,224 +1,344 @@
 
 :root {
-  --bgColor1: #F9784B;
+--bgColor1: #F9784B;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Style for index containers */
+.firstContainer,
+.secondContainer,
+.TContainer,
+.fourthContainer {
+  width: 100%;
+  max-width: 1500px;
+  margin: 20px auto;
+  min-height: 500px;
+  padding-bottom: 50px;
+}
+
+/* Style for first container text and image*/
+.firstContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 600px;
+  margin-bottom: 100px;
+}
+
+.firstContainerText {
+
+  width: 50%;
+  max-width: 500px;
+  margin-bottom: 30px;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.startText1 {
+  font-size: 3em;
+}
+
+.startText2 {
+  font-size: 1em;
+}
+
+.startImage {
+  width: 100%;
+  max-width: 1000px;
+  height: auto;
+}
+
+/* First Container Search field*/
+.searchBox {
+  width: 80%;
+  max-width: 400px;
+  background: orange;
+  height: 50px;
+  padding: 10px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+  margin-top: 30px;
+}
+
+.textBox {
+  background: none;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  font-size: 16px;
+  width: 0;
+  transition: 0.4s;
+}
+
+.seachBoxButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.lop-white {
+  display: none;
+}
+
+.searchBox:hover > .textBox {
+  width: 230px;
+  padding-left: 20px;
+}
+
+.searchBox:hover > .seachBoxButton {
+  background: #ffffff;
+}
+
+/*Containers that house the book's cards and it's elements*/
+.highligth {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/*Fields for the books covers, may go inside a highligthCard*/
+.highligthChild {
+  width: 100%;
+  max-width: 250px;
+  height: 400px;
+  background-color: #fbfbfb;
+  margin: 20px;
+  border-radius: 15px;
+  border: 1px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.highligthChild img:hover{
+  opacity: .8;
+}
+
+.book-cover {
+  width: 100%;
+  max-width: 220px;
+  height: 375px;
+  object-fit: cover;
+  display: block;
+  margin: auto;
+}
+
+/*Categories container and fourth container*/
+.TContainer p,
+.fourthContainer p {
+  margin-bottom: 30px;
+}
+
+.categoryText {
+  font-size: 3em;
+}
+
+/*Container inside TContainer that holds categories*/
+.highligth1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.highligth1 button {
+  width: 100%;
+  max-width: 350px;
   
+  font-size: 2em;
+  text-decoration: none;
+  border: 1px solid black;
+  width: 350px;
+  height: 100px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 20px;
+  background-color: white;
+  box-shadow: 6px 6px 6px var(--bgColor1);
+}
+
+.highligth1 button {
+  border: 1px solid ;
+  box-shadow: 10px 10px var(--bgColor1);
+}
+
+.highligth1 button:hover {
+  font-style: italic;
+  font-weight: 600;
+  color: red;
+  cursor: pointer;
+}
+
+/*Container that holds the highligthChild containers*/
+.highligthCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 10px;
+  text-align: center;
+
+}
+
+/*Containers for books price and fovoriting button*/
+.highligthChildElememt {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+  margin-left: 30px;
+  width: 246px;
+}
+
+.highligthChildElememt p {
+  font-size: 28px;
+  margin: 5px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 50px;
+  width: 105px;
+
+}
+
+#cartImg {
+  width: 236px;
+  background-color: #FDBF0F;
+}
+
+
+.highligthCard {
+  width: fit-content;
+}
+  
+/*Footer*/
+footer {
+  background-color: darkgray;
+  padding: 10px;
+  text-align: center;
+}
+  
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  
+}
+
+/*Class to books covers*/
+.clickable {
+  cursor: pointer; 
+}
+
+/*Popuop Style*/
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid red;
+  border-radius: 20px;
+  box-shadow: 10px 20px 50px rgba(0.8, 0.8 , 0.8, 0.2);
+  color: black;
+}
+  
+.popup.dark{
+  background-color: #232c35;
+  color: white;
+
+}    
+     
+/*Media Screen to responsiveness*/
+@media screen and (max-width: 768px) {
+  .firstContainer {
+    flex-direction: column-reverse;
+    height: auto;
+    align-items: center;
+  }
 
   .firstContainer,
   .secondContainer,
   .TContainer,
   .fourthContainer {
-    width: 100%;
-    max-width: 1500px;
-    margin: 20px auto;
-    min-height: 500px;
-    padding-bottom: 50px;
-  }
-  
-  .firstContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 600px;
-    margin-bottom: 100px;
-  }
-  
-  .firstContainerText {
- 
-    width: 50%;
-    max-width: 500px;
-    margin-bottom: 30px;
-    text-align: left;
-    padding-left: 20px;
+    min-height: 300px;
   }
 
+  .firstContainerText {
+    width: 80%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 0;
+  }
+
+  .startImage {
+    width: 80%;
+    max-width: 400px;
+    margin-top: 20px;
+  }
+
+  .searchBox {
+    width: 80%;
+    max-width: 320px;
+    margin: 10px;
+  }
+
+  .highligthChild {
+    width: 100%;
+    max-width: 180px;
+  }
+
+  .highligth1 button {
+    max-width: 250px;
+  }
+}
+
+@media screen and (max-width: 600px) {
   .startText1 {
-    font-size: 3em;
+    font-size: 2.2em;
+  }
+
+  .firstContainer,
+  .secondContainer,
+  .TContainer,
+  .fourthContainer {
+  min-height: 300px;
   }
 
   .startText2 {
     font-size: 1em;
   }
-  
-  .startImage {
-    width: 100%;
-    max-width: 1000px;
-    height: auto;
-  }
-  
 
   .searchBox {
-    width: 80%;
-    max-width: 400px;
-    background: orange;
-    height: 50px;
-    padding: 10px;
-    border-radius: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: 20px;
-    margin-top: 30px;
+    max-width: 280px;
   }
-  
-  .textBox {
-    background: none;
-    border: 0;
-    outline: 0;
-    padding: 0;
-    font-size: 16px;
-    width: 0;
-    transition: 0.4s;
-  }
-  
-  .seachBoxButton {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .lop-white {
-    display: none;
-  }
-  
-  .searchBox:hover > .textBox {
-    width: 230px;
-    padding-left: 20px;
-  }
-  
-  .searchBox:hover > .seachBoxButton {
-    background: #ffffff;
-  }
-  
 
-  .highligth {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
   .highligthChild {
     width: 100%;
-    max-width: 250px;
-    height: 400px;
-    background-color: #fbfbfb;
-    margin: 20px;
-    border-radius: 15px;
-    border: 1px solid #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .highligthChild img:hover{
-    opacity: .8;
-  }
-  
-  .book-cover {
-    width: 100%;
-    max-width: 220px;
-    height: 375px;
-    object-fit: cover;
-    display: block;
-    margin: auto;
-  }
-  
-
-  .TContainer p,
-  .fourthContainer p {
-    margin-bottom: 30px;
-  }
-
-  .categoryText {
-    font-size: 3em;
-  }
-  
-  .highligth1 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .highligth1 button {
-    width: 100%;
-    max-width: 350px;
-    
-    font-size: 2em;
-    text-decoration: none;
-    border: 1px solid black;
-    width: 350px;
-    height: 100px;
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 20px;
-    background-color: white;
-    box-shadow: 6px 6px 6px var(--bgColor1);
+    max-width: 150px;
   }
 
   .highligth1 button {
-    border: 1px solid ;
-    box-shadow: 10px 10px var(--bgColor1);
+    max-width: 200px;
   }
 
-  .highligth1 button:hover {
-    font-style: italic;
-    font-weight: 600;
-    color: red;
-    cursor: pointer;
-  }
-
-  .highligthCard {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    margin-top: 10px;
-    text-align: center;
-
-  }
-  
-  .highligthChildElememt {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
-    align-items: center;
-    gap: 10px;
-    margin-top: 5px;
-    margin-left: 30px;
-    width: 246px;
-  }
-  
-  .highligthChildElememt p {
-    font-size: 28px;
-    margin: 5px;
-    border: 1px solid black;
-    padding: 10px;
-    border-radius: 50px;
-    width: 105px;
-
-  }
-
-  #cartImg {
-    width: 236px;
-    background-color: #FDBF0F;
-  }
-  
-  
-  .highligthCard {
-    width: fit-content;
-  }
-  
 
   footer {
     background-color: darkgray;
@@ -231,121 +351,5 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    
   }
-
-  .clickable {
-    cursor: pointer; 
-  }
-  .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 20px;
-      background-color: #fff;
-      border: 1px solid red;
-      border-radius: 20px;
-      box-shadow: 10px 20px 50px rgba(0.8, 0.8 , 0.8, 0.2);
-      color: black;
-    
-    
-    }
-  
-    .popup.dark{
-      background-color: #232c35;
-      color: white;
-    
-    }    
-     
-
-  @media screen and (max-width: 768px) {
-    .firstContainer {
-      flex-direction: column-reverse;
-      height: auto;
-      align-items: center;
-    }
-
-    .firstContainer,
-  .secondContainer,
-  .TContainer,
-  .fourthContainer {
-    min-height: 300px;
-  }
-  
-    .firstContainerText {
-      width: 80%;
-      max-width: 500px;
-      margin-bottom: 20px;
-      text-align: center;
-      padding: 0;
-    }
-  
-    .startImage {
-      width: 80%;
-      max-width: 400px;
-      margin-top: 20px;
-    }
-  
-    .searchBox {
-      width: 80%;
-      max-width: 320px;
-      margin: 10px;
-    }
-  
-    .highligthChild {
-      width: 100%;
-      max-width: 180px;
-    }
-
-    .highligth1 button {
-      max-width: 250px;
-    }
-  }
-  
-  @media screen and (max-width: 600px) {
-    .startText1 {
-      font-size: 2.2em;
-    }
-
-    .firstContainer,
-  .secondContainer,
-  .TContainer,
-  .fourthContainer {
-    min-height: 300px;
-  }
-  
-    .startText2 {
-      font-size: 1em;
-    }
-  
-    .searchBox {
-      max-width: 280px;
-    }
-  
-    .highligthChild {
-      width: 100%;
-      max-width: 150px;
-    }
-  
-    .highligth1 button {
-      max-width: 200px;
-    }
-  
-
-    footer {
-        background-color: darkgray;
-        padding: 10px;
-        text-align: center;
-      }
-      
-      footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        
-      }
-  }
-  
+}
