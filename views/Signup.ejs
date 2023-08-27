@@ -13,6 +13,11 @@
         <%- include(navbar) %>
     </header>
 
+    <div class="popup" id="myPopup">
+        <p id="popupParagraph"></p>
+        <button id="closePopup">Close</button>
+    </div>
+
     <div class="container">
         <form action="/Signup" method="post" autocomplete="off" class="form">
             <fieldset class="form__fieldset">
@@ -29,7 +34,7 @@
                 <input type="password" name="password" id="password" required minlength="6" placeholder="Password" autocomplete="off" autofocus class="form__input" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$">
         
                 <div class="form__action">
-                    <input type="submit" value=" Signup " class="btn btn-primory" >
+                    <input type="submit" value="Signup" id="signup" class="btn btn-primory" >
                     <p class="form__action__aside">
                         Already registered? <a href="/Login">make your Login</a>
                      </p>
@@ -43,7 +48,7 @@
         All Rights Reserved: by Diego Deiro & Henrique Viana 
     </footer>
 
-    <script src="/javascripts/messageHandler.js"></script>
+    <script src="/javascripts/popup.js"></script>
 
 </body>
 

@@ -22,54 +22,59 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Function responsible for processing the user signup
 const signup = async (req, res) => {
+    const { userName, fullName, email, password } = req.body;
 
-   const {userName, fullName, email, password} = req.body;
+    try {
+        UserModel.validateUser(userName, fullName, email);
 
-   try {   
-    UserModel.validateUser(userName, fullName, email);
-
-    if(!UserModel.validatePassword(password)) {
-        return res.status(400).json({ errorMessage: 'Invalid Password!' });
+        if (!UserModel.validatePassword(password)) {
+            return res.status(400).json({ errorMessage: 'Invalid Password!' });
         }
 
-    const isUserRegistered = await User.isUserRegistered(email);
-    if(isUserRegistered) {
-        return res.status(400).json({errorMessage: 'User is already Registered'});
+        const isUserRegistered = await User.isUserRegistered(email);
+        if (isUserRegistered) {
+            return res.status(400).json('User is already Registered' );
+        }
+
+        const hashedPassword = await User.hashPassword(password);
+        console.log(hashedPassword);
+        const newUser = new User({ userName, fullName, email, password: hashedPassword });
+        await newUser.save();
+        res.redirect("/login");
+
+    } catch (error) {
+        res.status(error.statusCode || 500).json({ errorMessage: error.message });
+        console.log(error.message);
     }
-
-    const newUser = new User({userName, fullName, email, password});
-    await newUser.save();
-    res.status(201).json({successMessage: 'User registered Successfully'});
-
-   } catch (error) {
-    res.status(error.statusCode || 500).json({errorMessage: error.message});
-    console.log(error.message);
-   }
-
-}
+};
 
 //Function responsible for processing the user login
 const login = async (req, res) => {
-
-    const {email, password} = req.body;
+    const { email, password } = req.body;
 
     try {
         const user = await User.verifyCredentials(email, password);
+        
+        const passwordMatch = await user.checkPassword(password);
+        if (!passwordMatch) {
+            return res.status(400).json('Invalid Password!' );
+        }
+
         req.session.userId = user._id;
         req.session.email = user.email;
         req.session.isAdmin = user.isAdmin;
 
-        if(!UserModel.validatePassword(password)) {
-            return res.status(400).json({ errorMessage: 'Invalid Password!' });
+        res.redirect("/index");
+
+    } catch (error) {
+        if (error.isPasswordError) {
+            return res.status(400).json('Invalid Password' );
+        } else if (error.isUserError) {
+            return res.status(400).json('User not found');
         }
 
-        res.redirect("/index");
-        
-    } catch (error) {
-        console.log('error logging', error.message);
-        return res.status(error.statusCode || 500).json({errorMessage: error.message});
+        return res.status(error.statusCode || 500).json({ errorMessage: error.errorMessage });
     }
-
 };
 
 

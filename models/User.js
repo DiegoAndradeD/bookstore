@@ -1,5 +1,6 @@
 const {db} = require('../public/javascripts/db');
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 //User model mongoDB schema
 const userSchema = new mongoose.Schema ({
@@ -44,30 +45,26 @@ const userSchema = new mongoose.Schema ({
 
 //Static method to verify the user credentials
 userSchema.statics.verifyCredentials = async function(email, password) {
-
-    console.log('Verifying credentials...');
-    console.log('Email:', email);
-    console.log('Password:', password);
-
     try {
-        //Verify the user by it's email, that is unique in the Database
-        const user = await this.findOne({email});
-        if(!user) {
+        const user = await this.findOne({ email });
+        if (!user) {
             console.log('User not found');
-            throw new Error('User not found');
+            throw { isUserError: true, errorMessage: 'User not found' };
         }
-        //Verify if the password matches the user registered password
-        const isPasswordValid = user.password === password;
-        if(!isPasswordValid) {
-            console.log('Password Invalid')
-            throw new Error('Password Invalid');
+
+        // Use bcrypt.compare to verify the password
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            throw { isPasswordError: true, errorMessage: 'Invalid Password' };
         }
+
         return user;
     } catch (error) {
-        console.error('Error verifying credentials: ', error.message);
+        console.error('Error verifying credentials: ');
         throw error;
     }
 };
+
 
 //Static method to verify if the user is registered
 //The search looks for an email in the database, that is a unique attribute, to see if it matches
@@ -81,6 +78,14 @@ userSchema.statics.isUserRegistered = async function(email) {
         throw error;
     }
 
+};
+
+userSchema.statics.hashPassword = async function(password) {
+    return await bcrypt.hash(password, 10);
+};
+
+userSchema.methods.checkPassword = async function(password) {
+    return await bcrypt.compare(password, this.password);
 };
 
 //This middleware verifies if the user logged is an admin
