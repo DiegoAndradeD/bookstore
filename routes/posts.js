@@ -67,12 +67,6 @@ router.get('/SuccessPage', (req, res) => {
 	res.render('SuccessPage', {userId: userId, isAdmin: isAdmin, email: email, navbar: 'navbar'});
 });
 
-router.get('/Settings', (req, res) => {
-	const email = req.session.email;
-	const isAdmin  = req.session.isAdmin;
-	const userId = req.session.userId;
-	res.render('Settings', {userId: userId, isAdmin: isAdmin, email: email, navbar: 'navbar'});
-});
 
 router.post('/searchBook', bookController.searchBook);
 
